@@ -11,6 +11,7 @@ namespace WheelofAccess.Models
         public string Name { get; set; }
         public string  Address {get;set;}
 
-        ICollection<Category> CategoriesofPlace { get; set; }
+        public virtual ICollection<Category> CategoriesofPlace { get; set; }
+        public virtual ICollection<Review> StoreReviews { get; set; }
     }
 }

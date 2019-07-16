@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Drawing;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -9,6 +12,11 @@ namespace WheelofAccess.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+         public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime Dateofbirth { get; set; }
+        //public Image Profilepic { get; set; } 
+        public virtual ICollection<Review> GivenReviews { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -29,5 +37,11 @@ namespace WheelofAccess.Models
         {
             return new ApplicationDbContext();
         }
+        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Place> Places { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<Answer> Answers { get; set; }
+
     }
 }
