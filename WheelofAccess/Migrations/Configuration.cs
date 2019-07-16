@@ -15,12 +15,12 @@ namespace WheelofAccess.Migrations
 
         protected override void Seed(WheelofAccess.Models.ApplicationDbContext context)
         {
-            Category cat_cafe = new Category() { Name = "Cafe" };
-            Category cat_restaurant = new Category() { Name = "Restaurant" };
-            Category cat_bar = new Category() { Name = "Bar" };
-            context.Categories.AddOrUpdate(x => x.Name, cat_cafe);
-            context.Categories.AddOrUpdate(x => x.Name, cat_restaurant);
-            context.Categories.AddOrUpdate(x => x.Name, cat_bar);
+            //Category cat_cafe = new Category() { Name = "Cafe" };
+            //Category cat_restaurant = new Category() { Name = "Restaurant" };
+            //Category cat_bar = new Category() { Name = "Bar" };
+            //context.Categories.AddOrUpdate(x => x.Name, cat_cafe);
+            //context.Categories.AddOrUpdate(x => x.Name, cat_restaurant);
+            //context.Categories.AddOrUpdate(x => x.Name, cat_bar);
         }
     }
 }
