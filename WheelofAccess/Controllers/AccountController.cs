@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WheelofAccess.Models;
+using System.IO;
 
 namespace WheelofAccess.Controllers
 {
@@ -151,7 +152,7 @@ namespace WheelofAccess.Controllers
         {
             if (ModelState.IsValid)
             {
-                 byte[] imageData = null;
+                byte[] imageData = null;
                 if (Request.Files.Count > 0)
                 {
                     HttpPostedFileBase poImgFile = Request.Files["ProfilePic"];
@@ -163,9 +164,10 @@ namespace WheelofAccess.Controllers
                 }
 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                user.UserPhoto = imageData;
+                user.ProfilePic = imageData;
 
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

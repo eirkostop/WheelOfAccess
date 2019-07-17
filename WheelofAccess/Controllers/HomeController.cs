@@ -1,8 +1,15 @@
 ﻿using System;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System.Collections.Generic;
+using WheelofAccess.Models;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
+
 
 namespace WheelofAccess.Controllers
 {
@@ -26,13 +33,13 @@ namespace WheelofAccess.Controllers
 
             return View();
         }
-         public FileContentResult UserPhotos()
+        public FileContentResult UserPhotos()
         {
             if (User.Identity.IsAuthenticated)
             {
-            String    userId = User.Identity.GetUserId();
+                String userId = User.Identity.GetUserId();
 
-            if (userId == null)
+                if (userId == null)
                 {
                     string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
 
@@ -42,15 +49,15 @@ namespace WheelofAccess.Controllers
                     FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                     BinaryReader br = new BinaryReader(fs);
                     imageData = br.ReadBytes((int)imageFileLength);
-                    
+
                     return File(imageData, "image/png");
 
                 }
-              // to get the user details to load user Image
+                // to get the user details to load user Image
                 var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
                 var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
 
-            return new FileContentResult(userImage.ProfilePic, "image/jpeg");
+                return new FileContentResult(userImage.ProfilePic, "image/jpeg");
             }
             else
             {
@@ -61,9 +68,9 @@ namespace WheelofAccess.Controllers
                 long imageFileLength = fileInfo.Length;
                 FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
-                imageData = br.ReadBytes((int)imageFileLength);                 
+                imageData = br.ReadBytes((int)imageFileLength);
                 return File(imageData, "image/png");
-               
+
             }
         }
     }
