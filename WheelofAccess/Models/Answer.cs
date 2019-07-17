@@ -9,7 +9,7 @@ namespace WheelofAccess.Models
     {
         public int Id { get; set; }
         public bool? YesorNo { get; set; }
-        public string Text { get; set; }
-        public ICollection<int> Multiplechoice { get; set; }
+        public string? Text { get; set; }
+        public ICollection<int>? Multiplechoice { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace WheelofAccess.Models
          public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime Dateofbirth { get; set; }
-        //public Image Profilepic { get; set; } 
+        public byte[] Profilepic { get; set; } 
         public virtual ICollection<Review> GivenReviews { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -151,7 +151,20 @@ namespace WheelofAccess.Controllers
         {
             if (ModelState.IsValid)
             {
+                 byte[] imageData = null;
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase poImgFile = Request.Files["ProfilePic"];
+
+                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    {
+                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                    }
+                }
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                user.UserPhoto = imageData;
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
