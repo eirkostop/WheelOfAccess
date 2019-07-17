@@ -175,6 +175,8 @@ namespace WheelofAccess.Controllers
         }
         public FileResult Photo()
         {
+            
+
             // get EF Database (maybe different way in your applicaiton)
             var db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
 
@@ -189,7 +191,7 @@ namespace WheelofAccess.Controllers
             }
             else
             {
-                return new FilePathResult("/Images/noImg.png", "image/jpeg");
+                return new FilePathResult("/Content/noImg.png", "image/jpeg");
             }
         }
 
@@ -299,7 +301,7 @@ namespace WheelofAccess.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            // Request a redirect to the external login provider
+            // Request a redirect to the external login provider 
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 

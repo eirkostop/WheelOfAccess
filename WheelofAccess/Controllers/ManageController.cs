@@ -302,6 +302,7 @@ namespace WheelofAccess.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Profile(HttpPostedFileBase Profile)
         {
+            
             // get EF Database (maybe different way in your applicaiton)
             var db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
 
