@@ -150,24 +150,11 @@ namespace WheelofAccess.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
-                byte[] imageData = null;
-                if (Request.Files.Count > 0)
-                {
-                    HttpPostedFileBase poImgFile = Request.Files["ProfilePic"];
-
-                    using (var binary = new BinaryReader(poImgFile.InputStream))
-                    {
-                        imageData = binary.ReadBytes(poImgFile.ContentLength);
-                    }
-                }
-
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                user.ProfilePic = imageData;
-
                 var result = await UserManager.CreateAsync(user, model.Password);
-
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -185,6 +172,25 @@ namespace WheelofAccess.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+        public FileResult Photo()
+        {
+            // get EF Database (maybe different way in your applicaiton)
+            var db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+
+            // find the user. I am skipping validations and other checks.
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Where(x => x.Id == userId).FirstOrDefault();
+
+
+            if (user.ProfilePic != null)
+            {
+                return new FileContentResult(user.ProfilePic, "image/jpeg");
+            }
+            else
+            {
+                return new FilePathResult("/Images/noImg.png", "image/jpeg");
+            }
         }
 
         //
