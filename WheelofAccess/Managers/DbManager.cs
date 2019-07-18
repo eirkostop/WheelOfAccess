@@ -55,13 +55,58 @@ namespace WheelofAccess.Managers
         }
         #endregion
         #region PossibleAnswer
-        //public ICollection<PossibleAnswer> GetAnswerOptions()
-        //{
-        //    using(ApplicationDbContext db=new ApplicationDbContext())
-        //    {
+        public ICollection<PossibleAnswer> GetAnswerOptions()
+        {
+            ICollection<PossibleAnswer> options;
+
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
                 
-        //    }
-        //}
+                options=db.PossibleAnswers.ToList();
+            }
+            return options;
+        }
+        public void CreateOption(PossibleAnswer option)
+        {
+            using(ApplicationDbContext db=new ApplicationDbContext())
+            {
+                db.PossibleAnswers.Add(option);
+                db.SaveChanges();
+            }
+        }
+        public PossibleAnswer SearchOption(string id)
+        {
+            PossibleAnswer opt;
+            using(ApplicationDbContext db =new ApplicationDbContext())
+            {
+                opt = db.PossibleAnswers.Find(id);
+            }
+            return opt;
+        }
+        public void EditOption(PossibleAnswer opt)
+        {
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.PossibleAnswers.Attach(opt);
+                db.Entry(opt).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+        public void DeleteOption(PossibleAnswer opt)
+        {
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.PossibleAnswers.Attach(opt);
+                db.PossibleAnswers.Remove(opt);
+                db.SaveChanges();
+            }
+        }
+        #endregion
+        #region Answer
+        public void CreateAnswer()
+        {
+
+        }
         #endregion
     }
 }

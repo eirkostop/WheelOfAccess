@@ -42,6 +42,8 @@ namespace WheelofAccess.Models
         public virtual DbSet<Place> Places { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<PossibleAnswer> PossibleAnswers { get; set; }
+        public virtual DbSet<Answer> Answers { get; set; }
 
     }
 }
