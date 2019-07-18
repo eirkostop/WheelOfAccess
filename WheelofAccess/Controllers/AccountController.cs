@@ -173,6 +173,7 @@ namespace WheelofAccess.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        [AllowAnonymous]
         public FileResult Photo()
         {
             
@@ -182,9 +183,13 @@ namespace WheelofAccess.Controllers
 
             // find the user. I am skipping validations and other checks.
             var userId = User.Identity.GetUserId();
+            if (userId == null)
+            {
+                return new FilePathResult("/Content/noImg.png", "image/jpeg");
+
+            }
             var user = db.Users.Where(x => x.Id == userId).FirstOrDefault();
-
-
+           
             if (user.ProfilePic != null)
             {
                 return new FileContentResult(user.ProfilePic, "image/jpeg");

@@ -10,6 +10,6 @@ namespace WheelofAccess.Models
         public int Id { get; set; }
         public decimal Rating { get; set; }
         public string Comment { get; set; }
-        ICollection<Question> Questionnaire { get; set; }
+        public virtual ICollection<Answer> Questionnaire { get; set; }
     }
 }
