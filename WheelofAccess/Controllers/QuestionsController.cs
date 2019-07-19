@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using WheelofAccess.Managers;
 using WheelofAccess.Models;
+using System.Data.Entity.Infrastructure;
+
 
 namespace WheelofAccess.Controllers
 {
@@ -22,19 +24,23 @@ namespace WheelofAccess.Controllers
 
         public ActionResult Create()
         {
-
+            ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(),"Id", "OptionName", "AnswerValue");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Question question)
+        public ActionResult Create([Bind(Include = "Id, Title,OptionName")]Question question)
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "OptionName", "AnswerValue");
+
                 return View(question);
             }
             db.AddQuestion(question);
+            ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "OptionName", "AnswerValue",question.AllOptions);
+
             return RedirectToAction("Index");
         }
         public ActionResult Edit(string name)

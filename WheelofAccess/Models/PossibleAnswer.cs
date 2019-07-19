@@ -9,7 +9,7 @@ namespace WheelofAccess.Models
 {
     public class PossibleAnswer
     {
-        [Key]
+        public int Id { get; set; }
         [DisplayName("Option")]
         public string OptionName { get; set; }
         [DisplayName("Answer Score")]

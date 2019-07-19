@@ -24,6 +24,8 @@ namespace WheelofAccess.Managers
             {
                 db.Questions.Add(question);
                 db.SaveChanges();
+                
+               
             }
         }
         public Question FindQuestion(string name)
