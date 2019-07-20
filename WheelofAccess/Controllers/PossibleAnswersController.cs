@@ -15,17 +15,19 @@ namespace WheelofAccess.Controllers
         // GET: PossibleAnswers
         public ActionResult Index()
         {
-            var panswers = db.GetAnswerOptions();
-            return View(panswers);
+             var answers = db.GetAnswerOptions();
+            return View(answers);
         }
         public ActionResult Create()
         {
+
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PossibleAnswer possible)
         {
+
             if (!ModelState.IsValid)
             {
                 return View(possible);
@@ -33,18 +35,19 @@ namespace WheelofAccess.Controllers
             db.CreateOption(possible);
             return RedirectToAction("Create");
         }
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            var opt = db.SearchOption(id);
+
+            if (opt == null)
             {
                 return HttpNotFound();
             }
-            var opt=db.SearchOption(id);
             return View(opt);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PossibleAnswer opt)
+        public ActionResult Edit([Bind(Include = "Id,OptionName,AnswerValue,QuestionId")]PossibleAnswer opt)
         {
             if (!ModelState.IsValid)
             {
@@ -53,13 +56,14 @@ namespace WheelofAccess.Controllers
             db.EditOption(opt);
             return RedirectToAction("Index");
         }
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            var opt = db.SearchOption(id);
+
+            if (opt == null)
             {
                 return HttpNotFound();
             }
-            var opt = db.SearchOption(id);
             return View(opt);
         }
         [HttpPost]

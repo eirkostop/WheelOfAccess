@@ -24,7 +24,7 @@ namespace WheelofAccess.Managers
             {
                 db.Questions.Add(question);
                 db.SaveChanges();
-                
+                            
                
             }
         }
@@ -64,19 +64,20 @@ namespace WheelofAccess.Managers
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 
-                options=db.PossibleAnswers.ToList();
+                options=db.PossibleAnswers.Include("Question").ToList();
             }
             return options;
         }
+
         public void CreateOption(PossibleAnswer option)
         {
-            using(ApplicationDbContext db=new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.PossibleAnswers.Add(option);
                 db.SaveChanges();
             }
         }
-        public PossibleAnswer SearchOption(string id)
+        public PossibleAnswer SearchOption(int id)
         {
             PossibleAnswer opt;
             using(ApplicationDbContext db =new ApplicationDbContext())

@@ -14,5 +14,9 @@ namespace WheelofAccess.Models
         public string OptionName { get; set; }
         [DisplayName("Answer Score")]
         public int AnswerValue { get; set; }
+
+        [DisplayName("Question")]
+        public string Question_Title { get; set; }
+        public Question Question {get;set;}
     }
 }

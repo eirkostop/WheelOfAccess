@@ -1,0 +1,42 @@
+﻿@model WheelofAccess.Models.PossibleAnswer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PossibleAnswer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

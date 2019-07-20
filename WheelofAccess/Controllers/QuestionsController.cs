@@ -7,7 +7,6 @@ using WheelofAccess.Managers;
 using WheelofAccess.Models;
 using System.Data.Entity.Infrastructure;
 
-
 namespace WheelofAccess.Controllers
 {
     //[Authorize(Roles = "Admin")]
@@ -24,22 +23,22 @@ namespace WheelofAccess.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(),"Id", "OptionName", "AnswerValue");
+            //ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "Id", "OptionName");
+            
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id, Title,OptionName")]Question question)
+        public ActionResult Create(Question question)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "OptionName", "AnswerValue");
+                //ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "Id","OptionName", "AnswerValue");
 
                 return View(question);
             }
             db.AddQuestion(question);
-            ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "OptionName", "AnswerValue",question.AllOptions);
 
             return RedirectToAction("Index");
         }
