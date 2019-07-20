@@ -22,7 +22,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" title="Email"><i class="fas fa-user"></i></span>
+                            <span class="input-group-text" title="Email"><i class="fas fa-atr"></i></span>
                         </div>
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
                     </div>
@@ -39,29 +39,30 @@
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
                     </div>
 
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" title="upload profile picture"><i class="fas fa-id-badge"></i></span>
+                        </div>
+                        <div class="custom-file">
+                            <label class="custom-file-label" for="fileUpload">Choose file</label>
+                            @Html.TextBoxFor(m => m.ProfilePic, new { type = "file", @class = "custom-file-input", id = "fileUpload" })                            <label class="custom-file-label" for="fileUpload"></label>
+
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <input type="submit" value="Register" class="btn float-right">
                     </div>
                 }
             </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-center links">
-                    Don't have an account? @Html.ActionLink("Sign Up", "Register")
-                </div>
-                <div class="d-flex justify-content-center">
-                    @* Enable this once you have account confirmation enabled for password reset functionality
-                        <p>
-                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                        </p>*@
-                </div>
-            </div>
+           
         </div>
     </div>
 </div>
 
 
 
-<h2>@ViewBag.Title.</h2>
+@*<h2>@ViewBag.Title.</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
@@ -100,8 +101,16 @@
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>
-}
+}*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+                $('#fileUpload').on('change',function(){
+                //get the file name
+                const fileName = this.files[0].name; 
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').append(fileName);
+            })
+    </script>
 }

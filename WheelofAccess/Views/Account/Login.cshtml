@@ -22,7 +22,7 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" title="Email"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text" title="Email"><i class="fas fa-at"></i></span>
                             </div>
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email"  })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger"})
