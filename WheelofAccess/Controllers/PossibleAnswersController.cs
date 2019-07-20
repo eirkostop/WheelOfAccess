@@ -47,7 +47,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,OptionName,AnswerValue,QuestionId")]PossibleAnswer opt)
+        public ActionResult Edit(PossibleAnswer opt)
         {
             if (!ModelState.IsValid)
             {

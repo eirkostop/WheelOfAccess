@@ -300,7 +300,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Profile(HttpPostedFileBase Profile)
+        public ActionResult ProfilePic(HttpPostedFileBase Profile)
         {
             
             // get EF Database (maybe different way in your applicaiton)

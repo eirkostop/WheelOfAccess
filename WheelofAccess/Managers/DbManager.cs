@@ -105,10 +105,50 @@ namespace WheelofAccess.Managers
             }
         }
         #endregion
-        #region Answer
-        public void CreateAnswer()
+        #region Review
+        public ICollection<Review> GetReviews()
         {
-
+            ICollection<Review> reviews;
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                reviews = db.Reviews.ToList();
+            }
+            return reviews;
+        }
+        public Review FindReview(int id)
+        {
+            Review review;
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                review = db.Reviews.Find(id);
+            }
+            return review;
+        }
+        public void CreateReview(Review review)
+        {
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Reviews.Add(review);
+                db.SaveChanges();
+            }
+        }
+        public void EditReview(Review review)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Reviews.Attach(review);
+                db.Entry(review).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+        public void DeleteReview(Review review)
+        {
+            using(ApplicationDbContext db=new ApplicationDbContext())
+            {
+                db.Reviews.Attach(review);
+                db.Reviews.Remove(review);
+                db.SaveChanges();
+            }
         }
         #endregion
     }
