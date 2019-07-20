@@ -20,11 +20,11 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li>
-                    <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" style="border-radius:50%"/>
+                    <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" style="border-radius:50%" />
                 </li>
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", htmlAttributes: new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("About", "About", "Home", htmlAttributes: new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", htmlAttributes: new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home",new { }, htmlAttributes:new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("About", "About", "Home",new { }, htmlAttributes: new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home",new { }, htmlAttributes: new { @class = "nav-link" })</li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
