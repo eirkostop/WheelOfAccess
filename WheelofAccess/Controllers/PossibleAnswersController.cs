@@ -20,11 +20,13 @@ namespace WheelofAccess.Controllers
         }
         public ActionResult Create()
         {
+            ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Title", "Title");
+
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PossibleAnswer possible)
+        public ActionResult Create([Bind(Include = "Id,OptionName,AnswerValue,Question_Title")] PossibleAnswer possible)
         {
 
             if (!ModelState.IsValid)
@@ -46,7 +48,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PossibleAnswer opt)
+        public ActionResult Edit([Bind(Include = "Id,OptionName,AnswerValue,Question_Title")]PossibleAnswer opt)
         {
             if (!ModelState.IsValid)
             {
