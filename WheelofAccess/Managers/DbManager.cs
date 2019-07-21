@@ -249,6 +249,42 @@ namespace WheelofAccess.Managers
             }
             return category;
         }
+        public void CreateCategory(Category category)
+        {
+            
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Categories.Add(category);
+                db.SaveChanges();
+            }            
+        }
+        public Category FindCategory(int id)
+        {
+            Category category;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                category = db.Categories.Find(id);
+            }
+            return category;
+        }
+        public void EditCategory(Category category)
+        {
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Categories.Attach(category);
+                db.Entry(category).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+        public void DeleteCategory(Category category)
+        {
+            using(ApplicationDbContext db =new ApplicationDbContext())
+            {
+                db.Categories.Attach(category);
+                db.Categories.Remove(category);
+                db.SaveChanges();
+            }
+        }
         #endregion
     }
 }
