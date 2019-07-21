@@ -9,6 +9,8 @@ namespace WheelofAccess.Models
     {
         public int Id { get; set; }
         public int Givenanswer { get; set; }
+        
+        public string QuestionTitle { get; set; }
         public virtual Question Question_Id { get; set; } 
     }
 }

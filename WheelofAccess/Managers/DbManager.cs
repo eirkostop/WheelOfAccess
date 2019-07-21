@@ -161,6 +161,94 @@ namespace WheelofAccess.Managers
             }
             return places;
         }
+        public void AddPlace(Place place, List<int> categoryIds)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Places.Add(place);
+                db.SaveChanges();
+                foreach (var id in categoryIds)
+                {
+                    Category category = db.Categories.Find(id);
+                    if (category != null)
+                    {
+                        place.CategoriesofPlace.Add(category);
+
+                    }
+                }
+                db.SaveChanges();
+            }
+        }
+        public Place FindPlace(int id)
+        {
+            Place place;
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                place = db.Places.Find(id);
+            }
+            return place;
+        }
+        public Place GetPlaceDetails(int id)
+        {
+            Place result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Places.Include("StoreReviews")
+                                  .Include("CategoriesofPlace")
+                                  .Where(x => x.Id == id).FirstOrDefault();
+
+            }
+            return result;
+        }
+        public void EditPlace(Place place, List<int> categoriesIds)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Places.Attach(place);
+
+                db.Entry(place).Collection("CategoriesofPlace").Load();
+                place.CategoriesofPlace.Clear();
+                db.SaveChanges();
+                foreach (var id in categoriesIds)
+                {
+
+                    Category category = db.Categories.Find(id);
+
+                    if (place != null)
+                    {
+
+
+                        place.CategoriesofPlace.Add(category);
+
+                    }
+                }
+                db.SaveChanges();
+
+                db.Entry(place).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+        public void DeletePlace(Place place)
+        {
+            
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Places.Attach(place);
+                db.Entry(place).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+        #endregion
+        #region Category
+        public ICollection<Category> GetCategories()
+        {
+            ICollection<Category> category;
+            using(ApplicationDbContext db =new ApplicationDbContext())
+            {
+                category = db.Categories.ToList();
+            }
+            return category;
+        }
         #endregion
     }
 }

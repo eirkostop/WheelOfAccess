@@ -42,8 +42,8 @@ namespace WheelofAccess.Controllers
                 return View(review);
             }
             review.UserId=User.Identity.GetUserId();
-            db.CreateReview(review);           
-           
+            db.CreateReview(review);
+            ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
             return RedirectToAction("Index");          
         }
 
@@ -59,13 +59,14 @@ namespace WheelofAccess.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             }
+            ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
             return View(review);
         }
 
         // POST: Reviews/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( Review review)
+        public ActionResult Edit([Bind(Include = "Id,Rating,Comment,PlaceId")] Review review)
         {
             if (!ModelState.IsValid)
             {                
@@ -73,6 +74,7 @@ namespace WheelofAccess.Controllers
             }
             review.UserId=User.Identity.GetUserId();
             db.EditReview(review);
+            ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
             return RedirectToAction("Index");
         }
 
