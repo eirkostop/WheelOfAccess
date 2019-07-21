@@ -18,6 +18,7 @@ namespace WheelofAccess.Models
         public DateTime? Dateofbirth { get; set; }
         public byte[] ProfilePic { get; set; } 
         public virtual ICollection<Review> GivenReviews { get; set; }
+        public virtual ICollection<Place> ReviewedPlaces { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

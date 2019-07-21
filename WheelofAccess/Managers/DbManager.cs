@@ -14,7 +14,7 @@ namespace WheelofAccess.Managers
             ICollection<Question> questions;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                questions = db.Questions.Include("AllOptions").ToList();
+                questions = db.Questions.ToList();
             }
             return questions;
         }
@@ -64,7 +64,7 @@ namespace WheelofAccess.Managers
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 
-                options=db.PossibleAnswers.Include("Question").ToList();
+                options=db.PossibleAnswers.ToList();
             }
             return options;
         }
@@ -106,12 +106,12 @@ namespace WheelofAccess.Managers
         }
         #endregion
         #region Review
-        public ICollection<Review> GetReviews()
+        public ICollection<Review> GetReviews(string Id)
         {
             ICollection<Review> reviews;
             using(ApplicationDbContext db = new ApplicationDbContext())
             {
-                reviews = db.Reviews.ToList();
+                reviews = db.Reviews.Where(x=>x.UserId==Id).ToList();
             }
             return reviews;
         }
@@ -149,6 +149,17 @@ namespace WheelofAccess.Managers
                 db.Reviews.Remove(review);
                 db.SaveChanges();
             }
+        }
+        #endregion
+        #region Places
+        public ICollection<Place> GetPlaces()
+        {
+            ICollection<Place> places;
+            using(ApplicationDbContext db=new ApplicationDbContext())
+            {
+                places = db.Places.ToList();
+            }
+            return places;
         }
         #endregion
     }

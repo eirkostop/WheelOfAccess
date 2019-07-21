@@ -23,8 +23,7 @@ namespace WheelofAccess.Controllers
 
         public ActionResult Create()
         {
-            //ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "Id", "OptionName");
-            
+            ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "Id","OptionName");
             return View();
         }
 

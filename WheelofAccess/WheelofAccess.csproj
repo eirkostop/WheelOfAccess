@@ -226,6 +226,18 @@
     <Compile Include="Migrations\201907192040568_Fixing model.Designer.cs">
       <DependentUpon>201907192040568_Fixing model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907210940031_Making sure everything in place.cs" />
+    <Compile Include="Migrations\201907210940031_Making sure everything in place.Designer.cs">
+      <DependentUpon>201907210940031_Making sure everything in place.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907211009183_Try.cs" />
+    <Compile Include="Migrations\201907211009183_Try.Designer.cs">
+      <DependentUpon>201907211009183_Try.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907211134177_Name.cs" />
+    <Compile Include="Migrations\201907211134177_Name.Designer.cs">
+      <DependentUpon>201907211134177_Name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -351,6 +363,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907192040568_Fixing model.resx">
       <DependentUpon>201907192040568_Fixing model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907210940031_Making sure everything in place.resx">
+      <DependentUpon>201907210940031_Making sure everything in place.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907211009183_Try.resx">
+      <DependentUpon>201907211009183_Try.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907211134177_Name.resx">
+      <DependentUpon>201907211134177_Name.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -18,24 +20,28 @@ namespace WheelofAccess.Controllers
         // GET: Reviews
         public ActionResult Index()
         {
-            return View();
+            var id=User.Identity.GetUserId();
+            var reviews=db.GetReviews(id);
+            return View(reviews);
         }      
 
         // GET: Reviews/Create
         public ActionResult Create()
         {
+            ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
             return View();
         }
 
         // POST: Reviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Review review)
+        public ActionResult Create([Bind(Include = "Id,Rating,Comment,PlaceId")] Review review)
         {
             if (!ModelState.IsValid)
             {
                 return View(review);
             }
+            review.UserId=User.Identity.GetUserId();
             db.CreateReview(review);           
            
             return RedirectToAction("Index");          
@@ -49,6 +55,10 @@ namespace WheelofAccess.Controllers
             {
                 return HttpNotFound();
             }
+            if (review.UserId != User.Identity.GetUserId())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            }
             return View(review);
         }
 
@@ -61,6 +71,7 @@ namespace WheelofAccess.Controllers
             {                
                 return View(review);
             }
+            review.UserId=User.Identity.GetUserId();
             db.EditReview(review);
             return RedirectToAction("Index");
         }
@@ -72,6 +83,10 @@ namespace WheelofAccess.Controllers
             if (review == null)
             {
                 return HttpNotFound();
+            }
+            if (review.UserId != User.Identity.GetUserId())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             }
             return View(review);
         }
@@ -85,6 +100,7 @@ namespace WheelofAccess.Controllers
             {
                 return View(review);
             }
+            review.UserId=User.Identity.GetUserId();
             db.DeleteReview(review);
             return RedirectToAction("Index");
         }  
