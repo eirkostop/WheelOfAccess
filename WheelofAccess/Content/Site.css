@@ -56,11 +56,17 @@ textarea {
 
 
 .profile-jumb {
-    background: linear-gradient(rgba(128, 128, 128,0.9),rgba(255, 255, 255, 0.9) ), url("/Account/Photo");
+    background: linear-gradient(rgba(128, 128, 128,0.9),rgba(255, 255, 255, 0.9 )), url("/Account/Photo");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
     background-attachment: scroll;
+}
+
+#profile-picture {
+    background: #FFFFFF; margin: auto;
+    padding: 6px;
+    box-shadow: 0px 0px 20px #888;
 }
 
 .card {
@@ -127,6 +133,13 @@ input:focus {
         color: black;
         background-color: white;
     }
+
+
+.btn-grey {
+    color: #495057;
+    background-color: #e9ecef;
+    width:310px;
+}
 
 .links {
     color: white;
