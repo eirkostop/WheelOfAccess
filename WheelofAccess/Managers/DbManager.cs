@@ -157,7 +157,7 @@ namespace WheelofAccess.Managers
             ICollection<Place> places;
             using(ApplicationDbContext db=new ApplicationDbContext())
             {
-                places = db.Places.ToList();
+                places = db.Places.Include("CategoriesofPlace").Include("StoreReviews").ToList();
             }
             return places;
         }

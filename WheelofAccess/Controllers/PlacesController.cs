@@ -15,7 +15,8 @@ namespace WheelofAccess.Controllers
         // GET: Places
         public ActionResult Index()
         {
-            return View();
+            var places = db.GetPlaces();
+            return View(places);
         }
         public ActionResult Create()
         {
