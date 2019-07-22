@@ -7,13 +7,13 @@ namespace WheelofAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Goingback : IMigrationMetadata
+    public sealed partial class AllGood : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Goingback));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AllGood));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907221640164_Going back"; }
+            get { return "201907221733455_All Good"; }
         }
         
         string IMigrationMetadata.Source

@@ -20,7 +20,7 @@ namespace WheelofAccess.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Title", "Title");
+            ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
 
             return View();
         }
@@ -31,6 +31,8 @@ namespace WheelofAccess.Controllers
 
             if (!ModelState.IsValid)
             {
+                ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+
                 return View(possible);
             }
             db.CreateOption(possible);
@@ -44,6 +46,8 @@ namespace WheelofAccess.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+
             return View(opt);
         }
         [HttpPost]
@@ -52,6 +56,8 @@ namespace WheelofAccess.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+
                 return View(opt);
             }
             db.EditOption(opt);
@@ -65,6 +71,7 @@ namespace WheelofAccess.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(opt);
         }
         [HttpPost]

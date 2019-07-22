@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -15,8 +16,8 @@ namespace WheelofAccess.Models
         [DisplayName("Answer Score")]
         public int AnswerValue { get; set; }
 
-        [DisplayName("Question")]
-        public string Question_Title { get; set; }
+        [ForeignKey("Question")]
+        public int Question_Title{ get; set; }
         public virtual Question Question { get; set; }
     }
 }
