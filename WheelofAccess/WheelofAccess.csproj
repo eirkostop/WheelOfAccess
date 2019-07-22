@@ -190,10 +190,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907161926282_Initial.cs" />
-    <Compile Include="Migrations\201907161926282_Initial.Designer.cs">
-      <DependentUpon>201907161926282_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201907221630499_Initial.cs" />
+    <Compile Include="Migrations\201907221630499_Initial.Designer.cs">
+      <DependentUpon>201907221630499_Initial.cs</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
     <Compile Include="Migrations\201907170920150_ProfilePic.cs" />
     <Compile Include="Migrations\201907170920150_ProfilePic.Designer.cs">
       <DependentUpon>201907170920150_ProfilePic.cs</DependentUpon>
@@ -217,6 +218,11 @@
     <Compile Include="Migrations\201907191614142_Add Id in Panswers.cs" />
     <Compile Include="Migrations\201907191614142_Add Id in Panswers.Designer.cs">
       <DependentUpon>201907191614142_Add Id in Panswers.cs</DependentUpon>
+=======
+    <Compile Include="Migrations\201907221640164_Going back.cs" />
+    <Compile Include="Migrations\201907221640164_Going back.Designer.cs">
+      <DependentUpon>201907221640164_Going back.cs</DependentUpon>
+>>>>>>> Stashed changes
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -314,6 +320,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <EmbeddedResource Include="Migrations\201907161926282_Initial.resx">
       <DependentUpon>201907161926282_Initial.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +341,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907191614142_Add Id in Panswers.resx">
       <DependentUpon>201907191614142_Add Id in Panswers.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\201907221630499_Initial.resx">
+      <DependentUpon>201907221630499_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907221640164_Going back.resx">
+      <DependentUpon>201907221640164_Going back.cs</DependentUpon>
+>>>>>>> Stashed changes
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
