@@ -4,7 +4,6 @@ namespace WheelofAccess.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using WheelofAccess.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WheelofAccess.Models.ApplicationDbContext>
     {
@@ -15,12 +14,10 @@ namespace WheelofAccess.Migrations
 
         protected override void Seed(WheelofAccess.Models.ApplicationDbContext context)
         {
-            //Category cat_cafe = new Category() { Name = "Cafe" };
-            //Category cat_restaurant = new Category() { Name = "Restaurant" };
-            //Category cat_bar = new Category() { Name = "Bar" };
-            //context.Categories.AddOrUpdate(x => x.Name, cat_cafe);
-            //context.Categories.AddOrUpdate(x => x.Name, cat_restaurant);
-            //context.Categories.AddOrUpdate(x => x.Name, cat_bar);
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
         }
     }
 }

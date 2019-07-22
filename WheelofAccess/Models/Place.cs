@@ -11,6 +11,7 @@ namespace WheelofAccess.Models
         public Place()
         {
             CategoriesofPlace = new HashSet<Category>();
+            StoreReviews = new HashSet<Review>();
         }
         public int Id { get; set; }
         public string Name { get; set; }

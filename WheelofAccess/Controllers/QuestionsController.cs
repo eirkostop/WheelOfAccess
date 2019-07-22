@@ -41,10 +41,10 @@ namespace WheelofAccess.Controllers
 
             return RedirectToAction("Index");
         }
-        public ActionResult Edit(string name)
+        public ActionResult Edit(int id)
         {
 
-            var question=db.FindQuestion(name);
+            var question=db.FindQuestion(id);
             if (question == null)
             {
                 return HttpNotFound();
@@ -62,9 +62,9 @@ namespace WheelofAccess.Controllers
             db.EditQuestion(question);
             return RedirectToAction("Index");
         }
-        public ActionResult Delete(string name)
+        public ActionResult Delete(int id)
         {
-            var question=db.FindQuestion(name);
+            var question=db.FindQuestion(id);
             if (question == null)
             {
                 return HttpNotFound();

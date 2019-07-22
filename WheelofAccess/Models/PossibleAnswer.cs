@@ -17,6 +17,6 @@ namespace WheelofAccess.Models
 
         [DisplayName("Question")]
         public string Question_Title { get; set; }
-        public Question Question {get;set;}
+        public virtual Question Question { get; set; }
     }
 }

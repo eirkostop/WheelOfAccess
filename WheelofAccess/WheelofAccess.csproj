@@ -190,61 +190,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907161926282_Initial.cs" />
-    <Compile Include="Migrations\201907161926282_Initial.Designer.cs">
-      <DependentUpon>201907161926282_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201907221630499_Initial.cs" />
+    <Compile Include="Migrations\201907221630499_Initial.Designer.cs">
+      <DependentUpon>201907221630499_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907170920150_ProfilePic.cs" />
-    <Compile Include="Migrations\201907170920150_ProfilePic.Designer.cs">
-      <DependentUpon>201907170920150_ProfilePic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907171452548_pic.cs" />
-    <Compile Include="Migrations\201907171452548_pic.Designer.cs">
-      <DependentUpon>201907171452548_pic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907171830196_Drop Answers.cs" />
-    <Compile Include="Migrations\201907171830196_Drop Answers.Designer.cs">
-      <DependentUpon>201907171830196_Drop Answers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907172135246_Question Table.cs" />
-    <Compile Include="Migrations\201907172135246_Question Table.Designer.cs">
-      <DependentUpon>201907172135246_Question Table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907181151007_Question-Answer Final.cs" />
-    <Compile Include="Migrations\201907181151007_Question-Answer Final.Designer.cs">
-      <DependentUpon>201907181151007_Question-Answer Final.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907191614142_Add Id in Panswers.cs" />
-    <Compile Include="Migrations\201907191614142_Add Id in Panswers.Designer.cs">
-      <DependentUpon>201907191614142_Add Id in Panswers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907191957043_Just checking.cs" />
-    <Compile Include="Migrations\201907191957043_Just checking.Designer.cs">
-      <DependentUpon>201907191957043_Just checking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907192040568_Fixing model.cs" />
-    <Compile Include="Migrations\201907192040568_Fixing model.Designer.cs">
-      <DependentUpon>201907192040568_Fixing model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907210940031_Making sure everything in place.cs" />
-    <Compile Include="Migrations\201907210940031_Making sure everything in place.Designer.cs">
-      <DependentUpon>201907210940031_Making sure everything in place.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907211009183_Try.cs" />
-    <Compile Include="Migrations\201907211009183_Try.Designer.cs">
-      <DependentUpon>201907211009183_Try.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907211134177_Name.cs" />
-    <Compile Include="Migrations\201907211134177_Name.Designer.cs">
-      <DependentUpon>201907211134177_Name.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907211313116_1-NR working.cs" />
-    <Compile Include="Migrations\201907211313116_1-NR working.Designer.cs">
-      <DependentUpon>201907211313116_1-NR working.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907211443229_adding Id to Category.cs" />
-    <Compile Include="Migrations\201907211443229_adding Id to Category.Designer.cs">
-      <DependentUpon>201907211443229_adding Id to Category.cs</DependentUpon>
+    <Compile Include="Migrations\201907221640164_Going back.cs" />
+    <Compile Include="Migrations\201907221640164_Going back.Designer.cs">
+      <DependentUpon>201907221640164_Going back.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -348,47 +300,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907161926282_Initial.resx">
-      <DependentUpon>201907161926282_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907221630499_Initial.resx">
+      <DependentUpon>201907221630499_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907170920150_ProfilePic.resx">
-      <DependentUpon>201907170920150_ProfilePic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907171452548_pic.resx">
-      <DependentUpon>201907171452548_pic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907171830196_Drop Answers.resx">
-      <DependentUpon>201907171830196_Drop Answers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907172135246_Question Table.resx">
-      <DependentUpon>201907172135246_Question Table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907181151007_Question-Answer Final.resx">
-      <DependentUpon>201907181151007_Question-Answer Final.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907191614142_Add Id in Panswers.resx">
-      <DependentUpon>201907191614142_Add Id in Panswers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907191957043_Just checking.resx">
-      <DependentUpon>201907191957043_Just checking.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907192040568_Fixing model.resx">
-      <DependentUpon>201907192040568_Fixing model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907210940031_Making sure everything in place.resx">
-      <DependentUpon>201907210940031_Making sure everything in place.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907211009183_Try.resx">
-      <DependentUpon>201907211009183_Try.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907211134177_Name.resx">
-      <DependentUpon>201907211134177_Name.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907211313116_1-NR working.resx">
-      <DependentUpon>201907211313116_1-NR working.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907211443229_adding Id to Category.resx">
-      <DependentUpon>201907211443229_adding Id to Category.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907221640164_Going back.resx">
+      <DependentUpon>201907221640164_Going back.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
