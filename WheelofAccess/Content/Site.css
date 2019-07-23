@@ -1,12 +1,21 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+max-width:100vw;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+margin:0;
+padding:0;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    flex: 1 0 0;
+    margin-top: 1rem;
+    padding: 2rem;
+    text-align: center;
+    align-content: center;
+    border-radius: calc(0.25rem - 1px);
+    background-color: rgba(255,255,255,0.7) !important;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -22,3 +31,120 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.bg-overlay {
+    background: linear-gradient(rgba(234, 254, 211, 0.9),rgba(188, 220, 255, 0.90) ), url("/Pictures/wheelChair.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top left;
+    background-attachment: fixed;
+}
+
+/* Made with love by Mutiullah Samim*/
+
+.navbar-custom {
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.transparent-container {
+    height: 100%;
+    align-content: center;
+}
+
+
+.profile-jumb {
+    background: linear-gradient(rgba(128, 128, 128,0.9),rgba(255, 255, 255, 0.9 )), url("/Account/Photo");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-attachment: scroll;
+}
+
+#profile-picture {
+    background: #FFFFFF; margin: auto;
+    padding: 6px;
+    box-shadow: 0px 0px 20px #888;
+}
+
+.card {
+    /*height: 370px;*/
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #BCDCFF
+}
+
+    .social_icon span:hover {
+        color: white;
+        cursor: pointer;
+    }
+
+.card-header h3 {
+    color: white;
+    text-align:left;
+}
+
+.social_icon {
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #BCDCFF;
+    color: black;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+    color: white;
+}
+
+    .remember input {
+        width: 20px;
+        height: 20px;
+        margin-left: 15px;
+        margin-right: 5px;
+    }
+
+.btn {
+    color: black;
+    background-color: #BCDCFF;
+    min-width: 100px;
+}
+
+    .btn:hover {
+        color: black;
+        background-color: white;
+    }
+
+
+.btn-grey {
+    color: #495057;
+    background-color: #e9ecef;
+    width:310px;
+}
+
+.links {
+    color: white;
+}
+
+    .links a {
+        margin-left: 4px;
+    }

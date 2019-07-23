@@ -300,7 +300,8 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Profile(HttpPostedFileBase Profile)
+        [ActionName("Profile")]
+        public ActionResult ProfilePic(HttpPostedFileBase Profile)
         {
             
             // get EF Database (maybe different way in your applicaiton)
@@ -319,7 +320,7 @@ namespace WheelofAccess.Controllers
             // save changes to database
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Manage");
         }
 
         //
