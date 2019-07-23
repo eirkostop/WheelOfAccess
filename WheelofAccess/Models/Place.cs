@@ -7,6 +7,14 @@ namespace WheelofAccess.Models
 {
     public class Place
     {
+<<<<<<< Updated upstream
+=======
+        public Place()
+        {
+            CategoriesofPlace = new HashSet<Category>();
+            StoreReviews = new HashSet<Review>();
+        }
+>>>>>>> Stashed changes
         public int Id { get; set; }
         public string Name { get; set; }
         public string  Address {get;set;}

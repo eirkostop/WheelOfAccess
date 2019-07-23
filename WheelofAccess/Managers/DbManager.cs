@@ -24,14 +24,16 @@ namespace WheelofAccess.Managers
             {
                 db.Questions.Add(question);
                 db.SaveChanges();
+                
+               
             }
         }
-        public Question FindQuestion(string name)
+        public Question FindQuestion(int id)
         {
             Question question;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                question = db.Questions.Find(name);
+                question = db.Questions.Find(id);
             }
             return question;
         }

@@ -12,7 +12,11 @@ namespace WheelofAccess.Models
 
     public class Question
     {
-
+        public Question()
+        {
+            AllOptions=new HashSet<PossibleAnswer>();
+            AllGivenAnswers=new HashSet<Answer>();
+        }                               
         [Key]
         public string Title { get; set; }
         public virtual ICollection<PossibleAnswer> AllOptions { get; set; }

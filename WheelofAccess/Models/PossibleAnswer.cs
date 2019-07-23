@@ -9,10 +9,17 @@ namespace WheelofAccess.Models
 {
     public class PossibleAnswer
     {
-        [Key]
+        public int Id { get; set; }
         [DisplayName("Option")]
         public string OptionName { get; set; }
         [DisplayName("Answer Score")]
         public int AnswerValue { get; set; }
+<<<<<<< Updated upstream
+=======
+
+        [DisplayName("Question")]
+        public string Question_Title { get; set; }
+        public virtual Question Question { get; set; }
+>>>>>>> Stashed changes
     }
 }
