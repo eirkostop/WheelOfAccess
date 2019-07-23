@@ -14,7 +14,7 @@ namespace WheelofAccess.Managers
             ICollection<Question> questions;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                questions = db.Questions.ToList();
+                questions = db.Questions.Include("AllOptions").ToList();
             }
             return questions;
         }
@@ -286,5 +286,10 @@ namespace WheelofAccess.Managers
             }
         }
         #endregion
+        #region Answer
+
+        #endregion
+        
+
     }
 }
