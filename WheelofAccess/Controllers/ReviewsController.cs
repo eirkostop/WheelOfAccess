@@ -13,6 +13,7 @@ using WheelofAccess.Managers;
 
 namespace WheelofAccess.Controllers
 {
+    [Authorize]
     public class ReviewsController : Controller
     {
         private DbManager db = new DbManager();

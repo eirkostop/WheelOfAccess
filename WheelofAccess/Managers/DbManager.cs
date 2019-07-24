@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WheelofAccess.Models;
+using System.Data.Entity;
 
 namespace WheelofAccess.Managers
 {
@@ -55,16 +56,17 @@ namespace WheelofAccess.Managers
                 db.SaveChanges();
             }
         }
-        #endregion
+        
+            #endregion
         #region PossibleAnswer
-        public ICollection<PossibleAnswer> GetAnswerOptions()
+            public ICollection<PossibleAnswer> GetAnswerOptions()
         {
             ICollection<PossibleAnswer> options;
 
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 
-                options=db.PossibleAnswers.ToList();
+                options=db.PossibleAnswers.Include("Question").ToList();
             }
             return options;
         }
@@ -106,7 +108,8 @@ namespace WheelofAccess.Managers
         }
         #endregion
         #region Review
-        public ICollection<Review> GetReviews(string Id)
+        // Μόνο του χρήστη τα Reviews
+        public ICollection<Review> GetUsersReviews(string Id)
         {
             ICollection<Review> reviews;
             using(ApplicationDbContext db = new ApplicationDbContext())
@@ -115,6 +118,27 @@ namespace WheelofAccess.Managers
             }
             return reviews;
         }
+        //Ola ta Reviews
+        public ICollection<Review> GetReviews(string Id)
+        {
+            ICollection<Review> reviews;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                reviews = db.Reviews.ToList();
+            }
+            return reviews;
+        }
+        // όλα τα reviews ανα κατάστημα
+        public ICollection<Review> GetplaceReviews(int placeId)
+        {
+            ICollection<Review> reviews;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                reviews = db.Reviews.Where(x => x.PlaceId == placeId).ToList();
+            }
+            return reviews;
+        }
+
         public Review FindReview(int id)
         {
             Review review;
@@ -287,9 +311,55 @@ namespace WheelofAccess.Managers
         }
         #endregion
         #region Answer
+        public ICollection<Answer> GetAnswers()
+        {
+            ICollection<Answer> questions;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                questions = db.Answers.Include("Question").ToList();
+            }
+            return questions;
+        }
+        public void AddAnswer(Answer answer)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Answers.Add(answer);
+                db.SaveChanges();
+
+
+            }
+        }
+        public Answer FindAnswer(int id)
+        {
+            Answer question;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                question = db.Answers.Find(id);
+            }
+            return question;
+        }
+        public void EditAnswer(Answer option)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Answers.Attach(option);
+                db.Entry(option).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+        public void DeleteAnswer(Answer answer)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Answers.Attach(answer);
+                db.Answers.Remove(answer);
+                db.SaveChanges();
+            }
+        }
 
         #endregion
-        
+
 
     }
 }

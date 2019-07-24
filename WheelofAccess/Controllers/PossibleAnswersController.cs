@@ -33,10 +33,10 @@ namespace WheelofAccess.Controllers
             {
                 ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
 
-                return View(possible);
+                return Json(possible);
             }
             db.CreateOption(possible);
-            return RedirectToAction("Create");
+            return View("Create");
         }
         public ActionResult Edit(int id)
         {
@@ -56,7 +56,7 @@ namespace WheelofAccess.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+                ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title"); 
 
                 return View(opt);
             }

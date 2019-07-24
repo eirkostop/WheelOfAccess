@@ -190,13 +190,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907221729233_Initial.cs" />
-    <Compile Include="Migrations\201907221729233_Initial.Designer.cs">
-      <DependentUpon>201907221729233_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201907240855256_init.cs" />
+    <Compile Include="Migrations\201907240855256_init.Designer.cs">
+      <DependentUpon>201907240855256_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907221733455_All Good.cs" />
-    <Compile Include="Migrations\201907221733455_All Good.Designer.cs">
-      <DependentUpon>201907221733455_All Good.cs</DependentUpon>
+    <Compile Include="Migrations\201907240945409_qId to answer.cs" />
+    <Compile Include="Migrations\201907240945409_qId to answer.Designer.cs">
+      <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -282,10 +282,10 @@
     <Content Include="Views\PossibleAnswers\Index.cshtml" />
     <Content Include="Views\PossibleAnswers\Create.cshtml" />
     <Content Include="Views\Questions\Index.cshtml" />
+    <Content Include="Views\Answers\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Answers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -301,11 +301,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907221729233_Initial.resx">
-      <DependentUpon>201907221729233_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907240855256_init.resx">
+      <DependentUpon>201907240855256_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907221733455_All Good.resx">
-      <DependentUpon>201907221733455_All Good.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907240945409_qId to answer.resx">
+      <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

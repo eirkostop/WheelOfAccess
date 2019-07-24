@@ -13,7 +13,7 @@ namespace WheelofAccess.Models
         public int Id { get; set; }
         [DisplayName("Option")]
         public string OptionName { get; set; }
-        [DisplayName("Answer Score")]
+        [DisplayName("Answer Score")] 
         public int AnswerValue { get; set; }
 
         [ForeignKey("Question")]

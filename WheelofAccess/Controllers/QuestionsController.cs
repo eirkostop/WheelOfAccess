@@ -16,7 +16,7 @@ namespace WheelofAccess.Controllers
         // GET: Questions
        // [Authorize(Roles =("Users , Admin"))]
         public ActionResult Index()
-        {
+        {            
             var questions=db.GetQuestions();
             return View(questions); 
         }
@@ -82,5 +82,7 @@ namespace WheelofAccess.Controllers
             db.DeleteQuestion(question);
             return RedirectToAction("Index");
         }
+
+      
     }
 }

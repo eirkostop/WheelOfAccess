@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Drawing;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -34,6 +35,11 @@ namespace WheelofAccess.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        //}
 
         public static ApplicationDbContext Create()
         {
