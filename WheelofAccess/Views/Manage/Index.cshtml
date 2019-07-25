@@ -33,7 +33,7 @@
 
         Update your profile picture:
 
-        @using (Html.BeginForm("Profile", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("ProfilePic", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             <fieldset>

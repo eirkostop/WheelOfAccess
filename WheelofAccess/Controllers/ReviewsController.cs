@@ -22,7 +22,7 @@ namespace WheelofAccess.Controllers
         public ActionResult Index()
         {
             var id =User.Identity.GetUserId();
-            var reviews =db.GetReviews(id);
+            var reviews =db.GetUsersReviews(id);
             return View(reviews);
         }      
 
@@ -49,7 +49,8 @@ namespace WheelofAccess.Controllers
             ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
             return RedirectToAction("Index");          
         }
-
+      
+        [HttpGet]
         // GET: Reviews/Edit/5
         public ActionResult Edit(int id)
         {
@@ -78,9 +79,9 @@ namespace WheelofAccess.Controllers
             {                
                 return View(review);
             }
-            review.UserId=User.Identity.GetUserId();
-            db.EditReview(review);
-            ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
+            //review.UserId=User.Identity.GetUserId();
+            //db.EditReview(review);
+            //ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
             return RedirectToAction("Index");
         }
 
@@ -102,7 +103,7 @@ namespace WheelofAccess.Controllers
         // POST: Reviews/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Review review)
+        public ActionResult Delete([Bind(Include = "Id,Rating,Comment,PlaceId")]Review review)
         {
             if (!ModelState.IsValid)
             {

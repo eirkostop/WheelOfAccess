@@ -25,8 +25,8 @@ namespace WheelofAccess.Managers
             {
                 db.Questions.Add(question);
                 db.SaveChanges();
-                            
-               
+
+
             }
         }
         public Question FindQuestion(int id)
@@ -40,33 +40,33 @@ namespace WheelofAccess.Managers
         }
         public void EditQuestion(Question question)
         {
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Questions.Attach(question);
                 db.Entry(question).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-            }            
+            }
         }
         public void DeleteQuestion(Question question)
         {
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Questions.Attach(question);
                 db.Questions.Remove(question);
                 db.SaveChanges();
             }
         }
-        
-            #endregion
+
+        #endregion
         #region PossibleAnswer
-            public ICollection<PossibleAnswer> GetAnswerOptions()
+        public ICollection<PossibleAnswer> GetAnswerOptions()
         {
             ICollection<PossibleAnswer> options;
 
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                
-                options=db.PossibleAnswers.Include("Question").ToList();
+
+                options = db.PossibleAnswers.Include("Question").ToList();
             }
             return options;
         }
@@ -82,7 +82,7 @@ namespace WheelofAccess.Managers
         public PossibleAnswer SearchOption(int id)
         {
             PossibleAnswer opt;
-            using(ApplicationDbContext db =new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 opt = db.PossibleAnswers.Find(id);
             }
@@ -90,7 +90,7 @@ namespace WheelofAccess.Managers
         }
         public void EditOption(PossibleAnswer opt)
         {
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.PossibleAnswers.Attach(opt);
                 db.Entry(opt).State = System.Data.Entity.EntityState.Modified;
@@ -99,7 +99,7 @@ namespace WheelofAccess.Managers
         }
         public void DeleteOption(PossibleAnswer opt)
         {
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.PossibleAnswers.Attach(opt);
                 db.PossibleAnswers.Remove(opt);
@@ -112,14 +112,14 @@ namespace WheelofAccess.Managers
         public ICollection<Review> GetUsersReviews(string Id)
         {
             ICollection<Review> reviews;
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                reviews = db.Reviews.Include("Questionnaire").Where(x=>x.UserId==Id).ToList();
+                reviews = db.Reviews.Include(x => x.Place).Include(x=>x.Questionnaire).Where(x => x.UserId == Id).ToList();
             }
             return reviews;
         }
         //Ola ta Reviews
-        public ICollection<Review> GetReviews(string Id)
+        public ICollection<Review> GetReviews()
         {
             ICollection<Review> reviews;
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -142,7 +142,7 @@ namespace WheelofAccess.Managers
         public Review FindReview(int id)
         {
             Review review;
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 review = db.Reviews.Find(id);
             }
@@ -150,7 +150,7 @@ namespace WheelofAccess.Managers
         }
         public void CreateReview(Review review)
         {
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Reviews.Add(review);
                 db.SaveChanges();
@@ -167,8 +167,14 @@ namespace WheelofAccess.Managers
         }
         public void DeleteReview(Review review)
         {
-            using(ApplicationDbContext db=new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
+                foreach (var item in db.Answers.Where(x=>x.Review_Id == review.Id))
+                {
+                    
+                        db.Answers.Remove(item);
+                    
+                }
                 db.Reviews.Attach(review);
                 db.Reviews.Remove(review);
                 db.SaveChanges();
@@ -179,7 +185,7 @@ namespace WheelofAccess.Managers
         public ICollection<Place> GetPlaces()
         {
             ICollection<Place> places;
-            using(ApplicationDbContext db=new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 places = db.Places.Include("CategoriesofPlace").Include("StoreReviews").ToList();
             }
@@ -206,7 +212,7 @@ namespace WheelofAccess.Managers
         public Place FindPlace(int id)
         {
             Place place;
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 place = db.Places.Find(id);
             }
@@ -254,7 +260,7 @@ namespace WheelofAccess.Managers
         }
         public void DeletePlace(Place place)
         {
-            
+
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Places.Attach(place);
@@ -267,7 +273,7 @@ namespace WheelofAccess.Managers
         public ICollection<Category> GetCategories()
         {
             ICollection<Category> category;
-            using(ApplicationDbContext db =new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 category = db.Categories.ToList();
             }
@@ -275,12 +281,12 @@ namespace WheelofAccess.Managers
         }
         public void CreateCategory(Category category)
         {
-            
-            using(ApplicationDbContext db = new ApplicationDbContext())
+
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
-            }            
+            }
         }
         public Category FindCategory(int id)
         {
@@ -293,7 +299,7 @@ namespace WheelofAccess.Managers
         }
         public void EditCategory(Category category)
         {
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Categories.Attach(category);
                 db.Entry(category).State = System.Data.Entity.EntityState.Modified;
@@ -302,7 +308,7 @@ namespace WheelofAccess.Managers
         }
         public void DeleteCategory(Category category)
         {
-            using(ApplicationDbContext db =new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Categories.Attach(category);
                 db.Categories.Remove(category);
@@ -316,7 +322,8 @@ namespace WheelofAccess.Managers
             ICollection<Answer> questions;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                questions = db.Answers.Include("Question").ToList();
+                questions = db.Answers.Include("PossibleAnswer").Include(x => x.Review).ToList();
+
             }
             return questions;
         }
@@ -324,6 +331,7 @@ namespace WheelofAccess.Managers
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
+
                 db.Answers.Add(answer);
                 db.SaveChanges();
 
@@ -357,11 +365,10 @@ namespace WheelofAccess.Managers
                 db.SaveChanges();
             }
         }
-       
       
+            #endregion
 
-        #endregion
 
-          
+        
     }
 }

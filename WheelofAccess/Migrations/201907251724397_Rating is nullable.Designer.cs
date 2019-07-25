@@ -7,13 +7,13 @@ namespace WheelofAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Reviewandanswer : IMigrationMetadata
+    public sealed partial class Ratingisnullable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Reviewandanswer));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Ratingisnullable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907250859168_Review and answer"; }
+            get { return "201907251724397_Rating is nullable"; }
         }
         
         string IMigrationMetadata.Source

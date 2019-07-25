@@ -9,7 +9,7 @@ namespace WheelofAccess.Models
     public class Review
     {
         public int Id { get; set; }
-        public float Rating { get; set; }
+        public float? Rating { get; set; }
         public string Comment { get; set; }
         public virtual ICollection<Answer> Questionnaire { get; set; }
         public ApplicationUser User {get;set;}

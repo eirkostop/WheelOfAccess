@@ -28,15 +28,15 @@ namespace WheelofAccess.Controllers
         public JsonResult Create(Answer answer)
         {
 
-            //if (!ModelState.IsValid)
-            //{
-            //    ViewBag.Question_Name = new SelectList(db.GetQuestions(), "Id", "Title");
+            if (!ModelState.IsValid)
+            {
 
-            //    return Json(answer);
-            //}
+                return Json(answer);
+            }
             db.AddAnswer(answer);
             return Json(answer);
         }
+
         
     }
 }

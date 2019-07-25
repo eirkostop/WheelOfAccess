@@ -78,11 +78,23 @@
                     },
                     success: function (response) {
                         console.log(response);
-                        console.log("success")
+                        console.log("success");
+                    }
+                })
+                $.ajax({
+                    method: "POST",
+                    url: "/Rest/UpdateRating",
+                    data: {
+                        id: document.getElementById('Id').value,
+                    },
+                    success: function (response) {
+                    console.log(response);
+                    console.log("success")
                     }
                 })
             }
         }
+        
     </script>
 
 }

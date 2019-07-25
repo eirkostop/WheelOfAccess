@@ -185,6 +185,7 @@
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Controllers\PossibleAnswersController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\RestController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,13 +199,9 @@
     <Compile Include="Migrations\201907240945409_qId to answer.Designer.cs">
       <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907250859168_Review and answer.cs" />
-    <Compile Include="Migrations\201907250859168_Review and answer.Designer.cs">
-      <DependentUpon>201907250859168_Review and answer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907250916288_Review-answer.cs" />
-    <Compile Include="Migrations\201907250916288_Review-answer.Designer.cs">
-      <DependentUpon>201907250916288_Review-answer.cs</DependentUpon>
+    <Compile Include="Migrations\201907251724397_Rating is nullable.cs" />
+    <Compile Include="Migrations\201907251724397_Rating is nullable.Designer.cs">
+      <DependentUpon>201907251724397_Rating is nullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -294,6 +291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Rest\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -315,11 +313,8 @@
     <EmbeddedResource Include="Migrations\201907240945409_qId to answer.resx">
       <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907250859168_Review and answer.resx">
-      <DependentUpon>201907250859168_Review and answer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907250916288_Review-answer.resx">
-      <DependentUpon>201907250916288_Review-answer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907251724397_Rating is nullable.resx">
+      <DependentUpon>201907251724397_Rating is nullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
