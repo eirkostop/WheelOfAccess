@@ -13,7 +13,7 @@ using WheelofAccess.Managers;
 
 namespace WheelofAccess.Controllers
 {
-    [Authorize]
+    [Authorize] 
     public class ReviewsController : Controller
     {
         private DbManager db = new DbManager();
@@ -30,6 +30,7 @@ namespace WheelofAccess.Controllers
         public ActionResult Create()
         {
             ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
+
             return View();
         }
 
@@ -43,6 +44,7 @@ namespace WheelofAccess.Controllers
                 return View(review);
             }
             review.UserId=User.Identity.GetUserId();
+           
             db.CreateReview(review);
             ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
             return RedirectToAction("Index");          

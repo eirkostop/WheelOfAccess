@@ -114,7 +114,7 @@ namespace WheelofAccess.Managers
             ICollection<Review> reviews;
             using(ApplicationDbContext db = new ApplicationDbContext())
             {
-                reviews = db.Reviews.Where(x=>x.UserId==Id).ToList();
+                reviews = db.Reviews.Include("Questionnaire").Where(x=>x.UserId==Id).ToList();
             }
             return reviews;
         }
@@ -357,9 +357,11 @@ namespace WheelofAccess.Managers
                 db.SaveChanges();
             }
         }
+       
+      
 
         #endregion
 
-
+          
     }
 }

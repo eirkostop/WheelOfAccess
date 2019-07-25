@@ -36,7 +36,7 @@ namespace WheelofAccess.Controllers
                 return Json(possible);
             }
             db.CreateOption(possible);
-            return View("Create");
+            return RedirectToAction("Index");
         }
         public ActionResult Edit(int id)
         {
