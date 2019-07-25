@@ -21,8 +21,8 @@ namespace WheelofAccess.Controllers
         // GET: Reviews
         public ActionResult Index()
         {
-            var id=User.Identity.GetUserId();
-            var reviews=db.GetReviews(id);
+            var id =User.Identity.GetUserId();
+            var reviews =db.GetReviews(id);
             return View(reviews);
         }      
 
@@ -37,7 +37,7 @@ namespace WheelofAccess.Controllers
         // POST: Reviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Rating,Comment,PlaceId")] Review review)
+        public ActionResult Create([Bind(Include = "Id,Comment,PlaceId")] Review review)
         {
             if (!ModelState.IsValid)
             {
@@ -53,6 +53,9 @@ namespace WheelofAccess.Controllers
         // GET: Reviews/Edit/5
         public ActionResult Edit(int id)
         {
+            ViewBag.Questions = db.GetQuestions();
+
+
             var review = db.FindReview(id);
             if (review == null)
             {

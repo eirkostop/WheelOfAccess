@@ -11,9 +11,9 @@ namespace WheelofAccess.Models
     {
         public int Id { get; set; }
         //public int AnswerValue { get; set; }
-        [ForeignKey("Question")]
-        public int? Question_Name { get; set; }
-        public virtual Question Question { get; set; }
+        [ForeignKey("Review")]
+        public int? Review_Id { get; set; }
+        public virtual Review Review { get; set; }
 
         [ForeignKey("PossibleAnswer")]
         public int Option_ID { get; set; }

@@ -5,12 +5,12 @@
 }
 
 <h2>Edit</h2>
-
+@Html.HiddenFor(model => model.Id)
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Review</h4>
         <hr />
@@ -18,24 +18,39 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PlaceId, "PlaceId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+                @Html.DropDownList("PlaceId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PlaceId, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <table class="table">
+
+            @foreach (var item in ViewBag.Questions)
+            {
+                <tr>
+                    <td>
+                        @(item.Title)
+                    </td>
+                    <td>
+                        @foreach (var answer in item.AllOptions)
+                        {
+                            <input type="radio" name="@item.Id" value="@answer.Id"> @answer.OptionName<br>
+                        }
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>*@
+                </tr>
+            }
+        </table>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </div>
@@ -47,4 +62,27 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        const radios = document.querySelectorAll('input[type="radio"]');
+        for (let r of radios) {
+            r.onclick = e => {
+                console.log(e.target.name)
+                console.log(e.target.value)
+                $.ajax({
+                    method: "PUT",
+                    url: "/Answers/Answer",
+                    data: {
+                        Review_Id: document.getElementById('Id').value,
+                        Option_ID: e.target.value
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        console.log("success")
+                    }
+                })
+            }
+        }
+    </script>
+
 }

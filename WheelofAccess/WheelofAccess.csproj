@@ -198,6 +198,14 @@
     <Compile Include="Migrations\201907240945409_qId to answer.Designer.cs">
       <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907250859168_Review and answer.cs" />
+    <Compile Include="Migrations\201907250859168_Review and answer.Designer.cs">
+      <DependentUpon>201907250859168_Review and answer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907250916288_Review-answer.cs" />
+    <Compile Include="Migrations\201907250916288_Review-answer.Designer.cs">
+      <DependentUpon>201907250916288_Review-answer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -306,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907240945409_qId to answer.resx">
       <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907250859168_Review and answer.resx">
+      <DependentUpon>201907250859168_Review and answer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907250916288_Review-answer.resx">
+      <DependentUpon>201907250916288_Review-answer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
