@@ -70,6 +70,18 @@
                 console.log(e.target.name)
                 console.log(e.target.value)
                 $.ajax({
+                    method: "DELETE",
+                    url: "/Rest/ChangeAnswer",
+                    data: {
+                        ReviewId: document.getElementById('Id').value,
+                        QuestionId: e.target.name
+                    },
+                    success: (response) => {
+                        console.log(response);
+                        console.log("success-deleted");
+                    }
+                });
+                $.ajax({
                     method: "PUT",
                     url: "/Answers/Answer",
                     data: {
