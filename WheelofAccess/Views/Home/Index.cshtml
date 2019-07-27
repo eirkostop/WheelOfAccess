@@ -22,16 +22,19 @@
         var athens = { lat: 37.975535, lng: 23.735073 };
         // The map, centered at Athens
         var map = new google.maps.Map(
-            document.getElementById('map'), { zoom: 4, center: athens });
+            document.getElementById('map'), { zoom: 12, center: athens });
         // The marker, positioned at Athens
         var marker = new google.maps.Marker({ position: athens, map: map });
-    }
+        
+
+    };
 </script>
+
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg&callback=initMap"
         type="text/javascript"></script>
 
-@*<script>https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg </script>*@
+@*<script> https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg </script>*@
 
 <style>
     #map {
@@ -40,3 +43,7 @@
         background-color: grey;
     }
 </style>
+
+@section Scripts{
+
+}
