@@ -206,6 +206,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Migrations\201907290946342_init.cs" />
+    <Compile Include="Migrations\201907290946342_init.Designer.cs">
+      <DependentUpon>201907290946342_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\ChatController.cs" />
     <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -224,35 +229,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907240855256_init.cs" />
-    <Compile Include="Migrations\201907240855256_init.Designer.cs">
-      <DependentUpon>201907240855256_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907240945409_qId to answer.cs" />
-    <Compile Include="Migrations\201907240945409_qId to answer.Designer.cs">
-      <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907251724397_Rating is nullable.cs" />
-    <Compile Include="Migrations\201907251724397_Rating is nullable.Designer.cs">
-      <DependentUpon>201907251724397_Rating is nullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907260924545_First attempt to UserRoles.cs" />
-    <Compile Include="Migrations\201907260924545_First attempt to UserRoles.Designer.cs">
-      <DependentUpon>201907260924545_First attempt to UserRoles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907260947025_Dropping UserRoles.cs" />
-    <Compile Include="Migrations\201907260947025_Dropping UserRoles.Designer.cs">
-      <DependentUpon>201907260947025_Dropping UserRoles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907261113596_Usrroles.cs" />
-    <Compile Include="Migrations\201907261113596_Usrroles.Designer.cs">
-      <DependentUpon>201907261113596_Usrroles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907261434591_delete user.cs" />
-    <Compile Include="Migrations\201907261434591_delete user.Designer.cs">
-      <DependentUpon>201907261434591_delete user.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Category.cs" />
@@ -408,33 +384,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907240855256_init.resx">
-      <DependentUpon>201907240855256_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907240945409_qId to answer.resx">
-      <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907251724397_Rating is nullable.resx">
-      <DependentUpon>201907251724397_Rating is nullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907260924545_First attempt to UserRoles.resx">
-      <DependentUpon>201907260924545_First attempt to UserRoles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907260947025_Dropping UserRoles.resx">
-      <DependentUpon>201907260947025_Dropping UserRoles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907261113596_Usrroles.resx">
-      <DependentUpon>201907261113596_Usrroles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907261434591_delete user.resx">
-      <DependentUpon>201907261434591_delete user.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907290946342_init.resx">
+      <DependentUpon>201907290946342_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
