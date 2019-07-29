@@ -193,17 +193,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907240855256_init.cs" />
-    <Compile Include="Migrations\201907240855256_init.Designer.cs">
-      <DependentUpon>201907240855256_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907240945409_qId to answer.cs" />
-    <Compile Include="Migrations\201907240945409_qId to answer.Designer.cs">
-      <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907251724397_Rating is nullable.cs" />
-    <Compile Include="Migrations\201907251724397_Rating is nullable.Designer.cs">
-      <DependentUpon>201907251724397_Rating is nullable.cs</DependentUpon>
+    <Compile Include="Migrations\201907290911171_first.cs" />
+    <Compile Include="Migrations\201907290911171_first.Designer.cs">
+      <DependentUpon>201907290911171_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -345,21 +337,15 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907240855256_init.resx">
-      <DependentUpon>201907240855256_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907240945409_qId to answer.resx">
-      <DependentUpon>201907240945409_qId to answer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907251724397_Rating is nullable.resx">
-      <DependentUpon>201907251724397_Rating is nullable.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907290911171_first.resx">
+      <DependentUpon>201907290911171_first.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,7 +3,7 @@ namespace WheelofAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class first : DbMigration
     {
         public override void Up()
         {
@@ -12,17 +12,17 @@ namespace WheelofAccess.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Review_Id = c.Int(),
                         Option_ID = c.Int(nullable: false),
                         Question_Id = c.Int(),
-                        Review_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Questions", t => t.Question_Id)
                 .ForeignKey("dbo.PossibleAnswers", t => t.Option_ID, cascadeDelete: true)
                 .ForeignKey("dbo.Reviews", t => t.Review_Id)
+                .Index(t => t.Review_Id)
                 .Index(t => t.Option_ID)
-                .Index(t => t.Question_Id)
-                .Index(t => t.Review_Id);
+                .Index(t => t.Question_Id);
             
             CreateTable(
                 "dbo.PossibleAnswers",
@@ -47,16 +47,20 @@ namespace WheelofAccess.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Categories",
+                "dbo.Reviews",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Place_Id = c.Int(),
+                        Rating = c.Single(),
+                        Comment = c.String(),
+                        UserId = c.String(maxLength: 128),
+                        PlaceId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Places", t => t.Place_Id)
-                .Index(t => t.Place_Id);
+                .ForeignKey("dbo.Places", t => t.PlaceId)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.PlaceId);
             
             CreateTable(
                 "dbo.Places",
@@ -69,20 +73,16 @@ namespace WheelofAccess.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Reviews",
+                "dbo.Categories",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Rating = c.Single(nullable: false),
-                        Comment = c.String(),
-                        UserId = c.String(maxLength: 128),
-                        PlaceId = c.Int(),
+                        Name = c.String(),
+                        Place_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Places", t => t.PlaceId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
-                .Index(t => t.UserId)
-                .Index(t => t.PlaceId);
+                .ForeignKey("dbo.Places", t => t.Place_Id)
+                .Index(t => t.Place_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -174,13 +174,13 @@ namespace WheelofAccess.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Answers", "Review_Id", "dbo.Reviews");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.ApplicationUserPlaces", "Place_Id", "dbo.Places");
             DropForeignKey("dbo.ApplicationUserPlaces", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Reviews", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Answers", "Review_Id", "dbo.Reviews");
             DropForeignKey("dbo.Reviews", "PlaceId", "dbo.Places");
             DropForeignKey("dbo.Categories", "Place_Id", "dbo.Places");
             DropForeignKey("dbo.Answers", "Option_ID", "dbo.PossibleAnswers");
@@ -194,22 +194,22 @@ namespace WheelofAccess.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.Categories", new[] { "Place_Id" });
             DropIndex("dbo.Reviews", new[] { "PlaceId" });
             DropIndex("dbo.Reviews", new[] { "UserId" });
-            DropIndex("dbo.Categories", new[] { "Place_Id" });
             DropIndex("dbo.PossibleAnswers", new[] { "Question_Title" });
-            DropIndex("dbo.Answers", new[] { "Review_Id" });
             DropIndex("dbo.Answers", new[] { "Question_Id" });
             DropIndex("dbo.Answers", new[] { "Option_ID" });
+            DropIndex("dbo.Answers", new[] { "Review_Id" });
             DropTable("dbo.ApplicationUserPlaces");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Reviews");
-            DropTable("dbo.Places");
             DropTable("dbo.Categories");
+            DropTable("dbo.Places");
+            DropTable("dbo.Reviews");
             DropTable("dbo.Questions");
             DropTable("dbo.PossibleAnswers");
             DropTable("dbo.Answers");
