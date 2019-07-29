@@ -70,20 +70,19 @@ namespace WheelofAccess.Controllers
             return View(review);
         }
 
-        // POST: Reviews/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Rating,Comment,PlaceId")] Review review)
+        public ActionResult Edit(Review review)
         {
             if (!ModelState.IsValid)
-            {                
+            {
                 return View(review);
             }
-            //review.UserId=User.Identity.GetUserId();
-            //db.EditReview(review);
-            //ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
             return RedirectToAction("Index");
         }
+        
+
+        
 
         // GET: Reviews/Delete/5
         public ActionResult Delete(int id)

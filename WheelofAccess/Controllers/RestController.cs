@@ -25,11 +25,25 @@ namespace WheelofAccess.Controllers
                 vm.Entry(review).State = EntityState.Modified;
                 vm.SaveChanges();
             }
-            return Json(review);
+            return Json(true);
 
         }
-      
-        
+        [HttpDelete]
+        [ActionName("ChangeAnswer")]
+        public JsonResult DeleteUserAnswerBool(int ReviewId, int QuestionId)
+        {
+            var ua = vm.Answers.Where(x => x.PossibleAnswer.Question_Title == QuestionId && x.Review_Id == ReviewId).FirstOrDefault();
+            var result = false;
+            if (ua != null)
+            {
+                vm.Answers.Remove(ua);
+                vm.SaveChanges();
+                result = true;
+            }
+            return Json(result);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
