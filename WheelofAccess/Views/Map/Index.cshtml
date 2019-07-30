@@ -132,8 +132,13 @@
                         btn.innerHTML = "Review";
                         btn.setAttribute("id", "review")
                         btn.onclick = function () { addMarker(e.latLng, map) }
-                        markers.push(marker);
-                        console.log(markers[0]);
+                        map.data.add(new google.maps.Data.Feature({properties:{},geometry:new google.maps.Data.Point(location)})); 
+
+                        function saveMarker() {
+                            map.data.toGeoJson(function (json) {
+                            localStorage.setItem('geoData', JSON.stringify(json));
+                            });
+                        }
                     }
                 });
             });
