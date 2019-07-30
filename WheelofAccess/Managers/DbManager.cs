@@ -365,10 +365,40 @@ namespace WheelofAccess.Managers
                 db.SaveChanges();
             }
         }
-      
-            #endregion
+
+        #endregion
+        #region Search 
+        public ICollection<Place> SearchPlace(string search, string name, int sortBy)
+        {
+            List<Place> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var query = db.Places.AsQueryable();
+                if (!String.IsNullOrEmpty(search))
+                {
+                    query = query.Where(x => x.Address.Contains(search));
+                }
+                if (!String.IsNullOrEmpty(name))
+                {
+                    query = query.Where(x => x.Name == name);
+                }
+                switch ((SortOptions)sortBy)
+                {
+                    case SortOptions.Address:
+                        query = query.OrderBy(x => x.Address);
+                        break;
+                    case SortOptions.Name:
+                        query = query.OrderBy(x => x.Name);
+                        break;
+                    default:
+                        break;
+                }
+                result = query.ToList();
+            }
+            return result;
+        }
+        #endregion
 
 
-        
     }
 }

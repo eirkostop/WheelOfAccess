@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Drawing;
@@ -16,6 +17,7 @@ namespace WheelofAccess.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [DataType(DataType.Date)]
         public DateTime? Dateofbirth { get; set; }
         public byte[] ProfilePic { get; set; } 
         public virtual ICollection<Review> GivenReviews { get; set; }
