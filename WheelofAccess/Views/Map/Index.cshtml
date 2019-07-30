@@ -100,7 +100,7 @@
             function addMarker(location, map) {
                 // Add the marker at the clicked location, and add the next-available label
                 // from the array of alphabetical characters.
-                var marker = new google.maps.Marker({
+                 let marker = new google.maps.Marker({
                     position: location,
                     label: labels[labelIndex++ % labels.length],
                     map: map
@@ -115,7 +115,6 @@
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
 
-                            // alert('place id: ' + results[0].place_id);
                             request = {
                                 place_id: results[0].place_id,
                                 address: results[0].formatted_address,
@@ -132,7 +131,9 @@
                         document.getElementsByClassName('poi-info-window gm-style')[0].appendChild(btn);
                         btn.innerHTML = "Review";
                         btn.setAttribute("id", "review")
-                        btn.onclick = function () {addMarker(e.latLng,map)}
+                        btn.onclick = function () { addMarker(e.latLng, map) }
+                        markers.push(marker);
+                        console.log(markers[0]);
                     }
                 });
             });
