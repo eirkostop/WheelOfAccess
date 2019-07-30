@@ -58,11 +58,11 @@ namespace WheelofAccess
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "628461297000-o5gibbd45lpm99j2qrm4870u69vsmort.apps.googleusercontent.com",
+                ClientSecret = "AX2qMzms6_cdEmze1rwO5AlH"
+            });
         }
     }
 }

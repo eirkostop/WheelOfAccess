@@ -76,6 +76,7 @@ namespace WheelofAccess.Models
         public string LastName { get; set; }
         [Required]
         [Display(Name ="Date Of Birth")]
+        [DataType(DataType.Date)]
         public DateTime DateofBirth { get; set; }
 
 
