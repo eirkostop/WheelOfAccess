@@ -13,7 +13,7 @@ namespace WheelofAccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201907290946342_init"; }
+            get { return "201907302033361_init"; }
         }
         
         string IMigrationMetadata.Source
