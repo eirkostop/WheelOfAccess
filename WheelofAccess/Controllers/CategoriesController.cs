@@ -17,12 +17,14 @@ namespace WheelofAccess.Controllers
             var categories = db.GetCategories();
             return View(categories);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Category category)
         {
             if (!ModelState.IsValid)
@@ -32,6 +34,7 @@ namespace WheelofAccess.Controllers
             db.CreateCategory(category);
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var category = db.FindCategory(id);
@@ -43,6 +46,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Category category)
         {
             if (!ModelState.IsValid)
@@ -53,6 +57,7 @@ namespace WheelofAccess.Controllers
             return RedirectToAction("Index");
 
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var category = db.FindCategory(id);
@@ -64,6 +69,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(Category category)
         {
             db.DeleteCategory(category);
