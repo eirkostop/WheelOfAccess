@@ -6,13 +6,6 @@ using System.Web;
 
 namespace WheelofAccess.Models
 {
-    public enum SortOptions
-    {
-        None,
-        Address,
-        Name,
-
-    }
     public class Place
     {
         public Place()

@@ -69,7 +69,7 @@
         background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
     }
 </style>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg&callback=initMap&libraries=places"
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg&callback=initMap&libraries=places"
         type="text/javascript"></script>
 <div id="map"></div>
 @section Scripts {
@@ -104,7 +104,8 @@
                     position: location,
                     label: labels[labelIndex++ % labels.length],
                     map: map
-                });
+                 });
+                markers.push(marker);
             }
             geocoder = new google.maps.Geocoder; 
             google.maps.event.addListener(map, 'click', function (e) {
@@ -132,8 +133,7 @@
                         btn.innerHTML = "Review";
                         btn.setAttribute("id", "review")
                         btn.onclick = function () { addMarker(e.latLng, map) }
-                        markers.push(marker);
-                        console.log(markers[0]);
+                       
                     }
                 });
             });

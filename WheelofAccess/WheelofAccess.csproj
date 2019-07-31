@@ -282,6 +282,7 @@
     <Compile Include="Services\Payment\PayPalConfiguration.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="View Models\PlaceViewModel.cs" />
+    <Compile Include="View Models\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
