@@ -12,7 +12,6 @@
 
 @section Scripts{
     <script type="text/javascript">
-
         var request;
         var service;
         let btn;
@@ -24,68 +23,78 @@
 
 
         function initialize() {
-            var mapOptions = {
+            function addPlace(request) {
+                let name = $("#review").siblings().children('.title').html()
+              
+                
+                $.ajax({
+                    method: "PUT",
+                    url: "/Rest/Place",
+                    data: {
+                        Address: request.address,
+                        Name: name,
+                        GoogleId: request.place_id
+                    },
+                    success: function (response) {
+                        console.log("success-place");
+                    }
+                })
+            }
+            function addReview(googleId) {
+                $.ajax({
+                    method: "PUT",
+                    url: "/Rest/Review",
+                    data: { googleId: googleId },
+                    success: function (response) {
+                        console.log(response);
+                        console.log("success-review");
+                    }
+                })
+            }
+            let mapOptions = {
                 zoom: 14,
                 center: new google.maps.LatLng(37.975533, 23.735101),
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
             }
-            //keep a reference to the original setPosition-function
-            var fx = google.maps.InfoWindow.prototype.setPosition;
-                        // Adds a marker to the map.
             function addMarker(location, map) {
-                // Add the marker at the clicked location, and add the next-available label
-                // from the array of alphabetical characters.
                 var marker = new google.maps.Marker({
                     position: location,
                     label: labels[labelIndex++ % labels.length],
                     map: map
                 });
             }
-            map = new google.maps.Map(document.getElementById('map'),mapOptions);
-            geocoder = new google.maps.Geocoder;
-            //override the built-in setPosition-method
-/*            google.maps.InfoWindow.prototype.setPosition = function ()*/ {
-                if (this.logAsInternal) {
-                    google.maps.event.addListenerOnce(this, 'map_changed', function () {
-                        var map = this.getMap();
-                        //the infoWindow will be opened, usually after a click on a POI
-                        if (map) {
-                            //trigger the click
-                            google.maps.event.trigger(map, 'click', {
-                                latLng: this.getPosition()
-                            });
-                        }
-                    });
-                }
-                fx.apply(this, arguments);
-            }
-            google.maps.event.addListener(map, 'click', function (e) {
-                btn = document.createElement("BUTTON");
-                geocoder.geocode({
-                    'location': e.latLng
-                }, function (results, status) {
+            function addReviewButton(e) {
+                geocoder.geocode({ 'location': e.latLng }, function (results, status) {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
-
                             request = {
+                                position: results[0].geometry.location,
                                 place_id: results[0].place_id,
-                                address: results[0].formatted_address,
+                                address: results[0].formatted_address
                             };
-                            console.log(request);
                         } else {
                             console.log('No results found');
                         }
                     } else {
                         console.log('Geocoder failed due to: ' + status);
                     }
+                    btn = document.createElement("BUTTON");
                     if (!document.getElementsByClassName('poi-info-window gm-style')[0].contains(document.getElementById('review'))) {
-                        document.getElementsByClassName('poi-info-window gm-style')[0].appendChild(btn);
-                        btn.innerHTML = "Review";
-                        btn.setAttribute("id", "review")
-                        btn.onclick=function () { addMarker(e.latLng, map) }
+                    document.getElementsByClassName('poi-info-window gm-style')[0].appendChild(btn);
+                    btn.innerHTML = "Review";
+                    btn.setAttribute("id", "review")
+                        btn.onclick = function () {
+                            addMarker(e.latLng, map);
+                            addPlace(request);
+                            addReview(request.place_id)
                         }
+                    }
                 });
-            });
+            }
+
+            map = new google.maps.Map(document.getElementById('map'),mapOptions);
+            geocoder = new google.maps.Geocoder;
+            google.maps.event.addListener(map, 'click', function (e) {addReviewButton(e)});
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace WheelofAccess.Controllers
 {
     public class RestController : Controller
     {
-        ApplicationDbContext vm = new ApplicationDbContext();
+        private ApplicationDbContext vm = new ApplicationDbContext();
         // GET: Rest
         [HttpPost]
 
@@ -43,6 +44,32 @@ namespace WheelofAccess.Controllers
             return Json(result);
         }
 
+        [HttpPut]
+        [ActionName("Review")]
+        public JsonResult addReview(string googleId)
+        {
+            Review review = new Review();
+            Place place=vm.Places.Where(p=>p.GoogleId==googleId).FirstOrDefault();
+            review.PlaceId = place.Id;
+            review.UserId= User.Identity.GetUserId();
+            vm.Reviews.Add(review);
+            vm.SaveChanges();
+            return Json(review);
+        }
+
+        [HttpPut]
+        [ActionName("Place")]
+        public JsonResult addPlace(Place place)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return Json(place);
+            }
+            vm.Places.Add(place);
+            vm.SaveChanges();
+            return Json(place);
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -52,5 +79,7 @@ namespace WheelofAccess.Controllers
             }
             base.Dispose(disposing);
         }
+
+
     }
 }
