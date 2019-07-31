@@ -4,38 +4,40 @@
 }
 
 <div>
-    @Html.DropDownList("users", (SelectList)ViewBag.Users, new { id = "user" })
+    @Html.DropDownList("Users", (SelectList)ViewBag.Users, new { id = "user" })
     <input id="message" type="text" />
     <button id="send">Send</button>
-
 </div>
 <div id="messages">
 
 </div>
-@section scripts{
-    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <script>
         $(document).ready(() => {
             let chat = $.connection.chatHub;
-
+            // Get message from Hub
             chat.client.gotMessage = (from, message) => {
                 $('#messages').append(`<p>${from}: ${message}</p>`);
             }
+            // Get message from Hub (this was sent from HomeController)
             chat.client.broadcast = (message) => {
-                $('messages').append(`<p><strong>Announcement: ${message} </strong></p>`);
+                $('#messages').append(`<p><strong>Announcement: ${message}</strong></p>`);
             }
-
+            // Start the connection
             $.connection.hub.start().done(() => {
+                // Only when connected call chat.server
                 $('#send').click(() => {
-                    chat.server.sentToUser($('#user').val(), $('#message').val());
-                    $('#messages').append(`<p> Me: ${$('message').val()} </p>`)
-                     $('#message').val('').focus();
-                 });
-
+                    //Send message to Hub by calling its Method
+                    chat.server.sendToUser($('#user').val(), $('#message').val());
+                    // Append my own message
+                    $('#messages').append(`<p>Me: ${$('#message').val()}</p>`);
+                    // Reset message input
+                    $('#message').val('').focus();
+                });
             });
-
         });
     </script>
-}
-
+}  

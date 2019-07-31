@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WheelofAccess.Models;
 using System.IO;
+using WheelofAccess.Chat_Service;
+using WheelofAccess.View_Models;
 
 namespace WheelofAccess.Controllers
 {
@@ -80,6 +82,7 @@ namespace WheelofAccess.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    ApplicationUsers.LoggedInUsers.Add(new ChatUsersViewModel { Name = model.Email });
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
