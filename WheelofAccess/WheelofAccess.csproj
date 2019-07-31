@@ -251,6 +251,7 @@
       <DependentUpon>201907290946342_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="View Models\ChatUsersViewModel.cs" />
     <Compile Include="Services\ChatController.cs" />
     <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
