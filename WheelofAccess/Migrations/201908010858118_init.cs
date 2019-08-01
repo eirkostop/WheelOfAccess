@@ -3,7 +3,7 @@ namespace WheelofAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -67,6 +67,7 @@ namespace WheelofAccess.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        GoogleId = c.String(),
                         Name = c.String(),
                         Address = c.String(),
                     })

@@ -248,21 +248,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ChatHub.cs" />
-    <Compile Include="Migrations\201907302130075_first.cs" />
-    <Compile Include="Migrations\201907302130075_first.Designer.cs">
-      <DependentUpon>201907302130075_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907311341292_second.cs" />
-    <Compile Include="Migrations\201907311341292_second.Designer.cs">
-      <DependentUpon>201907311341292_second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907311350547_third.cs" />
-    <Compile Include="Migrations\201907311350547_third.Designer.cs">
-      <DependentUpon>201907311350547_third.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907311702442_fourth.cs" />
-    <Compile Include="Migrations\201907311702442_fourth.Designer.cs">
-      <DependentUpon>201907311702442_fourth.cs</DependentUpon>
+    <Compile Include="Migrations\201908010858118_init.cs" />
+    <Compile Include="Migrations\201908010858118_init.Designer.cs">
+      <DependentUpon>201908010858118_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\ChatController.cs" />
@@ -435,17 +423,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907302130075_first.resx">
-      <DependentUpon>201907302130075_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907311341292_second.resx">
-      <DependentUpon>201907311341292_second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907311350547_third.resx">
-      <DependentUpon>201907311350547_third.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907311702442_fourth.resx">
-      <DependentUpon>201907311702442_fourth.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908010858118_init.resx">
+      <DependentUpon>201908010858118_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

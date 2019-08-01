@@ -54,7 +54,7 @@ namespace WheelofAccess.Controllers
             review.UserId= User.Identity.GetUserId();
             vm.Reviews.Add(review);
             vm.SaveChanges();
-            return Json(review);
+            return Json(review.Id);
         }
 
         [HttpPut]
