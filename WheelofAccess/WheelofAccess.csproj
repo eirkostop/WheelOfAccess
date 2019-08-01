@@ -251,6 +251,7 @@
       <DependentUpon>201907302033361_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="View Models\ChatUsersViewModel.cs" />
     <Compile Include="Services\ChatController.cs" />
     <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -282,6 +283,7 @@
     <Compile Include="Services\Payment\PayPalConfiguration.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="View Models\PlaceViewModel.cs" />
+    <Compile Include="View Models\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -401,7 +403,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Map\Index.cshtml" />
-    <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Home\PaymentWithPaypal.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_Topbar.cshtml" />

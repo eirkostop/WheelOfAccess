@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using WheelofAccess.Models;
 using System.Data.Entity;
+using WheelofAccess.View_Models;
 
 namespace WheelofAccess.Managers
 {

@@ -18,6 +18,7 @@ namespace WheelofAccess.Controllers
              var answers = db.GetAnswerOptions();
             return View(answers);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
@@ -26,6 +27,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,OptionName,AnswerValue,Question_Title")] PossibleAnswer possible)
         {
 
@@ -38,6 +40,7 @@ namespace WheelofAccess.Controllers
             db.CreateOption(possible);
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var opt = db.SearchOption(id);
@@ -52,6 +55,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,OptionName,AnswerValue,Question_Title")]PossibleAnswer opt)
         {
             if (!ModelState.IsValid)
@@ -63,6 +67,7 @@ namespace WheelofAccess.Controllers
             db.EditOption(opt);
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var opt = db.SearchOption(id);
@@ -76,6 +81,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(PossibleAnswer opt)
         {
             if (!ModelState.IsValid)

@@ -20,7 +20,7 @@ namespace WheelofAccess.Controllers
             var questions=db.GetQuestions();
             return View(questions); 
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "Id","OptionName");
@@ -29,6 +29,7 @@ namespace WheelofAccess.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Question question)
         {
             if (!ModelState.IsValid)
@@ -41,6 +42,7 @@ namespace WheelofAccess.Controllers
 
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
 
@@ -53,6 +55,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Question question)
         {
             if (!ModelState.IsValid)
@@ -62,6 +65,7 @@ namespace WheelofAccess.Controllers
             db.EditQuestion(question);
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var question=db.FindQuestion(id);
@@ -73,6 +77,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(Question question)
         {
             if (!ModelState.IsValid)

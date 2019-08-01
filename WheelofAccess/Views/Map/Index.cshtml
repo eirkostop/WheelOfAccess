@@ -69,7 +69,7 @@
         background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
     }
 </style>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg&callback=initMap&libraries=places"
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg&callback=initMap&libraries=places"
         type="text/javascript"></script>
 <div id="map"></div>
 @section Scripts {
@@ -101,10 +101,10 @@
                 // Add the marker at the clicked location, and add the next-available label
                 // from the array of alphabetical characters.
                  let marker = new google.maps.Marker({
-                    position: location,
+                     position: location,
                     label: labels[labelIndex++ % labels.length],
                     map: map
-                });
+                 });
             }
             geocoder = new google.maps.Geocoder; 
             google.maps.event.addListener(map, 'click', function (e) {
@@ -132,20 +132,10 @@
                         btn.innerHTML = "Review";
                         btn.setAttribute("id", "review")
                         btn.onclick = function () { addMarker(e.latLng, map) }
-                        map.data.add(new google.maps.Data.Feature({properties:{},geometry:new google.maps.Data.Point(location)})); 
-
-                        function saveMarker() {
-                            map.data.toGeoJson(function (json) {
-                            localStorage.setItem('geoData', JSON.stringify(json));
-                            });
-                        }
                     }
                 });
             });
         }
-
-
-
         google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
