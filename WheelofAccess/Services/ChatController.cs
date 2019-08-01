@@ -17,7 +17,6 @@ namespace WheelofAccess.Chat_Service
         // GET: Chat
         public ActionResult Index()
         {
-            // var users = db.Users.Where(x => x.UserName != User.Identity.Name).ToList();
             var users = ApplicationUsers.LoggedInUsers;
             ViewBag.Users = new SelectList(users, "Name", "Name");
             return View();

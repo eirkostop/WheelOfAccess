@@ -101,11 +101,10 @@
                 // Add the marker at the clicked location, and add the next-available label
                 // from the array of alphabetical characters.
                  let marker = new google.maps.Marker({
-                    position: location,
+                     position: location,
                     label: labels[labelIndex++ % labels.length],
                     map: map
                  });
-                markers.push(marker);
             }
             geocoder = new google.maps.Geocoder; 
             google.maps.event.addListener(map, 'click', function (e) {
@@ -138,9 +137,6 @@
                 });
             });
         }
-
-
-
         google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
