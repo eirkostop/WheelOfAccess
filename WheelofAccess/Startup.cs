@@ -13,9 +13,6 @@ namespace WheelofAccess
         {
             ConfigureAuth(app);
             app.MapSignalR();
-
-
         }
-       
     }
 }

@@ -2,18 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>
-        Your Profile Picture...
-        <img src="@Url.Action("Photo", "Account" )" style="width:160px;height:160px; background: #FFFFFF;
-        margin: auto;
-        -moz-border-radius: 60px;
-        border-radius: 100px;
-        padding: 6px;
-        box-shadow: 0px 0px 20px #888;" />
-    </h1>
-    <h3>Here is the Logged in user Photo.If user not logged in then we display the ? as image for default image.</h3>
-</div>
+@{
+    ViewBag.Title = "Home Page";
+}
+
 <div id="map"></div>
 <script>
     // Initialize and add the map
@@ -25,7 +17,6 @@
             document.getElementById('map'), { zoom: 12, center: athens });
         // The marker, positioned at Athens
         var marker = new google.maps.Marker({ position: athens, map: map });
-        
 
     };
 </script>
@@ -42,7 +33,3 @@
         background-color: grey;
     }
 </style>
-
-@section Scripts{
-
-}

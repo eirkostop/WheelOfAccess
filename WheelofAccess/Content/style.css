@@ -11100,7 +11100,8 @@ a:focus {
     }
 
         .topbar .navbar-search input {
-            font-size: .85rem
+            font-size: .85rem;
+            height:inherit;
         }
 
     .topbar .topbar-divider {
