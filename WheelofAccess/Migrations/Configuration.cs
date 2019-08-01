@@ -18,10 +18,17 @@ namespace WheelofAccess.Migrations
             //    ApplicationUserManager userManager = new ApplicationUserManager(userstore);
             //    var rolestore = new RoleStore<IdentityRole>(context);
             //    RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(rolestore);
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
+            //    var userstore = new UserStore<ApplicationUser>(context);
+            //    ApplicationUserManager userManager = new ApplicationUserManager(userstore);
+            //    var rolestore = new RoleStore<IdentityRole>(context);
+            //    RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(rolestore);
 
 
-            //    string email = "admin@gmail.gr";
-            //  to avoid creating duplicate seed data.	            //    string username = "admin";
+             //    string email = "admin@gmail.gr";
+           	//    string username = "admin";
+            //    string username = "admin";
             //    string password = "Admin1!";
             //    //string roleName = "Admin";
             //    var roleName = "Admin";
