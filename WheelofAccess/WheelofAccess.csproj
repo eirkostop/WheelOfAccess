@@ -261,6 +261,8 @@
       <DependentUpon>201908020813087_add rating to place.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Services\Payment\PaypalController.cs" />
+    <Compile Include="View Models\ChatUsersViewModel.cs" />
     <Compile Include="Services\ChatController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -302,6 +304,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\thankyou.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -415,10 +418,12 @@
     <Content Include="Views\Home\PaymentWithPaypal.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_Topbar.cshtml" />
-    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Home\SuccessView.cshtml" />
+    <Content Include="Views\Home\FailureView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Paypal\" />
     <Folder Include="Views\Rest\" />
   </ItemGroup>
   <ItemGroup>

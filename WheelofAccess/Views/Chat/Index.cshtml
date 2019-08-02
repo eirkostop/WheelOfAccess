@@ -1,7 +1,7 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "SignalR Chat";
 }
+
 
 <div>
     @Html.DropDownList("Users", (SelectList)ViewBag.Users, new { id = "user" })
@@ -18,14 +18,17 @@
     <script>
         $(document).ready(() => {
             let chat = $.connection.chatHub;
+
             // Get message from Hub
             chat.client.gotMessage = (from, message) => {
                 $('#messages').append(`<p>${from}: ${message}</p>`);
             }
+
             // Get message from Hub (this was sent from HomeController)
             chat.client.broadcast = (message) => {
                 $('#messages').append(`<p><strong>Announcement: ${message}</strong></p>`);
             }
+
             // Start the connection
             $.connection.hub.start().done(() => {
                 // Only when connected call chat.server
@@ -38,6 +41,7 @@
                     $('#message').val('').focus();
                 });
             });
+
         });
     </script>
 }  
