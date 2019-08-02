@@ -252,8 +252,15 @@
     <Compile Include="Migrations\201908010858118_init.Designer.cs">
       <DependentUpon>201908010858118_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908011340286_add location to place.cs" />
+    <Compile Include="Migrations\201908011340286_add location to place.Designer.cs">
+      <DependentUpon>201908011340286_add location to place.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908020813087_add rating to place.cs" />
+    <Compile Include="Migrations\201908020813087_add rating to place.Designer.cs">
+      <DependentUpon>201908020813087_add rating to place.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="View Models\ChatUsersViewModel.cs" />
     <Compile Include="Services\ChatController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -424,10 +431,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908010858118_init.resx">
-      <DependentUpon>201908010858118_init.cs</DependentUpon>
-    <EmbeddedResource Include="Migrations\201907302033361_init.resx">
-      <DependentUpon>201907302033361_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908011340286_add location to place.resx">
+      <DependentUpon>201908011340286_add location to place.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908020813087_add rating to place.resx">
+      <DependentUpon>201908020813087_add rating to place.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

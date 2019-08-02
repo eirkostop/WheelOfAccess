@@ -55,6 +55,7 @@ namespace WheelofAccess.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.Questions = db.GetQuestions();
+            
 
 
             var review = db.FindReview(id);
@@ -67,6 +68,7 @@ namespace WheelofAccess.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             }
             ViewBag.PlaceId = new SelectList(db.GetPlaces(), "Id", "Name");
+            ViewBag.PlaceName = db.GetPlaces().Where(p => p.Id == review.PlaceId).FirstOrDefault().Name;
             return View(review);
         }
 

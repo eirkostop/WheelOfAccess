@@ -15,6 +15,7 @@ namespace WheelofAccess.Models
         }
         public int Id { get; set; }
         public string GoogleId { get; set; }
+        public float Rating { get; set; }
         public string Name { get; set; }
         public string  Address {get;set;}
         [DisplayName("Category")]
