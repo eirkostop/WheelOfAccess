@@ -247,7 +247,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="ChatHub.cs" />
+    <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Migrations\201908010858118_init.cs" />
     <Compile Include="Migrations\201908010858118_init.Designer.cs">
       <DependentUpon>201908010858118_init.cs</DependentUpon>

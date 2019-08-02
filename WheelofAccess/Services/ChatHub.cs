@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
 
-namespace WheelofAccess
+namespace WheelofAccess.Chat_Service
 {
     public class ChatHub : Hub
     {
