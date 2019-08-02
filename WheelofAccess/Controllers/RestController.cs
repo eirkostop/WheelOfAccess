@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WheelofAccess.Managers;
@@ -14,18 +15,18 @@ namespace WheelofAccess.Controllers
     {
         private ApplicationDbContext vm = new ApplicationDbContext();
         // GET: Rest
-        [HttpGet]
+        //[HttpGet]
 
-        public JsonResult UpdatePlaceRating(int id)
+        //public JsonResult UpdatePlaceRating(int id)
             
-        {
-            var place = vm.Places.Where(x => x.Id == id).FirstOrDefault();
-            var reviews = vm.Reviews.Where(x => x.PlaceId == id).Select(x=>x.Id).ToList() ;
-            var answers = vm.Answers.Where(x => reviews.Contains((int)x.Review_Id)).Select(x => x.Id).ToList();
-            var average = vm.PossibleAnswers.Where(x => answers.Contains((int)x.Id)).Select(x=>x.AnswerValue).Average().ToString();
-            return Json(average);
+        //{
+        //    var place = vm.Places.Where(x => x.Id == id).FirstOrDefault();
+        //    var reviews = vm.Reviews.Where(x => x.PlaceId == id).Select(x=>x.Id).ToList() ;
+        //    var answers = vm.Answers.Where(x => reviews.Contains((int)x.Review_Id)).Select(x => x.Id).ToList();
+        //    var average = vm.PossibleAnswers.Where(x => answers.Contains((int)x.Id)).Select(x=>x.AnswerValue).Average().ToString();
+        //    return Json(average);
 
-        }
+        //}
 
         [HttpGet]
         [ActionName("Ratings")]
@@ -57,9 +58,13 @@ namespace WheelofAccess.Controllers
 
             //Update place rating
             Place place = vm.Places.Where(x => x.Id == review.PlaceId).FirstOrDefault();
-            var reviews = vm.Reviews.Where(x => x.PlaceId == place.Id).Select(x => x.Id).ToList();
-            var answers = vm.Answers.Where(x => reviews.Contains((int)x.Review_Id)).Select(x => x.Id).ToList();
-            place.Rating = vm.PossibleAnswers.Select(x => (float)x.AnswerValue).Average();
+            var ratings = from pa in vm.PossibleAnswers
+                           join a in vm.Answers on pa.Id equals a.Option_ID
+                           join r in vm.Reviews on a.Review_Id equals r.Id
+                           join p in vm.Places on r.PlaceId equals p.Id
+                           where p.Id == place.Id
+                           select ((float)pa.AnswerValue);
+            place.Rating = ratings.DefaultIfEmpty(0f).Average();
             vm.Entry(place).State = EntityState.Modified;
             vm.SaveChanges();
 
@@ -83,7 +88,7 @@ namespace WheelofAccess.Controllers
 
         [HttpPut]
         [ActionName("Review")]
-        public JsonResult addReview(string googleId)
+        public async Task<JsonResult> addReview(string googleId)
         {
             var userId = User.Identity.GetUserId();
             var place=vm.Places.Where(p=>p.GoogleId==googleId).FirstOrDefault();
@@ -93,7 +98,7 @@ namespace WheelofAccess.Controllers
                 newReview.PlaceId = place.Id;
                 newReview.UserId = userId;
                 vm.Reviews.Add(newReview);
-                vm.SaveChanges();
+                await vm.SaveChangesAsync();
                 return Json(newReview.Id);
             }
             else
