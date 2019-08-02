@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using WheelofAccess.Models;
+using WheelofAccess.View_Models;
 
 namespace WheelofAccess.Chat_Service
 {
