@@ -247,22 +247,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Migrations\201908021354543_Foteini.cs" />
+    <Compile Include="Migrations\201908021354543_Foteini.Designer.cs">
+      <DependentUpon>201908021354543_Foteini.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\ChatHub.cs" />
-    <Compile Include="Migrations\201908010858118_init.cs" />
-    <Compile Include="Migrations\201908010858118_init.Designer.cs">
-      <DependentUpon>201908010858118_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908011340286_add location to place.cs" />
-    <Compile Include="Migrations\201908011340286_add location to place.Designer.cs">
-      <DependentUpon>201908011340286_add location to place.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908020813087_add rating to place.cs" />
-    <Compile Include="Migrations\201908020813087_add rating to place.Designer.cs">
-      <DependentUpon>201908020813087_add rating to place.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\Payment\PaypalController.cs" />
-    <Compile Include="View Models\ChatUsersViewModel.cs" />
     <Compile Include="Services\ChatController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -436,11 +427,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908011340286_add location to place.resx">
-      <DependentUpon>201908011340286_add location to place.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908020813087_add rating to place.resx">
-      <DependentUpon>201908020813087_add rating to place.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908021354543_Foteini.resx">
+      <DependentUpon>201908021354543_Foteini.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

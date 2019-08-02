@@ -26,7 +26,17 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Roles)
+                @foreach (var ur in item.Roles)
+                {
+                    foreach(var r in ViewBag.RoleName)
+                    {
+                        if(r.Id == ur.RoleId)
+                        {
+                            @r.Name
+                        } 
+                    }
+
+                }
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

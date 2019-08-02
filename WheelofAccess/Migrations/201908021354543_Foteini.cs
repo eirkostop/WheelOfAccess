@@ -3,7 +3,7 @@ namespace WheelofAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Foteini : DbMigration
     {
         public override void Up()
         {
@@ -68,6 +68,7 @@ namespace WheelofAccess.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         GoogleId = c.String(),
+                        Rating = c.Single(nullable: false),
                         Name = c.String(),
                         Address = c.String(),
                     })
