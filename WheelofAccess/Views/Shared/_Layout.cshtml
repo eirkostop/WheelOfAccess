@@ -16,7 +16,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/style.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -24,36 +23,38 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @Html.Partial("_Sidebar")
+        @if (Request.IsAuthenticated)
+        {
+            @Html.Partial("_Sidebar")
+        }
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.Partial("~/Views/Shared/_Topbar.cshtml ")
+                }
 
-                @Html.Partial("~/Views/Shared/_Topbar.cshtml ")
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     @RenderBody()
                 </div>
             </div>
-                <!-- /.container-fluid -->
-                <!-- End of Main Content -->
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2019</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
-
-            </div>
-            <!-- End of Content Wrapper -->
-
+            <!-- /.container-fluid -->
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            @if (Request.IsAuthenticated)
+            {
+                @Html.Partial("~/Views/Shared/_Footer.cshtml ")
+            }
+            <!-- End of Footer -->
         </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -61,15 +62,10 @@
     </a>
 
 
-
-
-
-
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     <!-- Core plugin JavaScript-->
     <script src="~/Scripts/jquery.easing.min.js"></script>
-
+    @Scripts.Render("~/bundles/bootstrap")
     <!-- Custom scripts for all pages-->
     <script src="~/Scripts/main.js"></script>
     @RenderSection("scripts", required: false)

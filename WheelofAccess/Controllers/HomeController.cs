@@ -15,7 +15,6 @@ using WheelofAccess.Services.Payment;
 namespace WheelofAccess.Controllers
 {
     [RequireHttps]
-    [Authorize]
     public class HomeController : Controller
     {
 
@@ -23,8 +22,6 @@ namespace WheelofAccess.Controllers
 
         public ActionResult Index()
         {
-            var users = db.Users.Where(x => x.UserName != User.Identity.Name).ToList();
-            ViewBag.Users = new SelectList(users, "UserName", "UserName");
             return View();
         }
 
