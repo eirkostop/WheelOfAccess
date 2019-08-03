@@ -118,7 +118,9 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 <script>
+    //External login with google button
     $("#external-google").on("click", function () { $("#Google").click() })
+    //Cancel button in login modal
     $(".btn-cancel").on("click", function () { window.history.back() })
     </script>
 }

@@ -196,6 +196,7 @@ namespace WheelofAccess.Managers
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
+                
                 db.Places.Add(place);
                 db.SaveChanges();
                 foreach (var id in categoryIds)

@@ -10,7 +10,7 @@
     <!-- Custom styles for this template-->
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/styleUnlogged.min.css" rel="stylesheet">
+    <link href="~/Content/styleUnlogged.css" rel="stylesheet">
     <link href="~/Content/Account.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
 
@@ -225,6 +225,13 @@
     <script src="~/Scripts/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="~/Scripts/mainUnlogged.js"></script>
+    <!--Script for external google login trigger-->
+    <script>
+        $("#external-google").on("click", function () {
+            $("#Google").click();
+        })
+    </script>
+    <!--Scripts for the map-->
     <script type="text/javascript">
         var request;
         var service;
@@ -336,8 +343,8 @@
                             });
                             var infowindow = new google.maps.InfoWindow({
                                 content: `<div id="title">${result.name}</div>
-                                                                                <h3>${place.Rating}</h3>
-                                                                                    <p>${result.formatted_address}</p>`
+                                                                                    <h3>${place.Rating}</h3>
+                                                                                        <p>${result.formatted_address}</p>`
 
                             })
                             marker.addListener('click', function () { infowindow.open(map, marker); })

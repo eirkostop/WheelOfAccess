@@ -247,20 +247,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="ChatHub.cs" />
-    <Compile Include="Migrations\201908010858118_init.cs" />
-    <Compile Include="Migrations\201908010858118_init.Designer.cs">
-      <DependentUpon>201908010858118_init.cs</DependentUpon>
+    <Compile Include="Migrations\201908021354543_Foteini.cs" />
+    <Compile Include="Migrations\201908021354543_Foteini.Designer.cs">
+      <DependentUpon>201908021354543_Foteini.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908011340286_add location to place.cs" />
-    <Compile Include="Migrations\201908011340286_add location to place.Designer.cs">
-      <DependentUpon>201908011340286_add location to place.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908020813087_add rating to place.cs" />
-    <Compile Include="Migrations\201908020813087_add rating to place.Designer.cs">
-      <DependentUpon>201908020813087_add rating to place.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Services\Payment\PaypalController.cs" />
     <Compile Include="Services\ChatController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -303,7 +296,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\style.css" />
-    <Content Include="Content\styleUnlogged.min.css" />
+    <Content Include="Content\styleUnlogged.css" />
+    <Content Include="Content\thankyou.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -418,6 +412,8 @@
     <Content Include="Views\Home\PaymentWithPaypal.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_Topbar.cshtml" />
+    <Content Include="Views\Home\SuccessView.cshtml" />
+    <Content Include="Views\Home\FailureView.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Shared\_UnloggedLayout.cshtml" />
     <Content Include="Views\Shared\_TopbarUnlogged.cshtml" />
@@ -426,6 +422,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Paypal\" />
     <Folder Include="Views\Rest\" />
   </ItemGroup>
   <ItemGroup>
@@ -438,11 +435,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908011340286_add location to place.resx">
-      <DependentUpon>201908011340286_add location to place.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908020813087_add rating to place.resx">
-      <DependentUpon>201908020813087_add rating to place.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908021354543_Foteini.resx">
+      <DependentUpon>201908021354543_Foteini.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

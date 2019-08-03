@@ -14,31 +14,13 @@ namespace WheelofAccess.Controllers
     public class RestController : Controller
     {
         private ApplicationDbContext vm = new ApplicationDbContext();
-        // GET: Rest
-        //[HttpGet]
-
-        //public JsonResult UpdatePlaceRating(int id)
-            
-        //{
-        //    var place = vm.Places.Where(x => x.Id == id).FirstOrDefault();
-        //    var reviews = vm.Reviews.Where(x => x.PlaceId == id).Select(x=>x.Id).ToList() ;
-        //    var answers = vm.Answers.Where(x => reviews.Contains((int)x.Review_Id)).Select(x => x.Id).ToList();
-        //    var average = vm.PossibleAnswers.Where(x => answers.Contains((int)x.Id)).Select(x=>x.AnswerValue).Average().ToString();
-        //    return Json(average);
-
-        //}
+       
 
         [HttpGet]
         [ActionName("Ratings")]
         public JsonResult GetRatings()
         {
-            //string rating(int id)
-            //{
-            //    var reviews = vm.Reviews.Where(r => r.PlaceId == id).Select(r => r.Id).ToList();
-            //    var answers = vm.Answers.Where(a => reviews.Contains((int)a.Review_Id)).Select(a => a.Id).ToList();
-            //    var average = vm.PossibleAnswers.Where(pa => answers.Contains((int)pa.Id)).Select(pa => pa.AnswerValue).Average().ToString();
-            //    return average;
-            //}
+           
             var ratings = vm.Places.Select(x => 
              new {
                 Id=x.Id,

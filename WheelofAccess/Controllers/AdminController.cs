@@ -40,7 +40,7 @@ namespace WheelofAccess.Controllers
 
         public async Task<ActionResult> Index()
         {
-
+            ViewBag.RoleName = RoleManager.Roles;
             return View(await UserManager.Users.ToListAsync());
         }
         public async Task<ActionResult> Edit(string id)
