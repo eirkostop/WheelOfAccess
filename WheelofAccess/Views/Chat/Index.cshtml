@@ -18,18 +18,14 @@
                 </div>
         </div>
 
-            <div class="col-md-6 mx-auto mt-5">
-                <div class="card d-flex row h-100 mx-1">
-                    <div class="card-header text-center bg-gradient-primary text-white-50">
-                        MESSAGES
-                    </div>
-                    <div class="card-body col-10 mx-auto " id="messages"></div>
-                </div>
-            </div>
-        </div>
+<div>
+    @Html.DropDownList("Users", (SelectList)ViewBag.Users, new { id = "user" })
+    <input id="message" type="text" />
+    <button id="send">Send</button>
+</div>
+<div id="messages">
 
-
-
+</div>
 
         @section scripts {
             <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
