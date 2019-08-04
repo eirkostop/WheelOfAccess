@@ -432,6 +432,7 @@
     <Content Include="Views\PossibleAnswers\Edit.cshtml" />
     <Content Include="Views\PossibleAnswers\Delete.cshtml" />
     <Content Include="Views\Reviews\All.cshtml" />
+    <Content Include="Views\Places\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
