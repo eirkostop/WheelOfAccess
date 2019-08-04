@@ -295,6 +295,12 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatables\dataTables.bootstrap4.css" />
+    <Content Include="Content\datatables\dataTables.bootstrap4.js" />
+    <Content Include="Content\datatables\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\datatables\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\datatables\jquery.dataTables.js" />
+    <Content Include="Content\datatables\jquery.dataTables.min.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\styleUnlogged.css" />
     <Content Include="Content\thankyou.png" />
