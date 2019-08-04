@@ -220,7 +220,7 @@
     background: linear-gradient(to bottom,rgba(79,131,129,.1) 0,rgba(79,131,129,.2) 75%,#4f8381 100%),url(../img/woa.jpg);
     background-position: top;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-size: cover
 }
 

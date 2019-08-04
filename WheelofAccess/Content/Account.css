@@ -73,7 +73,12 @@ input:focus {
     color: white;
     background-color: #64a19d;
     text-align:center;
-    margin-left:0.5rem
+    margin-left:0.5rem;
+}
+
+.login_btn:hover {
+    background-color: #4f837f;
+    color:white
 }
 
 
