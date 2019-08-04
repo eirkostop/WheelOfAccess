@@ -77,7 +77,7 @@ namespace WheelofAccess.Models
         [Required]
         [Display(Name ="Date Of Birth")]
         [DataType(DataType.Date)]
-        [ValidateDate(-90, -18)]
+        //[ValidateDate(-90, -18)]
 
         public DateTime DateofBirth { get; set; }
 

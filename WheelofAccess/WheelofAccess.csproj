@@ -355,6 +355,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\WoaMap.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -426,7 +427,13 @@
     <Content Include="Views\Shared\_TopbarUnlogged.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_AccountLayout.cshtml" />
-    <Content Include="Views\Manage\EditProfile.cshtml" />
+    <Content Include="Views\Manage\EditPersonalInfo.cshtml" />
+    <Content Include="Views\Questions\Edit.cshtml" />
+    <Content Include="Views\Questions\Delete.cshtml" />
+    <Content Include="Views\PossibleAnswers\Edit.cshtml" />
+    <Content Include="Views\PossibleAnswers\Delete.cshtml" />
+    <Content Include="Views\Reviews\All.cshtml" />
+    <Content Include="Views\Places\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

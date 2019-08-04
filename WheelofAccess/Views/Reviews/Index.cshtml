@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<WheelofAccess.Models.Review>
 
 @{
-    ViewBag.Title = "Reviews";
+    ViewBag.Title = "My Reviews";
 }
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <div class="row">
             <div class="col-md-6">
-                <h6 class="my-1 font-weight-bold text-primary">@ViewBag.Title</h6>
+                <h3 class="font-weight-bold text-primary">@ViewBag.Title Table</h3>
             </div>
             <div class="col-md-6">
-                <a href=@Url.Action("Create New", "Create") class="btn btn-primary float-right">
+                <a href=@Url.Action("Create") class="btn btn-primary float-right">
                     <i class="fas fa-plus text-white-50"></i>&nbsp; Create New
                 </a>
             </div>
@@ -19,55 +19,62 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Place.Name)
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Rating)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Comment)
                         </th>
-                        <th>
-                            Details
-                        </th>
-                        <th></th>
+
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>
+                            @Html.DisplayNameFor(model => model.Place.Name)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.Rating)
-                        </th>   
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Comment)
                         </th>
-                        <th>
-                            Details
-                        </th>
-                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
                 <tbody>
 
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Rating)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Comment)
-                            </td>
-                            <td>
-                                <div id="details"></div>
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Place.Name)
+                        </td>
+                        <td>
+                            <div class="small mb-1">
+                                @Html.DisplayFor(modelItem => item.Rating) / 5
+                            </div>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="@(item.Rating/5*100)" style="width: @(item.Rating/5*100)%"></div>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Comment)
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+                                <a href=@Url.Action("Edit", new { id = item.Id }) class="btn btn-info"><i class="fas fa-pen text-white-50"></i>&nbsp; Edit</a>
+                                <a href=@Url.Action("Delete", new { id = item.Id }) class="btn btn-danger"><i class="fas fa-times text-white-50"></i>&nbsp; Delete</a>
+                            </div>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
@@ -86,7 +93,6 @@
         $(document).ready(function () {
             $('#dataTable').DataTable();
         });
-       
 
     </script>
 }
