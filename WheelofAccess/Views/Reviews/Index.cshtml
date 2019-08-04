@@ -60,9 +60,7 @@
                                 @Html.DisplayFor(modelItem => item.Comment)
                             </td>
                             <td>
-                                <div id="details">
-
-                                </div>
+                                <div id="details"></div>
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -88,6 +86,7 @@
         $(document).ready(function () {
             $('#dataTable').DataTable();
         });
+       
 
     </script>
 }
