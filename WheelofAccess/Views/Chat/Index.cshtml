@@ -2,73 +2,74 @@
     ViewBag.Title = "Chat";
 }
 
-    <div class="row h-100" >
-        <div class="col-md-6 mx-auto mt-5">
-            <div class="card d-flex row mx-1">
-                <div class="card-header text-center bg-gradient-primary text-white-50">
-                    CHAT
-                </div>
-                    <div class="card-body col-10 mx-auto">
-                        <label for="user">Chat With</label>
-                        @Html.DropDownList("Users", (SelectList)ViewBag.Users, new { id = "user", @class = "form-control mb-4" })
-                        <label for="message">Message</label>
-                        <input id="message" type="text" class="form-control mb-4" />
-                        <button id="send" class="btn btn-primary mb-4 float-right"><i class="fas fa-paper-plane text-white-50 "></i> Send</button>
-                    </div>
-                </div>
+<div class="row h-100">
+    <div class="col-md-6 mx-auto mt-5">
+        <div class="card d-flex row mx-1">
+            <div class="card-header text-center bg-gradient-primary text-white-50">
+                CHAT
+            </div>
+            <div class="card-body col-10 mx-auto">
+                <label for="user">Chat With</label>
+                @Html.DropDownList("Users", (SelectList)ViewBag.Users, new { id = "user", @class = "form-control mb-4" })
+                <label for="message">Message</label>
+                <input id="message" type="text" class="form-control mb-4" />
+                <button id="send" class="btn btn-primary mb-4 float-right"><i class="fas fa-paper-plane text-white-50 "></i> Send</button>
+            </div>
         </div>
+    </div>
 
-<div>
-    @Html.DropDownList("Users", (SelectList)ViewBag.Users, new { id = "user" })
-    <input id="message" type="text" />
-    <button id="send">Send</button>
+    <div class="col-md-6 mx-auto mt-5">
+        <div class="card d-flex row h-100 mx-1">
+            <div class="card-header text-center bg-gradient-primary text-white-50">
+                MESSAGES
+            </div>
+            <div class="card-body col-10 mx-auto " id="messages"></div>
+        </div>
+    </div>
 </div>
-<div id="messages">
 
-</div>
 
-        @section scripts {
-            <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
-            <script src="~/signalr/hubs"></script>
-            <script>
-                $(document).ready(() => {
-                    let chat = $.connection.chatHub;
-                    let messageCounter = 0
-                    // Get message from Hub
-                    chat.client.gotMessage = (from, message) => {
-                        messageCounter++;
-                        $(".badge").removeClass("d-none").html(messageCounter);
-                        $('#messages').append(`<p class="text-right">${from}: ${message}</p>`);
-                        $("#newMessages").append(`<a class="dropdown-item d-flex align-items-center" href="/Chat">
-                                                    <div class="dropdown-list-image mr-3">
-                                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                                                        <div class="status-indicator bg-success"></div>
-                                                    </div>
-                                                    <div class="font-weight-bold">
-                                                        <div class="text-truncate">${message}</div>
-                                                        <div class="small text-gray-500">${from}</div>
-                                                    </div>
-                                                </a>`)
-                    }
 
-                    // Get message from Hub (this was sent from HomeController)
-                    chat.client.broadcast = (message) => {
-                        $('#messages').append(`<p><strong>Announcement: ${message}</strong></p>`);
-                    }
 
-                    // Start the connection
-                    $.connection.hub.start().done(() => {
-                        // Only when connected call chat.server
-                        $('#send').click(() => {
-                            //Send message to Hub by calling its Method
-                            chat.server.sendToUser($('#user').val(), $('#message').val());
-                            // Append my own message
-                            $('#messages').append(`<p>Me: ${$('#message').val()}</p>`);
-                            // Reset message input
-                            $('#message').val('').focus();
-                        });
-                    });
-
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(document).ready(() => {
+            let chat = $.connection.chatHub;
+            let messageCounter = 0
+            // Get message from Hub
+            chat.client.gotMessage = (from, message) => {
+                messageCounter++;
+                $(".badge").removeClass("d-none").html(messageCounter);
+                $('#messages').append(`<p class="text-right">${from}: ${message}</p>`);
+                $("#newMessages").append(`<a class="dropdown-item d-flex align-items-center" href="/Chat">
+                                                        <div class="dropdown-list-image mr-3">
+                                                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                                                            <div class="status-indicator bg-success"></div>
+                                                        </div>
+                                                        <div class="font-weight-bold">
+                                                            <div class="text-truncate">${message}</div>
+                                                            <div class="small text-gray-500">${from}</div>
+                                                        </div>
+                                                    </a>`)
+            }
+            // Get message from Hub (this was sent from HomeController)
+            chat.client.broadcast = (message) => {
+                $('#messages').append(`<p><strong>Announcement: ${message}</strong></p>`);
+            }
+            // Start the connection
+            $.connection.hub.start().done(() => {
+                // Only when connected call chat.server
+                $('#send').click(() => {
+                    //Send message to Hub by calling its Method
+                    chat.server.sendToUser($('#user').val(), $('#message').val());
+                    // Append my own message
+                    $('#messages').append(`<p>Me: ${$('#message').val()}</p>`);
+                    // Reset message input
+                    $('#message').val('').focus();
                 });
-            </script>
-        }
+            });
+        });
+    </script>
+}

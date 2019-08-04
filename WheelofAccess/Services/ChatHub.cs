@@ -8,7 +8,7 @@ namespace WheelofAccess.Chat_Service
 {
     public class ChatHub : Hub
     {
-        public void sendToUser(string to, string message, byte[] senderprofilepic )
+        public void sendToUser(string to, string message )
         {
             Clients.User(to).gotMessage(Context.User.Identity.Name, message);
         }
