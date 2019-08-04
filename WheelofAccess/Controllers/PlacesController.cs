@@ -73,6 +73,7 @@ namespace WheelofAccess.Controllers
             db.EditPlace(vm.Place, vm.SelectedCategories);
             return RedirectToAction("Index");
         }
+        [Authorize(Roles ="Admin")]
         public ActionResult Delete(int id)
         {
             var place = db.GetPlaceDetails(id);

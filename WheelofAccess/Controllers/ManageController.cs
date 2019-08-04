@@ -4,8 +4,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using WheelofAccess.Managers;
 using WheelofAccess.Models;
 
 namespace WheelofAccess.Controllers
@@ -321,6 +323,27 @@ namespace WheelofAccess.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        [HttpGet]
+        public ActionResult EditPersonalInfo(string id)
+        {
+            ApplicationUser user;
+            using(ApplicationDbContext vm = new ApplicationDbContext())
+            {
+                id = User.Identity.GetUserId();
+                user = vm.Users.Find(id);
+            }
+            return View(user);
+        }
+        [HttpPost]
+        public async Task<ActionResult> EditPesronalInfo(ApplicationUser objmodel)
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.FirstName = objmodel.FirstName;
+            user.LastName = objmodel.LastName;
+            user.Dateofbirth = Convert.ToDateTime(objmodel.Dateofbirth);
+            var result = await UserManager.UpdateAsync(user);
+            return RedirectToAction("Index");
+        }
 
         //
         // POST: /Manage/LinkLogin
@@ -395,7 +418,7 @@ namespace WheelofAccess.Controllers
             }
             return false;
         }
-
+        
         public enum ManageMessageId
         {
             AddPhoneSuccess,

@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Braintree, Version=4.14.0.0, Culture=neutral, PublicKeyToken=31b586f34d3e96c7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Braintree.4.14.0\lib\net452\Braintree.dll</HintPath>
+    </Reference>
     <Reference Include="GMap.NET.Core, Version=1.9.3.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.Windows.1.9.3\lib\net40\GMap.NET.Core.dll</HintPath>
     </Reference>
@@ -120,6 +123,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
       <Private>True</Private>
@@ -251,6 +255,7 @@
     <Compile Include="Migrations\201908021354543_Foteini.Designer.cs">
       <DependentUpon>201908021354543_Foteini.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ValidateDate.cs" />
     <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\Payment\PaypalController.cs" />
@@ -406,15 +411,15 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Map\Index.cshtml" />
-    <Content Include="Views\Home\PaymentWithPaypal.cshtml" />
+    <Content Include="Views\Paypal\PaymentWithPaypal.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_Topbar.cshtml" />
-    <Content Include="Views\Home\SuccessView.cshtml" />
-    <Content Include="Views\Home\FailureView.cshtml" />
+    <Content Include="Views\Paypal\SuccessView.cshtml" />
+    <Content Include="Views\Paypal\FailureView.cshtml" />
+    <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Paypal\" />
     <Folder Include="Views\Rest\" />
   </ItemGroup>
   <ItemGroup>

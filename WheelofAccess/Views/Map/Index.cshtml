@@ -15,9 +15,6 @@
     var request;
     var service;
     let btn;
-    var labels = []
-    var labelIndex = 0;
-    let markers = [];
     var apikey = 'AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg';
     var details = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=';
     var styles = [{ "featureType": "landscape", "stylers": [{ "saturation": -100 }, { "lightness": 65 }, { "visibility": "on" }] }, { "featureType": "poi", "stylers": [{ "saturation": -100 }, { "lightness": 51 }, { "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "road.arterial", "stylers": [{ "saturation": -100 }, { "lightness": 30 }, { "visibility": "on" }] }, { "featureType": "road.local", "stylers": [{ "saturation": -100 }, { "lightness": 40 }, { "visibility": "on" }] }, { "featureType": "transit", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "administrative.province", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels", "stylers": [{ "visibility": "on" }, { "lightness": -25 }, { "saturation": -100 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "hue": "#ffff00" }, { "lightness": -25 }, { "saturation": -97 }] }];
@@ -111,14 +108,15 @@
                                 console.log(status)
                                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                                     var marker = new google.maps.Marker({
+                                        animation:google.maps.Animation.DROP,
                                         position: result.geometry.location,
                                         label: place.Rating,
                                         map: map
                                     });
                                 }
                                 var infowindow = new google.maps.InfoWindow({
-                                    content: `<div id=title> ${result[0].name}</div>` + 
-                                        `<h3> Address : ${result[0].formatted_address} <br> Rating: ${place.Rating} </h3>`;
+                                    content: `<div id=title> ${result[0].name}</div>
+                                                Address : ${result[0].formatted_address} <br> Rating: ${place.Rating} </h3>`
 
                                 })
                         });

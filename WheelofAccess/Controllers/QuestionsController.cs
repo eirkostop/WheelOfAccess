@@ -14,7 +14,8 @@ namespace WheelofAccess.Controllers
     {
         DbManager db = new DbManager();
         // GET: Questions
-       // [Authorize(Roles =("Users , Admin"))]
+        [Authorize(Roles=("Regular User"))]
+        [Authorize(Roles =("Admin"))]
         public ActionResult Index()
         {            
             var questions=db.GetQuestions();
