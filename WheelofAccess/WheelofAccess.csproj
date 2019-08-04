@@ -251,6 +251,7 @@
     <Compile Include="Migrations\201908021354543_Foteini.Designer.cs">
       <DependentUpon>201908021354543_Foteini.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ValidateDate.cs" />
     <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\Payment\PaypalController.cs" />
