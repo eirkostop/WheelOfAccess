@@ -1,11 +1,11 @@
 ﻿ <style>
     /* Set the size of the div element that contains the map */
     #map {
-        height: 400px; /* The height is 400 pixels */
+        height: 430px; /* The height is 440 pixels */
         width: 100%; /* The width is the width of the web page */
     }
 </style>
-<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU4GJSR-OtHsz8ifXlyTSquKz7iTY1XS4&callback=initMap&libraries=places">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU4GJSR-OtHsz8ifXlyTSquKz7iTY1XS4&callback=initMap&libraries=places">
 </script>
 
 <div id="map"> </div>
@@ -15,6 +15,9 @@
     var request;
     var service;
     let btn;
+    var labels = []
+    var labelIndex = 0;
+    let markers = [];
     var apikey = 'AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg';
     var details = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=';
     var styles = [{ "featureType": "landscape", "stylers": [{ "saturation": -100 }, { "lightness": 65 }, { "visibility": "on" }] }, { "featureType": "poi", "stylers": [{ "saturation": -100 }, { "lightness": 51 }, { "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "road.arterial", "stylers": [{ "saturation": -100 }, { "lightness": 30 }, { "visibility": "on" }] }, { "featureType": "road.local", "stylers": [{ "saturation": -100 }, { "lightness": 40 }, { "visibility": "on" }] }, { "featureType": "transit", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "administrative.province", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels", "stylers": [{ "visibility": "on" }, { "lightness": -25 }, { "saturation": -100 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "hue": "#ffff00" }, { "lightness": -25 }, { "saturation": -97 }] }];
@@ -108,15 +111,14 @@
                                 console.log(status)
                                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                                     var marker = new google.maps.Marker({
-                                        animation:google.maps.Animation.DROP,
                                         position: result.geometry.location,
                                         label: place.Rating,
                                         map: map
                                     });
                                 }
                                 var infowindow = new google.maps.InfoWindow({
-                                    content: `<div id=title> ${result[0].name}</div>
-                                                Address : ${result[0].formatted_address} <br> Rating: ${place.Rating} </h3>`
+                                    content: `<div id=title> ${result[0].name}</div>` + 
+                                        `<h3> Address : ${result[0].formatted_address} <br> Rating: ${place.Rating} </h3>`
 
                                 })
                         });
@@ -125,13 +127,13 @@
             }
         }
 
-        map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        map.set('styles', styles);
-        geocoder = new google.maps.Geocoder;
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            map.set('styles', styles);
+            geocoder = new google.maps.Geocoder;
 
-        getRatings();
-        google.maps.event.addListener(map, 'click', function (e) { addReviewButton(e) });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+            getRatings();
+            google.maps.event.addListener(map, 'click', function (e) { addReviewButton(e) });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 }

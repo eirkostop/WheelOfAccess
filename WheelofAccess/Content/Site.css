@@ -18,6 +18,4 @@ select,
 textarea {
     max-width: 280px;
 }
-#map {
-    height: calc(100vh - 4.375rem - 140px);
-}
+

@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - Wheel Of Access</title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Custom styles for this template-->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/styleUnlogged.css" rel="stylesheet">
+    <link href="~/Content/Account.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    @Html.Partial("_TopbarUnlogged")
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background:transparent">
+                @Html.Partial("~/Views/Account/Login.cshtml")
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="masthead" id="page-top">
+        <div class="container d-flex h-100 align-items-center">
+            <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 text-uppercase">WOA</h1>
+                <h2 class="text-white mx-auto mt-2 mb-5">Wheel Of Access</h2>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">In Access We Trust</h2>
+                <a href="#about" class="btn btn-primary js-scroll-trigger">Learn more</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-white mb-4">You Review We Share</h2>
+                    <p class="text-white-50">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi laborum magnam
+                        temporibus voluptatem aliquam dolorem quod, fugit vero mollitia, totam eius pariatur repudiandae! Dicta
+                        numquam, unde impedit expedita explicabo sed.
+                    </p>
+                </div>
+            </div>
+            <img src="~/img/ipad2.png" class="img-fluid" alt="">
+        </div>
+    </section>
+
+    <!-- Map Section -->
+
+
+    <section id="map2" class="projects-section bg-light">
+        <div class="container">
+
+            <!-- Map Row -->
+            <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+                <div class="col-xl-8 col-lg-7">
+                    @RenderBody()
+                    @*<img class="img-fluid mb-3 mb-lg-0" src="~/img/mymap2.jpg" alt="">*@
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="featured-text text-center text-lg-left">
+                        <h4>Our map</h4>
+                        <p class="text-black-50 ">
+                            Find in our map Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Voluptatem reiciendis ex qui nesciunt aliquam ab quam nulla sunt necessitatibus odio eos, praesentium
+                            error corporis sequi? Saepe facilis ea totam ratione.
+                        </p>
+                        @*<a href=@Url.Action("Login","Account") class="btn btn-primary mx-auto">Start rating</a>
+                            <button class="btn btn-primary mx-auto">Start rating</button>*@
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Project One Row -->
+            <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+                <div class="col-lg-6">
+                    <img class="img-fluid" src="~/img/stroller.jpg" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-custom text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto text-center text-lg-left">
+                                <h4 class="text-white">For you</h4>
+                                <p class="mb-0 text-white-50">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo distinctio veritatis, animi maiores nostrum placeat doloremque, iure, exercitationem neque dolorum quae perspiciatis atque sunt temporibus deleniti corrupti tempora? Sit, dolorum.</p>
+                                <hr class="d-none d-lg-block mb-0 ml-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Two Row -->
+            <div class="row justify-content-center no-gutters">
+                <div class="col-lg-6">
+                    <img class="img-fluid" src="~/img/steps.jpg" alt="">
+                </div>
+                <div class="col-lg-6 order-lg-first">
+                    <div class="bg-custom text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto text-center text-lg-right">
+                                <h4 class="text-white">No more surprises</h4>
+                                <p class="mb-0 text-white-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut suscipit quam minus, sint autem quo deleniti voluptate debitis quia qui natus ducimus sapiente est maxime hic dolore quidem et neque?</p>
+                                <hr class="d-none d-lg-block mb-0 mr-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- Sigin Section -->
+    <section id="signup" class="signup-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto text-center ">
+                    <i class="fas fa-star fa-2x mb-2 text-custom"></i>
+                    <i class="fas fa-star fa-2x mb-2 text-custom"></i>
+                    <i class="fas fa-star fa-2x mb-2 text-custom"></i>
+                    <i class="fas fa-star fa-2x mb-2 text-white"></i>
+                    <i class="fas fa-star fa-2x mb-2 text-white"></i>
+                    <h2 class="text-white mb-5">Ready to start rating?</h2>
+
+                    <form class="form-inline d-flex">
+                        <button class="btn btn-light mx-auto">Register</button>
+                        <button class="btn btn-light mx-auto">Log in</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <!-- <section class="contact-section bg-custom">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Address</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-envelope text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Email</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">
+                  <a href="#">hello@yourdomain.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Phone</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">+1 (555) 902-8832</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social d-flex justify-content-center">
+          <a href="#" class="mx-2">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="mx-2">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="mx-2">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+
+      </div>
+    </section> -->
+    <!-- Footer -->
+    <footer class="bg-custom small text-center text-white-50">
+        <div class="container">
+            Copyright &copy; Wheel Of Access 2019
+        </div>
+    </footer>
+
+    <!-- Custom scripts for this template -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <!-- Core plugin JavaScript-->
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/Scripts/mainUnlogged.js"></script>
+    <!--Script for external google login trigger-->
+    <script>
+        $("#external-google").on("click", function () {
+            $("#Google").click();
+        })
+    </script>
+    <!--Scripts for the map-->
+    <script type="text/javascript">
+        var request;
+        var service;
+        let btn;
+        var labels = []
+        var labelIndex = 0;
+        let markers = [];
+        var apikey = 'AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg';
+        var details = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=';
+        var styles = [{ "featureType": "landscape", "stylers": [{ "saturation": -100 }, { "lightness": 65 }, { "visibility": "on" }] }, { "featureType": "poi", "stylers": [{ "saturation": -100 }, { "lightness": 51 }, { "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "road.arterial", "stylers": [{ "saturation": -100 }, { "lightness": 30 }, { "visibility": "on" }] }, { "featureType": "road.local", "stylers": [{ "saturation": -100 }, { "lightness": 40 }, { "visibility": "on" }] }, { "featureType": "transit", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "administrative.province", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels", "stylers": [{ "visibility": "on" }, { "lightness": -25 }, { "saturation": -100 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "hue": "#ffff00" }, { "lightness": -25 }, { "saturation": -97 }] }];
+
+        function initialize() {
+            let mapOptions = {
+                zoom: 14,
+                center: new google.maps.LatLng(37.975533, 23.735101),
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+            }
+            function addPlace(request) {
+                let name = $("#review").siblings().children('.title').html()
+                $.ajax({
+                    method: "PUT",
+                    url: "/Rest/Place",
+                    data: {
+                        Address: request.address,
+                        Name: name,
+                        GoogleId: request.place_id
+                    },
+                    success: function (response) {
+                        console.log("success-place");
+                    }
+                })
+            }
+            function addReview(googleId) {
+                $.ajax({
+                    method: "PUT",
+                    url: "/Rest/Review",
+                    data: { googleId: googleId },
+                    success: function (response) {
+                        window.location.assign("/Reviews/Edit/" + response);
+                        console.log("success-review");
+                    },
+                    error: function (response) {
+                        console.log('error-adding-review')
+                    }
+                })
+            }
+            function addReviewButton(e) {
+                geocoder.geocode({ 'location': e.latLng }, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            request = {
+                                //position: results[0].geometry.location,
+                                location: e.latLng,
+                                place_id: results[0].place_id,
+                                address: results[0].formatted_address
+                            };
+                        } else {
+                            console.log('No results found');
+                        }
+                    } else {
+                        console.log('Geocoder failed due to: ' + status);
+                    }
+                    btn = document.createElement("BUTTON");
+                    if (!document.getElementsByClassName('poi-info-window gm-style')[0].contains(document.getElementById('review'))) {
+                        document.getElementsByClassName('poi-info-window gm-style')[0].appendChild(btn);
+                        btn.innerHTML = "Review";
+                        btn.setAttribute("id", "review")
+                        btn.onclick = function () {
+                            addPlace(request);
+                            console.log(request.place_id)
+                            addReview(request.place_id);
+                        }
+                    }
+                });
+            }
+            function getRatings() {
+                $.ajax({
+                    method: "GET",
+                    url: "Rest/Ratings",
+                    success: function (response) {
+                        console.log("Success")
+                        console.log("response " + response)
+                        loadMarkers(response)
+                    },
+                    error: function (response) {
+                        console.log(response)
+                        console.log("error")
+                    }
+                });
+            }
+            function loadMarkers(response) {
+                for (let place of response) {
+                    var service = new google.maps.places.PlacesService(map);
+                    service.getDetails({
+                        placeId: place.GoogleId
+                    }, function (result, status) {
+                        console.log(result)
+                        if (status == google.maps.places.PlacesServiceStatus.OK) {
+                            var marker = new google.maps.Marker({
+                                animation: google.maps.Animation.DROP,
+                                position: result.geometry.location,
+                                label: {
+                                    text: place.Rating,
+                                    color: "#fff",
+                                    fontWeight: "bold"
+                                },
+
+                                map: map
+                            });
+                            var infowindow = new google.maps.InfoWindow({
+                                content: `<div id="title">${result.name}</div>
+                                                                                    <h3>${place.Rating}</h3>
+                                                                                        <p>${result.formatted_address}</p>`
+
+                            })
+                            marker.addListener('click', function () { infowindow.open(map, marker); })
+
+                        }
+                    });
+                }
+            }
+
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            map.set('styles', styles);
+            geocoder = new google.maps.Geocoder;
+
+            getRatings();
+            google.maps.event.addListener(map, 'click', function (e) { addReviewButton(e) });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>
+
+
+
+
+
+
+
