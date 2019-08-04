@@ -68,6 +68,8 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
+        @if (User.IsInRole("Admin"))
+        {
         <!-- Heading -->
         <div class="sidebar-heading">
             Admin Area
@@ -75,7 +77,7 @@
 
         <!-- Nav Item - Users -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href=@Url.Action("Index", "Admin")>
                 <i class="fas fa-fw fa-user"></i>
                 <span>Users</span>
             </a>
@@ -115,7 +117,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-
+        }
 
         <!-- Nav Item - Donation -->
         <li class="nav-item">

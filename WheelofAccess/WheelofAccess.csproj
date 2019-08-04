@@ -426,7 +426,12 @@
     <Content Include="Views\Shared\_TopbarUnlogged.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_AccountLayout.cshtml" />
-    <Content Include="Views\Manage\EditProfile.cshtml" />
+    <Content Include="Views\Manage\EditPersonalInfo.cshtml" />
+    <Content Include="Views\Questions\Edit.cshtml" />
+    <Content Include="Views\Questions\Delete.cshtml" />
+    <Content Include="Views\PossibleAnswers\Edit.cshtml" />
+    <Content Include="Views\PossibleAnswers\Delete.cshtml" />
+    <Content Include="Views\Reviews\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
