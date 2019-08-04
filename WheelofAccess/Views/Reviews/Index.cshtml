@@ -58,7 +58,12 @@
                             @Html.DisplayFor(modelItem => item.Place.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Rating)
+                            <div class="small mb-1">
+                                @Html.DisplayFor(modelItem => item.Rating) / 5
+                            </div>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="@(item.Rating/5*100)" style="width: @(item.Rating/5*100)%"></div>
+                            </div>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Comment)

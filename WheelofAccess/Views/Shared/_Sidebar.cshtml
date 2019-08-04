@@ -33,6 +33,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Places -->
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index", "Places")">
+                <i class="fas fa-fw fa-map-marker-alt"></i>
+                <span>Places</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Reviews Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapseReviews">
@@ -70,52 +78,52 @@
 
         @if (User.IsInRole("Admin"))
         {
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Admin Area
-        </div>
-
-        <!-- Nav Item - Users -->
-        <li class="nav-item">
-            <a class="nav-link" href=@Url.Action("Index", "Admin")>
-                <i class="fas fa-fw fa-user"></i>
-                <span>Users</span>
-            </a>
-        </li>
-
-        <!-- Nav Item - Questions Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQuestions" aria-expanded="true" aria-controls="collapseQuestions">
-                <i class="fas fa-fw fa-question"></i>
-                <span>Questions</span>
-            </a>
-            <div id="collapseQuestions" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Manage:</h6>
-                    @Html.ActionLink("All", "Index", "Questions", new { }, new { @class = "collapse-item" })
-                    @Html.ActionLink("Add New", "Create", "Questions", new { }, new { @class = "collapse-item" })
-                </div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Admin Area
             </div>
-        </li>
 
+            <!-- Nav Item - Users -->
+            <li class="nav-item">
+                <a class="nav-link" href=@Url.Action("Index", "Admin")>
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
 
-        <!-- Nav Item - Answers Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnswers" aria-expanded="true" aria-controls="collapseAnswers">
-                <i class="fas fa-fw fa-list"></i>
-                <span>Possible Answers</span>
-            </a>
-            <div id="collapseAnswers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Manage:</h6>
-                    @Html.ActionLink("All", "Index", "PossibleAnswers", new { }, new { @class = "collapse-item" })
-                    @Html.ActionLink("Add New", "Create", "PossibleAnswers", new { }, new { @class = "collapse-item" })
+            <!-- Nav Item - Questions Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQuestions" aria-expanded="true" aria-controls="collapseQuestions">
+                    <i class="fas fa-fw fa-question"></i>
+                    <span>Questions</span>
+                </a>
+                <div id="collapseQuestions" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage:</h6>
+                        @Html.ActionLink("All", "Index", "Questions", new { }, new { @class = "collapse-item" })
+                        @Html.ActionLink("Add New", "Create", "Questions", new { }, new { @class = "collapse-item" })
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Nav Item - Answers Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnswers" aria-expanded="true" aria-controls="collapseAnswers">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Possible Answers</span>
+                </a>
+                <div id="collapseAnswers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage:</h6>
+                        @Html.ActionLink("All", "Index", "PossibleAnswers", new { }, new { @class = "collapse-item" })
+                        @Html.ActionLink("Add New", "Create", "PossibleAnswers", new { }, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
         }
 

@@ -16,6 +16,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/style.css" rel="stylesheet">
+
     @RenderSection("styles", required: false)
 </head>
 
@@ -40,17 +41,25 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    <style>
+                        /* Set the size of the div element that contains the map */
+                        #map {
+                            height: 500px;
+                            width: 100%;
+                            padding-bottom: 1rem;
+                        }
+                    </style>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU4GJSR-OtHsz8ifXlyTSquKz7iTY1XS4&callback=initMap&libraries=places">
+                    </script>
                     @RenderBody()
                 </div>
             </div>
             <!-- /.container-fluid -->
             <!-- End of Main Content -->
             <!-- Footer -->
-            @if (Request.IsAuthenticated)
-            {
-                @Html.Partial("~/Views/Shared/_Footer.cshtml ")
-            }
+
+             @Html.Partial("~/Views/Shared/_Footer.cshtml ")
+
             <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->
