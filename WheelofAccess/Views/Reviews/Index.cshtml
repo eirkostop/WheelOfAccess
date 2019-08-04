@@ -28,6 +28,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Comment)
                         </th>
+                        <th>
+                            Details
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
@@ -35,9 +38,12 @@
                     <tr>
                         <th>
                             @Html.DisplayNameFor(model => model.Rating)
-                        </th>
+                        </th>   
                         <th>
                             @Html.DisplayNameFor(model => model.Comment)
+                        </th>
+                        <th>
+                            Details
                         </th>
                         <th></th>
                     </tr>
@@ -52,6 +58,11 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Comment)
+                            </td>
+                            <td>
+                                <div id="details">
+
+                                </div>
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

@@ -400,17 +400,7 @@ namespace WheelofAccess.Managers
             return result;
         }
         #endregion
-        #region Users
-        public void EditUser(ApplicationUser user)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                db.Users.Attach(user);
-                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-            }
-        }
-        #endregion
+       
 
 
     }
