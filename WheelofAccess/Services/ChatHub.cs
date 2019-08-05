@@ -10,7 +10,7 @@ namespace WheelofAccess.Chat_Service
     {
         public void sendToUser(string to, string message,byte[] profilepic)
         {
-            Clients.User(to).gotMessage(Context.User.Identity.Name, message);
+            Clients.User(to).gotMessage(Context.User.Identity.Name, message,profilepic);
         }
         public void Hello()
         {
