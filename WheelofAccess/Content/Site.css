@@ -28,3 +28,6 @@ textarea {
     background-attachment: scroll;
     background-size: auto;
 }
+    #accordionSidebar a.nav-link:hover {
+        background: rgba(100,161,157,.2);
+    }
