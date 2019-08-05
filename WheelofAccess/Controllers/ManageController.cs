@@ -340,7 +340,7 @@ namespace WheelofAccess.Controllers
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             user.FirstName = objmodel.FirstName;
             user.LastName = objmodel.LastName;
-            user.Dateofbirth = Convert.ToDateTime(objmodel.Dateofbirth);
+            user.Dateofbirth = objmodel.Dateofbirth;
             var result = await UserManager.UpdateAsync(user);
             return RedirectToAction("Index");
         }
