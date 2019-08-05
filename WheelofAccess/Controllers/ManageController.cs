@@ -335,7 +335,7 @@ namespace WheelofAccess.Controllers
             return View(user);
         }
         [HttpPost]
-        public async Task<ActionResult> EditPesronalInfo(ApplicationUser objmodel)
+        public async Task<ActionResult> EditPersonalInfo(ApplicationUser objmodel)
         {
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             user.FirstName = objmodel.FirstName;
