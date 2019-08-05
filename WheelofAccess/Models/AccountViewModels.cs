@@ -51,9 +51,8 @@ namespace WheelofAccess.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -69,7 +68,10 @@ namespace WheelofAccess.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+
         public string Email { get; set; }
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
