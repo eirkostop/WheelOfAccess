@@ -18,7 +18,7 @@ namespace WheelofAccess.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [DataType(DataType.Date)]
-        //[ValidateDate(-90,-18)]
+        [ValidateDate(-90,-18)]
         public DateTime? Dateofbirth { get; set; }
         public byte[] ProfilePic { get; set; } 
         public virtual ICollection<Review> GivenReviews { get; set; }

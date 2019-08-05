@@ -417,11 +417,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Map\Index.cshtml" />
-    <Content Include="Views\Home\PaymentWithPaypal.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_Topbar.cshtml" />
-    <Content Include="Views\Home\SuccessView.cshtml" />
-    <Content Include="Views\Home\FailureView.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Shared\_UnloggedLayout.cshtml" />
     <Content Include="Views\Shared\_TopbarUnlogged.cshtml" />
@@ -434,10 +431,12 @@
     <Content Include="Views\PossibleAnswers\Delete.cshtml" />
     <Content Include="Views\Reviews\All.cshtml" />
     <Content Include="Views\Places\Delete.cshtml" />
+    <Content Include="Views\Paypal\PaymentWithPaypal.cshtml" />
+    <Content Include="Views\Paypal\SuccessView.cshtml" />
+    <Content Include="Views\Paypal\FailureView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Paypal\" />
     <Folder Include="Views\Rest\" />
   </ItemGroup>
   <ItemGroup>

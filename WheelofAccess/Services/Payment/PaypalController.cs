@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using WheelofAccess.Services.Payment;
 
-namespace BusMeApp.Controllers
+namespace WheelofAccess.Controllers
 {
     public class PayPalController : Controller
     {
@@ -126,7 +126,7 @@ namespace BusMeApp.Controllers
             transactionList.Add(new Transaction()
             {
                 description = "Transaction description",
-                invoice_number = "your generated invoice number", //Generate an Invoice No  
+                invoice_number = Guid.NewGuid().ToString(), //Generate an Invoice No  
                 amount = amount,
                 item_list = itemList
             });
@@ -141,5 +141,4 @@ namespace BusMeApp.Controllers
             return this.payment.Create(apiContext);
         }
     }
-
 }
