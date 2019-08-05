@@ -9,7 +9,6 @@ using System.Data.Entity.Infrastructure;
 
 namespace WheelofAccess.Controllers
 {
-    //[Authorize(Roles = "Admin")]
     public class QuestionsController : Controller
     {
         DbManager db = new DbManager();
