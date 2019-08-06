@@ -22,6 +22,14 @@ namespace WheelofAccess.Controllers
 
         public ActionResult Index()
         {
+            string userId = User.Identity.GetUserId();
+            var myreviews = db.Reviews.Where(x => x.UserId == userId);
+            ViewBag.Places = db.Places.Count();
+            ViewBag.MyReviews = myreviews.Count();
+            ViewBag.Reviews = db.Reviews.Count();
+            ViewBag.Questions = db.Questions.Count();
+            ViewBag.MyAnswers = myreviews.Select(x => db.Answers.Where(a => a.Review_Id == x.Id).Count()).Sum();
+            ViewBag.Users = db.Users.Count();
             return View();
         }
 
@@ -49,8 +57,9 @@ namespace WheelofAccess.Controllers
         {
             string userId = User.Identity.GetUserId();
             var myreviews = db.Reviews.Where(x => x.UserId == userId);
+            ViewBag.Places = db.Places.Count();
             ViewBag.MyReviews = myreviews.Count();
-            ViewBag.Reviews= db.Reviews.Count();
+            ViewBag.Reviews = db.Reviews.Count();
             ViewBag.Questions = db.Questions.Count();
             ViewBag.MyAnswers = myreviews.Select(x => db.Answers.Where(a => a.Review_Id == x.Id).Count()).Sum();
             ViewBag.Users = db.Users.Count();
