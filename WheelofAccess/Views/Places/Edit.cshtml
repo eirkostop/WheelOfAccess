@@ -10,7 +10,6 @@
 @using (Html.BeginForm())
 { 
    @Html.AntiForgeryToken()
-    @Html.EditorFor(model=>model.Place.GoogleId,new { @class="d-none"})
 
     
 <div class="form-horizontal">
@@ -33,13 +32,6 @@
             @Html.ValidationMessageFor(model => model.Place.Address, "", new { @class = "text-danger" })
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Place.CategoriesofPlace, null, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.ListBoxFor(model => model.SelectedCategories, Model.Categories)
-        </div>
-    </div>
-
     <div class="row">
         <div class="form-group">
             <div class="col-md-offset-2 m-1">
