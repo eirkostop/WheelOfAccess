@@ -41,8 +41,8 @@ namespace WheelofAccess.Controllers
             var values = from pa in vm.PossibleAnswers
                          join a in vm.Answers on pa.Id equals a.Option_ID
                          join r in vm.Reviews on a.Review_Id equals id
-                         select ((float?)pa.AnswerValue);
-            review.Rating = values.DefaultIfEmpty(0f).Average();
+                         select ((float)pa.AnswerValue);
+            review.Rating = (float)Math.Round(values.DefaultIfEmpty(0f).Average(),1);
             vm.Entry(review).State = EntityState.Modified;
             vm.SaveChanges();
 
@@ -54,12 +54,10 @@ namespace WheelofAccess.Controllers
                            join p in vm.Places on r.PlaceId equals p.Id
                            where p.Id == place.Id
                            select ((float)pa.AnswerValue);
-            place.Rating = ratings.DefaultIfEmpty(0f).Average();
+            place.Rating = (float)Math.Round(ratings.DefaultIfEmpty(0f).Average(), 1);
             vm.Entry(place).State = EntityState.Modified;
             vm.SaveChanges();
-
             return Json(true);
-
         }
         [HttpDelete]
         [ActionName("ChangeAnswer")]

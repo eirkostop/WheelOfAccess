@@ -146,7 +146,6 @@ function initialize() {
         currentPositionIW.setContent('<h6 class="p-2 m-2 bg-light rounded">You are here</h6>')
         currentPositionIW.open(map);
         map.setCenter(point)
-
     })
     geocoder = new google.maps.Geocoder;
 
