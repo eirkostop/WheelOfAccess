@@ -191,7 +191,7 @@ namespace WheelofAccess.Controllers
             var userId = User.Identity.GetUserId();
             if (userId == null)
             {
-                return new FilePathResult("/Content/noImg.png", "image/jpeg");
+                return new FilePathResult("~/img/avatar.png", "image/jpeg");
 
             }
             var user = db.Users.Where(x => x.Id == userId).FirstOrDefault();
@@ -202,7 +202,7 @@ namespace WheelofAccess.Controllers
             }
             else
             {
-                return new FilePathResult("/Content/noImg.png", "image/jpeg");
+                return new FilePathResult("~/img/avatar.png", "image/jpeg");
             }
         }
 
