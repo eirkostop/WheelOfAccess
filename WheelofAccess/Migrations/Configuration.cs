@@ -69,6 +69,18 @@ namespace WheelofAccess.Migrations
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_17);
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_18);
 
+            //Category cat_1 = new Category() { Name = "Bar" };
+            //Category cat_2 = new Category() { Name = "Restaurant" };
+            //Category cat_3 = new Category() { Name = "Cafe" };
+            //Category cat_4 = new Category() { Name = "Museum" };
+            //context.Categories.AddOrUpdate(x => x.Id, cat_1);
+            //context.Categories.AddOrUpdate(x => x.Id, cat_2);
+            //context.Categories.AddOrUpdate(x => x.Id, cat_3);
+            //context.Categories.AddOrUpdate(x => x.Id, cat_4);
+
+
+
+
             //    var userstore = new UserStore<ApplicationUser>(context);
             //    ApplicationUserManager userManager = new ApplicationUserManager(userstore);
             //    var rolestore = new RoleStore<IdentityRole>(context);

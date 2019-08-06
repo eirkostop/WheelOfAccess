@@ -228,7 +228,7 @@ namespace WheelofAccess.Managers
             {
                 result = db.Places.Include("CategoriesofPlace")
                                   .Include("StoreReviews")
-                                  .Include("Users")
+                                  .Include("Users")                                  
                                   .Where(x => x.Id == id).FirstOrDefault();
 
             }
@@ -270,6 +270,12 @@ namespace WheelofAccess.Managers
 
                 var reviews = db.Reviews.Where(x => x.PlaceId == place.Id);
                 db.Reviews.RemoveRange(reviews);
+                var answers = from a in db.Answers
+                              join r in db.Reviews on a.Review_Id equals r.Id
+                              join p in db.Places on r.PlaceId equals p.Id
+                              select a;
+                db.Answers.RemoveRange(answers);
+
                 db.Places.Attach(place);
 
                 db.Places.Remove(place);
