@@ -11,53 +11,63 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Review</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.PlaceId, "Place", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @ViewBag.PlaceName
-                    </div>
+<div class="form-horizontal">
+    <h4>Review</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PlaceId, "Place", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.PlaceName
         </div>
+    </div>
 
-        <table class="table">
+    <table class="table">
 
-            @foreach (var item in ViewBag.Questions)
-            {
-                <tr>
-                    <td>
-                        @(item.Title)
-                    </td>
-                    <td>
-                        @foreach (var answer in item.AllOptions)
-                        {
-                            <input type="radio" name="@item.Id" value="@answer.Id"> @answer.OptionName<br>
-                        }
-                    </td>
-                    @*<td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        </td>*@
-                </tr>
-            }
-        </table>
+        @foreach (var item in ViewBag.Questions)
+        {
+            <tr>
+                <td>
+                    @(item.Title)
+                </td>
+                <td>
+                    @foreach (var answer in item.AllOptions)
+                    {
+                        <input type="radio" name="@item.Id" value="@answer.Id"> @answer.OptionName<br>
+                    }
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>*@
+            </tr>
+        }
+    </table>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comment, "Comment", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Comment, new { @class = "form-control" })
 
+        </div>
+    </div>
+    <div class="row">
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 m-1">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 m-1">
+                @Html.ActionLink("Cancel", "Index", new { }, htmlAttributes: new { @class = "btn btn-secondary" })
+            </div>
+        </div>
     </div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -66,8 +76,6 @@
         const radios = document.querySelectorAll('input[type="radio"]');
         for (let r of radios) {
             r.onclick = e => {
-                console.log(e.target.name)
-                console.log(e.target.value)
                 $.ajax({
                     method: "DELETE",
                     url: "/Rest/ChangeAnswer",
@@ -76,7 +84,6 @@
                         QuestionId: e.target.name
                     },
                     success: (response) => {
-                        console.log(response);
                         console.log("success-deleted");
                     }
                 });
@@ -88,7 +95,6 @@
                         Option_ID: e.target.value
                     },
                     success: function (response) {
-                        console.log(response);
                         console.log("success");
                     }
                 })
@@ -99,7 +105,6 @@
                         id: document.getElementById('Id').value,
                     },
                     success: function (response) {
-                    console.log(response);
                     console.log("success")
                     }
                 })

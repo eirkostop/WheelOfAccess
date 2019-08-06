@@ -50,7 +50,6 @@
                     </tr>
                 </tfoot>
                 <tbody>
-
                     @foreach (var item in Model)
                     {
                     <tr>
@@ -72,6 +71,7 @@
                             <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
                                 <a href=@Url.Action("Edit", new { id = item.Id }) class="btn btn-info"><i class="fas fa-pen text-white-50"></i>&nbsp; Edit</a>
                                 <a href=@Url.Action("Delete", new { id = item.Id }) class="btn btn-danger"><i class="fas fa-times text-white-50"></i>&nbsp; Delete</a>
+
                             </div>
                         </td>
                     </tr>
