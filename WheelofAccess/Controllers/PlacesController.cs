@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -88,19 +89,24 @@ namespace WheelofAccess.Controllers
                 {
                     Value = x.Id.ToString(),
                     Text = x.Name
-                })
+                }),
+
             };
-            return View(vm);
+            return View(place);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Place place)
         {
+            
+            
+            
             db.DeletePlace(place);
             return RedirectToAction("Index");
-        }      
+        }
 
-        
+
+
     }
 }
     

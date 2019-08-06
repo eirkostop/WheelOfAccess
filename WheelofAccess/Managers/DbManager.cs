@@ -220,13 +220,15 @@ namespace WheelofAccess.Managers
             }
             return place;
         }
+        
         public Place GetPlaceDetails(int id)
         {
             Place result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                result = db.Places.Include("StoreReviews")
-                                  .Include("CategoriesofPlace")
+                result = db.Places.Include("CategoriesofPlace")
+                                  .Include("StoreReviews")
+                                  .Include("Users")
                                   .Where(x => x.Id == id).FirstOrDefault();
 
             }
@@ -265,8 +267,12 @@ namespace WheelofAccess.Managers
 
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
+
+                var reviews = db.Reviews.Where(x => x.PlaceId == place.Id);
+                db.Reviews.RemoveRange(reviews);
                 db.Places.Attach(place);
-                db.Entry(place).State = System.Data.Entity.EntityState.Deleted;
+
+                db.Places.Remove(place);
                 db.SaveChanges();
             }
         }
