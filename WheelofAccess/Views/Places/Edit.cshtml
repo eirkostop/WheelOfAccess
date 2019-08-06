@@ -8,15 +8,15 @@
 
 
 @using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+{ 
+   @Html.AntiForgeryToken()
+
     
 <div class="form-horizontal">
     <h4>Place</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Place.Id)
-
     <div class="form-group">
         @Html.LabelFor(model => model.Place.Name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -32,13 +32,6 @@
             @Html.ValidationMessageFor(model => model.Place.Address, "", new { @class = "text-danger" })
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Place.CategoriesofPlace, null, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.ListBoxFor(model => model.SelectedCategories, Model.Categories)
-        </div>
-    </div>
-
     <div class="row">
         <div class="form-group">
             <div class="col-md-offset-2 m-1">

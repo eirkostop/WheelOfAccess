@@ -30,9 +30,6 @@
                             @Html.DisplayNameFor(model => model.Address)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.CategoriesofPlace)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(model => model.Rating)
                         </th>
                         <th>Actions</th>
@@ -45,9 +42,6 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Address)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CategoriesofPlace)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Rating)
@@ -65,14 +59,7 @@
 
                         <td >
                             @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @foreach (var cat in item.CategoriesofPlace)
-                            {
-                                @cat.Name <br />
-                            }
-
-                        </td>
+                        </td>                       
                         <td>
                             <div class="small mb-1">
                                 @Html.DisplayFor(modelItem => item.Rating) / 5

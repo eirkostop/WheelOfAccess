@@ -11,6 +11,21 @@ btn.classList.add("mt-2")
 btn.innerHTML = "Review";
 btn.setAttribute("id", "review")
 
+function addReview(googleId) {
+    $.ajax({
+        method: "PUT",
+        async: false,
+        url: "/Rest/Review",
+        data: { googleId: googleId },
+        success: function (response) {
+            window.location.assign("/Reviews/Edit/" + response);
+            console.log("success-review");
+        },
+        error: function (response) {
+            console.log('error-adding-review')
+        }
+    })
+}
 function addPlace(request) {
     let name = $("#review").siblings().children('.title').html()
     $.ajax({
@@ -27,21 +42,7 @@ function addPlace(request) {
         }
     })
 }
-function addReview(googleId) {
-    $.ajax({
-        method: "PUT",
-        async: false,
-        url: "/Rest/Review",
-        data: { googleId: googleId },
-        success: function (response) {
-            window.location.assign("/Reviews/Edit/" + response);
-            console.log("success-review");
-        },
-        error: function (response) {
-            console.log('error-adding-review')
-        }
-    })
-}
+
 function addReviewButton(e) {
     geocoder.geocode({ 'location': e.latLng }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {

@@ -69,6 +69,7 @@ namespace WheelofAccess.Migrations
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_17);
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_18);
 
+
             //    var userstore = new UserStore<ApplicationUser>(context);
             //    ApplicationUserManager userManager = new ApplicationUserManager(userstore);
             //    var rolestore = new RoleStore<IdentityRole>(context);
