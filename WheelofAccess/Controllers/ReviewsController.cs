@@ -80,7 +80,9 @@ namespace WheelofAccess.Controllers
             {
                 return View(review);
             }
+            db.EditReview(review);
             return RedirectToAction("Index");
+
         }
         
 

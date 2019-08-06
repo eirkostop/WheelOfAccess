@@ -161,8 +161,8 @@ namespace WheelofAccess.Managers
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                db.Reviews.Attach(review);
-                db.Entry(review).State = System.Data.Entity.EntityState.Modified;
+                var r=db.Reviews.Find(review.Id);
+                r.Comment = review.Comment;
                 db.SaveChanges();
             }
         }
