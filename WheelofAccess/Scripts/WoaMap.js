@@ -136,11 +136,22 @@ function initialize() {
         center: new google.maps.LatLng(37.975533, 23.735101),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
     }
+    let currentPositionIW = new google.maps.InfoWindow;
+
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
     map.set('styles', styles);
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var point = { lat: position.coords.latitude, lng: position.coords.longitude }
+        currentPositionIW.setPosition(point)
+        currentPositionIW.setContent('<h6 class="p-2 m-2 bg-light rounded">You are here</h6>')
+        currentPositionIW.open(map);
+        map.setCenter(point)
+
+    })
     geocoder = new google.maps.Geocoder;
 
     getRatings();
     google.maps.event.addListener(map, 'click', function (e) { addReviewButton(e) });
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
