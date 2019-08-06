@@ -25,26 +25,7 @@ namespace WheelofAccess.Controllers
 
             return View();
         }
-        [HttpPut]
-        [ActionName("Answer")]
-        public async Task<JsonResult> Create(Answer answer)
-        {
-
-            if (!ModelState.IsValid)
-            {
-
-                return Json(answer);
-            }
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-
-                db.Answers.Add(answer);
-                await db.SaveChangesAsync();
-
-
-            }            
-            return Json(answer);
-        }
+       
 
         
     }

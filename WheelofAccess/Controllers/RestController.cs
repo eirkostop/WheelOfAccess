@@ -59,8 +59,21 @@ namespace WheelofAccess.Controllers
             vm.SaveChanges();
             return Json(true);
         }
+        [HttpPut]
+        [ActionName("Answer")]
+        public async Task<JsonResult> Create(Answer answer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(answer);
+            }
+            vm.Answers.Add(answer);
+            await vm.SaveChangesAsync();
+            return Json(answer);
+        }
+
         [HttpDelete]
-        [ActionName("ChangeAnswer")]
+        [ActionName("Answer")]
         public JsonResult DeleteUserAnswerBool(int ReviewId, int QuestionId)
         {
             var ua = vm.Answers.Where(x => x.PossibleAnswer.Question_Title == QuestionId && x.Review_Id == ReviewId).FirstOrDefault();
@@ -76,7 +89,7 @@ namespace WheelofAccess.Controllers
 
         [HttpPut]
         [ActionName("Review")]
-        public async Task<JsonResult> addReview(string googleId)
+        public JsonResult addReview(string googleId)
         {
             var userId = User.Identity.GetUserId();
             var place=vm.Places.Where(p=>p.GoogleId==googleId).FirstOrDefault();
@@ -86,7 +99,7 @@ namespace WheelofAccess.Controllers
                 newReview.PlaceId = place.Id;
                 newReview.UserId = userId;
                 vm.Reviews.Add(newReview);
-                await vm.SaveChangesAsync();
+                vm.SaveChanges();
                 return Json(newReview.Id);
             }
             else

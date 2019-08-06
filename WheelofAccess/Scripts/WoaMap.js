@@ -29,7 +29,8 @@ function addPlace(request) {
     let name = $("#review").siblings().children('.title').html()
     $.ajax({
         method: "PUT",
-        url: "/Rest/Place",
+        async: false,
+        url: "/Rest/Place",        
         data: {
             Address: request.address,
             Name: name,
@@ -43,6 +44,7 @@ function addPlace(request) {
 function addReview(googleId) {
     $.ajax({
         method: "PUT",
+        async: false,
         url: "/Rest/Review",
         data: { googleId: googleId },
         success: function (response) {
