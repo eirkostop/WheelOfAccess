@@ -47,7 +47,8 @@ namespace WheelofAccess.Controllers
         [Authorize]
         public ActionResult Dashboard()
         {
-            var myreviews = db.Reviews.Where(x => x.UserId == User.Identity.GetUserId());
+            string userId = User.Identity.GetUserId();
+            var myreviews = db.Reviews.Where(x => x.UserId == userId);
             ViewBag.MyReviews = myreviews.Count();
             ViewBag.Reviews= db.Reviews.Count();
             ViewBag.Questions = db.Questions.Count();
