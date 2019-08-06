@@ -21,8 +21,9 @@ namespace WheelofAccess.Controllers
         public JsonResult GetRatings()
         {
            
-            var ratings = vm.Places.Select(x => new
-            {
+            var ratings = vm.Places.Select(x => 
+             new {
+                 Name=x.Name,
                 Id=x.Id,
                 GoogleId=x.GoogleId,
                 Rating = x.Rating.ToString()
