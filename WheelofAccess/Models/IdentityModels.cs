@@ -39,6 +39,7 @@ namespace WheelofAccess.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+       
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
@@ -57,4 +58,5 @@ namespace WheelofAccess.Models
         public virtual DbSet<Answer> Answers { get; set; }
 
     }
+    
 }

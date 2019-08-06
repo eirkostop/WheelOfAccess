@@ -21,11 +21,12 @@ namespace WheelofAccess.Controllers
         public JsonResult GetRatings()
         {
            
-            var ratings = vm.Places.Select(x => 
-             new {
+            var ratings = vm.Places.Select(x => new
+            {
                 Id=x.Id,
                 GoogleId=x.GoogleId,
-                Rating = x.Rating.ToString()});
+                Rating = x.Rating.ToString()
+            });
             return Json(ratings, JsonRequestBehavior.AllowGet);
 
         }
@@ -119,6 +120,8 @@ namespace WheelofAccess.Controllers
             });
             return Json(places, JsonRequestBehavior.AllowGet);
         }
+        
+        
       
         protected override void Dispose(bool disposing)
         {
