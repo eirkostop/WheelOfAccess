@@ -310,6 +310,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\noImg.png" />
     <Content Include="img\avatar.png" />
+    <Content Include="img\eirini.jpg" />
     <Content Include="img\foteini.jpg" />
     <Content Include="img\home.jpg" />
     <Content Include="img\home2.jpg" />

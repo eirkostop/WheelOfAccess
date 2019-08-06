@@ -39,8 +39,17 @@ namespace WheelofAccess.Controllers
 
             return View();
         }
-        
-          
+        public ActionResult Unlogged()
+        {
+
+            return View();
+        }
+        public ActionResult Dashboard()
+        {
+
+            return View();
+        }
+
 
     }
 }

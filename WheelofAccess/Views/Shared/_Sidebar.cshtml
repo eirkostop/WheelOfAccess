@@ -11,7 +11,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="@Url.Action("Index", "Home")">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
@@ -64,10 +64,8 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Home Screens:</h6>
-                    @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "collapse-item" })
-                    @Html.ActionLink("About", "About", "Home", new { }, new { @class = "collapse-item" })
-                    @Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "collapse-item" })
+                    <h6 class="collapse-header">About this app</h6>
+                    @Html.ActionLink("Landing Page", "Unlogged", "Home", new { }, new { @class = "collapse-item" })
                 </div>
             </div>
         </li>
