@@ -12280,3 +12280,12 @@ footer.sticky-footer {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%
 }
+.modal-content {
+    background: linear-gradient(rgba(225,225,225,.8) 0,rgba(225,225,225,.9)),url(../img/home2.jpg);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: auto;
+    color: #5d5d60;
+}
+

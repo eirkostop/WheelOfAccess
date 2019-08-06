@@ -320,6 +320,7 @@
     <Content Include="img\steps.jpg" />
     <Content Include="img\stroller.jpg" />
     <Content Include="img\woa.jpg" />
+    <Content Include="Scripts\Answers.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

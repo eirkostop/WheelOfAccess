@@ -11,20 +11,6 @@ btn.classList.add("mt-2")
 btn.innerHTML = "Review";
 btn.setAttribute("id", "review")
 
-function addReview(googleId) {
-    $.ajax({
-        method: "PUT",
-        url: "/Rest/Review",
-        data: { googleId: googleId },
-        success: function (response) {
-            window.location.assign("/Reviews/Edit/" + response);
-            console.log("success-review");
-        },
-        error: function (response) {
-            console.log('error-adding-review')
-        }
-    })
-}
 function addPlace(request) {
     let name = $("#review").siblings().children('.title').html()
     $.ajax({
@@ -115,9 +101,9 @@ function loadMarkers(response) {
                 });
 
                 let infowindow = new google.maps.InfoWindow({
-                    content: `<p id="title">${place.Name}</p>
+                    content: `<h3 id="title">${place.Name}</h3>
                                     <p class="small">${result.formatted_address}</p>
-                                    <h6>${place.Rating}</h3>
+                                    <h6>${place.Rating} / 5</h6>
                                     <div class="progress progress-sm">
                                         <div class="progress-bar progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(place.Rating / 5 * 100)}" style="width: ${(place.Rating / 5 * 100)}%"></div>
                                     </div>

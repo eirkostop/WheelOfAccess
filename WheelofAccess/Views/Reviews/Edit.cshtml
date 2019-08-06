@@ -23,40 +23,93 @@
             @ViewBag.PlaceName
         </div>
     </div>
+    <!-- Questions in list -->
+    @*<table class="table">
+            @foreach (var item in ViewBag.Questions)
+            {
+                <tr>
+                    <td>
+                        @(item.Title)
+                    </td>
+                    <td>
+                        @foreach (var answer in item.AllOptions)
+                        {
+                            <input type="radio" name="@item.Id" value="@answer.Id"> @answer.OptionName<br>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>*@
 
-    <table class="table">
+    @foreach (var item in ViewBag.Questions)
+    {
+        <!-- Question Modal -->
+        <div class="modal fade " id="myModal@(item.Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <p>@ViewBag.PlaceName</p>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="modal-title" id="exampleModalLongTitle">@(item.Title)</h5>
+                        <p></p>
+                        @foreach (var answer in item.AllOptions)
+                        {
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="@answer.Id" name="@item.Id" value="@answer.Id">
+                                <label class="custom-control-label" for="@answer.Id">@answer.OptionName</label>
+                            </div>
+                        }
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="no_@item.Id" name="@item.Id">
+                            <label class="custom-control-label" for="no_@item.Id">Don't know</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Finish</button>
 
-        @foreach (var item in ViewBag.Questions)
-        {
-            <tr>
-                <td>
-                    @(item.Title)
-                </td>
-                <td>
-                    @foreach (var answer in item.AllOptions)
-                    {
-                        <input type="radio" name="@item.Id" value="@answer.Id"> @answer.OptionName<br>
-                    }
-                </td>
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>*@
-            </tr>
-        }
-    </table>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Comment, "Comment", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(m => m.Comment, new { @class = "form-control" })
+                        <button type="button" class="btn btn-primary btn-prev">Previous</button>
+                        <button type="button" class="btn btn-primary btn-next">Next</button>
+                    </div>
+                </div>
+            </div>
 
         </div>
+    }
+    <!--Comment Modal-->
+    <div class="modal fade" id="myModalComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>@ViewBag.PlaceName</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Any additional comments?</h5>
+                    <p></p>
+                    @Html.TextAreaFor(m => m.Comment, new { @class = "form-control" })
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Finish</button>
+                    <input type="submit" value="Save Comment" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="row">
+
+        
         <div class="form-group">
             <div class="col-md-offset-2 m-1">
-                <input type="submit" value="Save Comment" class="btn btn-primary" />
+                <!-- Button for Modal -->
+                <button id="startReview"  type="button" class="btn btn-primary">Start Reviewing</button>
+
             </div>
         </div>
         <div class="form-group">
@@ -71,47 +124,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/Answers.js"></script>
 
-    <script>
-        const radios = document.querySelectorAll('input[type="radio"]');
-        for (let r of radios) {
-            r.onclick = e => {
-                $.ajax({
-                    method: "DELETE",
-                    url: "/Rest/Answer",
-                    data: {
-                        ReviewId: document.getElementById('Id').value,
-                        QuestionId: e.target.name
-                    },
-                    success: (response) => {
-                        console.log("success-deleted");
-                    }
-                });
-                $.ajax({
-                    method: "PUT",
-                    async:false,
-                    url: "/Rest/Answer",
-                    data: {
-                        Review_Id: document.getElementById('Id').value,
-                        Option_ID: e.target.value
-                    },
-                    success: function (response) {
-                        console.log("success");
-                    }
-                })
-                $.ajax({
-                    method: "POST",
-                    url: "/Rest/UpdateRating",
-                    data: {
-                        id: document.getElementById('Id').value,
-                    },
-                    success: function (response) {
-                    console.log("success")
-                    }
-                })
-            }
-        }
-        
-    </script>
 
 }
