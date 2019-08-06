@@ -317,3 +317,11 @@ footer {
 .text-custom {
     color: #64a19d
 }
+.img-about {
+    margin: -5rem;
+    position: absolute;
+    top: 0;
+    left: calc(50%);
+    width: 10rem;
+    height: 10rem
+}

@@ -4,7 +4,7 @@
 }
 
 
-<div class="card mt-5">
+<div class="card  card-account mt-5">
     <div class="card-header">
         <h3>@ViewBag.Title</h3>
         <div class="d-flex justify-content-end social_icon">
@@ -20,7 +20,7 @@
 
             @Html.ValidationSummary("", new { @class = "text-danger" })
 
-            @Html.LabelFor(m => m.Email, new { @class = "small text-white-50" })
+            @Html.LabelFor(m => m.Email, new { @class = "small" })
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" title="Email"><i class="fas fa-at"></i></span>
@@ -28,7 +28,7 @@
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </div>
-            @Html.LabelFor(m => m.UserName, new { @class = "small text-white-50" })
+            @Html.LabelFor(m => m.UserName, new { @class = "small" })
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" title="Username"><i class="fas fa-at"></i></span>
@@ -37,7 +37,7 @@
                 @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
             </div>
 
-            @Html.LabelFor(m => m.Password, new { @class = "small text-white-50" })
+            @Html.LabelFor(m => m.Password, new { @class = "small" })
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" title="Password"><i class="fas fa-key"></i></span>
@@ -45,7 +45,7 @@
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "password" })
                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
             </div>
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "small text-white-50" })
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "small" })
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" title="Confirm Password"><i class="fas fa-key"></i></span>
@@ -53,7 +53,7 @@
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "password" })
                 @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
-            @Html.LabelFor(m => m.FirstName, new { @class = "small text-white-50" })
+            @Html.LabelFor(m => m.FirstName, new { @class = "small" })
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" title="First Name"><i class="fas fa-user"></i></span>
@@ -61,7 +61,7 @@
                 @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
                 @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
             </div>
-            @Html.LabelFor(m => m.LastName, new { @class = "small text-white-50" })
+            @Html.LabelFor(m => m.LastName, new { @class = "small" })
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" title="Last Name"><i class="fas fa-user"></i></span>
@@ -69,7 +69,7 @@
                 @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
                 @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
             </div>
-            @Html.LabelFor(m => m.DateofBirth, new { @class = "small text-white-50" })
+            @Html.LabelFor(m => m.DateofBirth, new { @class = "small" })
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" title="Date of Birth"><i class="fas fa-calendar"></i></span>
@@ -80,7 +80,7 @@
 
 
             <div class="form-group">
-                <input type="submit" value="Register" class="btn float-right btn-custom login_btn">
+                <input type="submit" value="Register" class="btn float-right btn-primary">
                 <input type="button" value="Cancel" class="btn float-right btn-secondary btn-cancel" data-dismiss="modal">
             </div>
         }

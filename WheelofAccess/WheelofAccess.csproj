@@ -310,6 +310,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\noImg.png" />
     <Content Include="img\avatar.png" />
+    <Content Include="img\foteini.jpg" />
     <Content Include="img\home.jpg" />
     <Content Include="img\home2.jpg" />
     <Content Include="img\ipad2.png" />
@@ -378,7 +379,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Unlogged.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />

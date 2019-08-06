@@ -21,8 +21,8 @@ html, body {
 .card {
     margin-top: auto;
     margin-bottom: auto;
-    width: 400px;
-    background-color: rgba(0,0,0,0.8) !important;
+    /*width: 400px;*/
+    background-color: rgba(255,255,255,0.8) !important;
 }
 
 .social_icon span {
@@ -32,12 +32,12 @@ html, body {
 }
 
 .social_icon span:hover {
-    color: #64a19d;
+    color: #4f837f;
     cursor: pointer;
 }
 
-.card-header h3 {
-    color: white;
+.card-account{
+    width:400px
 }
 
 .social_icon {
@@ -48,8 +48,8 @@ html, body {
 
 .input-group-prepend span {
     width: 50px;
-    background-color: #64a19d;
-    color: rgba(255,255,255,.8);
+    background-color: #4f837f;
+    color: rgba(255,255,255,.5);
     border: 0 !important;
 }
 
@@ -58,9 +58,7 @@ input:focus {
     box-shadow: 0 0 0 0 !important;
 }
 
-.remember {
-    color: white;
-}
+
 
 .remember input {
     width: 20px;
@@ -69,25 +67,22 @@ input:focus {
     margin-right: 5px;
 }
 
-.login_btn {
+.btn-primary {
+    border:none;
     color: white;
-    background-color: #64a19d;
+    background-color: #4f837f;
     text-align:center;
     margin-left:0.5rem;
 }
 
-.login_btn:hover {
+.btn-primary:hover {
+    color:white;
     background-color: #4f837f;
-    color:white
 }
 
 
 a {
-    color: #64a19d
-}
-
-.links {
-    color: white;
+    color: #4f837f
 }
 
 .links a {
