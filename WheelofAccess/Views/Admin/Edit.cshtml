@@ -14,22 +14,31 @@
     @Html.HiddenFor(model => model.Id)
 
 
-    <fieldset class="form-horizontal">
-        <legend>Edit a user.</legend>
-        <div class="control-group">
-            @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
-            <div class="controls">
-                @Html.TextBoxFor(m => m.UserName)
+<fieldset class="form-horizontal">
+    <legend>Edit a user.</legend>
+    <div class="control-group">
+        @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.UserName)
+        </div>
+    </div>
+
+    <h4>Modify Role for User</h4>
+    <hr />
+    @Html.DropDownList("RoleId", "No Roles")
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-offset-2 m-1">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
-       
-        <h4>Modify Role for User</h4>
-        <hr />
-        @Html.DropDownList("RoleId", "No Roles")
-        <div class="form-actions no-color">
-            <input type="submit" value="Edit" class="btn" />
+        <div class="form-group">
+            <div class="col-md-offset-2 m-1">
+                @Html.ActionLink("Cancel", "Index", new { }, htmlAttributes: new { @class = "btn btn-secondary" })
+            </div>
         </div>
-    </fieldset>
+    </div>
+</fieldset>
 }
 
 @section Scripts {
