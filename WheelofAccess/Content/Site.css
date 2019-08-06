@@ -20,9 +20,9 @@ textarea {
 }
 
 #accordionSidebar {
-    background-image: url('../img/home.jpg');
-    background: -webkit-gradient(linear,left top,left bottom,from(#4f837f),color-stop(75%,rgba(22,22,22,.8)),to(#4f837f)),url(../img/home.jpg);
-    background: linear-gradient(to bottom,#4f837f 0,rgba(22,22,22,.8) 75%,#4f837f 100%),url(../img/home.jpg);
+    background-image: url('../img/homeOriginal.jpg');
+    background: -webkit-gradient(linear,left top,left bottom,from(#4f837f),color-stop(75%,rgba(22,22,22,.8)),to(#4f837f)),url(../img/homeOriginal.jpg);
+    background: linear-gradient(to bottom,#4f837f 0,rgba(22,22,22,.8) 75%,#4f837f 100%),url(../img/homeOriginal.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;

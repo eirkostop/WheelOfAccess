@@ -1,4 +1,5 @@
-﻿#mainNav {
+﻿@import url('styleUnlogged.css');
+#mainNav {
     min-height: 56px;
     background-color: #fff
 }
@@ -98,7 +99,7 @@
     padding: 15rem 0;
     background: -webkit-gradient(linear,left top,left bottom,from(rgba(22,22,22,.4)),color-stop(75%,rgba(22,22,22,.3)),to(rgba(22,22,22,.7))),url(../img/home.jpg);
     background: linear-gradient(to bottom,rgba(22,22,22,.4) 0,rgba(22,22,22,.3) 75%,rgba(22,22,22,.7) 100%),url(../img/home.jpg);
-    background-position: 70% 70%;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover

@@ -313,6 +313,7 @@
     <Content Include="img\foteini.jpg" />
     <Content Include="img\home.jpg" />
     <Content Include="img\home2.jpg" />
+    <Content Include="img\homeOriginal.jpg" />
     <Content Include="img\ipad2.png" />
     <Content Include="img\mymap2.jpg" />
     <Content Include="img\smiling.jpg" />
