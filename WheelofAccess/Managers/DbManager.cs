@@ -273,6 +273,7 @@ namespace WheelofAccess.Managers
                 var answers = from a in db.Answers
                               join r in db.Reviews on a.Review_Id equals r.Id
                               join p in db.Places on r.PlaceId equals p.Id
+                              where p.Id == place.Id
                               select a;
                 db.Answers.RemoveRange(answers);
 
