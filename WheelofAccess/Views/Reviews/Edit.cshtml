@@ -78,7 +78,7 @@
             r.onclick = e => {
                 $.ajax({
                     method: "DELETE",
-                    url: "/Rest/ChangeAnswer",
+                    url: "/Rest/Answer",
                     data: {
                         ReviewId: document.getElementById('Id').value,
                         QuestionId: e.target.name
@@ -89,7 +89,8 @@
                 });
                 $.ajax({
                     method: "PUT",
-                    url: "/Answers/Answer",
+                    async:false,
+                    url: "/Rest/Answer",
                     data: {
                         Review_Id: document.getElementById('Id').value,
                         Option_ID: e.target.value
