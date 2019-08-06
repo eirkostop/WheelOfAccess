@@ -335,17 +335,7 @@ namespace WheelofAccess.Managers
             }
             return questions;
         }
-        public void AddAnswer(Answer answer)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-
-                db.Answers.Add(answer);
-                db.SaveChanges();
-
-
-            }
-        }
+      
         public Answer FindAnswer(int id)
         {
             Answer question;

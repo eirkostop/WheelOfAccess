@@ -36,7 +36,13 @@ namespace WheelofAccess.Controllers
         {
             //Update review rating
             Review review= vm.Reviews.Find(id);
-            review.Rating = vm.Answers.Include(x => x.PossibleAnswer).Where(x => x.Review_Id == id).Select(x => (float?)x.PossibleAnswer.AnswerValue).Average();
+            //review.Rating = vm.Answers.Include(x => x.PossibleAnswer).Where(x => x.Review_Id == id)
+            //                          .Select(x => (float)x.PossibleAnswer.AnswerValue).Average();
+            var values = from pa in vm.PossibleAnswers
+                         join a in vm.Answers on pa.Id equals a.Option_ID
+                         join r in vm.Reviews on a.Review_Id equals id
+                         select ((float?)pa.AnswerValue);
+            review.Rating = values.DefaultIfEmpty(0f).Average();
             vm.Entry(review).State = EntityState.Modified;
             vm.SaveChanges();
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WheelofAccess.Managers;
@@ -26,7 +27,7 @@ namespace WheelofAccess.Controllers
         }
         [HttpPut]
         [ActionName("Answer")]
-        public JsonResult Create(Answer answer)
+        public async Task<JsonResult> Create(Answer answer)
         {
 
             if (!ModelState.IsValid)
@@ -34,7 +35,14 @@ namespace WheelofAccess.Controllers
 
                 return Json(answer);
             }
-            db.AddAnswer(answer);
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+
+                db.Answers.Add(answer);
+                await db.SaveChangesAsync();
+
+
+            }            
             return Json(answer);
         }
 
