@@ -18,7 +18,20 @@ $("div[id^='myModal']").each(function () {
 
 });
 
-        const radios = document.querySelectorAll('input[type="radio"]');
+const radios = document.querySelectorAll('input[type="radio"]');
+        $.ajax({
+            method: "GET",
+            url: "/Rest/Answers",
+            success: (response) => {
+                for (let a of response) {
+                    for (let r of radios) {
+                        if (a.Option_ID == r.id) {
+                            r.checked = true;
+                        }
+                    }
+                }
+            }
+        });
         for (let r of radios) {
             r.onclick = e => {
                 $.ajax({

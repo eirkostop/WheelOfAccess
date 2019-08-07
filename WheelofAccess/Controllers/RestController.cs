@@ -138,9 +138,18 @@ namespace WheelofAccess.Controllers
             });
             return Json(places, JsonRequestBehavior.AllowGet);
         }
-        
-        
-      
+        [HttpGet]
+        [ActionName("Answers")]
+        public JsonResult GetAnswers()
+        {
+            var answers = vm.Answers.Select(x => new { Option_ID = x.Option_ID, Review_Id = x.Review_Id });
+
+            return Json(answers, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
