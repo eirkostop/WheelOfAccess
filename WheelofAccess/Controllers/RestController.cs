@@ -31,6 +31,18 @@ namespace WheelofAccess.Controllers
             return Json(ratings, JsonRequestBehavior.AllowGet);
 
         }
+
+
+        [HttpGet]
+        [ActionName("Answers")]
+        public JsonResult GetAnswers()
+        {
+            var answers = vm.Answers.Select(x => new { Option_ID = x.Option_ID, Review_Id=x.Review_Id }) ;
+
+            return Json(answers, JsonRequestBehavior.AllowGet);
+
+        }
+
         [HttpPost]
         public JsonResult UpdateRating(int id)
         {

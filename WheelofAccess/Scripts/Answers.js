@@ -18,21 +18,25 @@ $("div[id^='myModal']").each(function () {
 
 });
 
-const radios = document.querySelectorAll('input[type="radio"]');
-        $.ajax({
-            method: "GET",
-            url: "/Rest/Answers",
-            success: (response) => {
-                for (let a of response) {
-                    for (let r of radios) {
-                        if (a.Option_ID == r.id) {
-                            r.checked = true;
-                        }
-                    }
+        const radios = document.querySelectorAll('input[type="radio"]');
+$.ajax({
+    method: "GET",
+    url: "/Rest/Answers",
+    success: (response) => {
+        for (let a of response) {
+            for (let r of radios) {
+                console.log(r)
+                if (a.Option_ID == r.id && a.Review_Id == document.getElementById('Id').value) {
+                    console.log("true")
+                    r.checked = true;
                 }
             }
-        });
-        for (let r of radios) {
+        }
+    }
+});
+
+for (let r of radios) {
+
             r.onclick = e => {
                 $.ajax({
                     method: "DELETE",
