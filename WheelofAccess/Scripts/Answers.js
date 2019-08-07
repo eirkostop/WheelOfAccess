@@ -26,7 +26,7 @@ $.ajax({
         for (let a of response) {
             for (let r of radios) {
                 console.log(r)
-                if (a.Option_ID == r.id) {
+                if (a.Option_ID == r.id && a.Review_Id == document.getElementById('Id').value) {
                     console.log("true")
                     r.checked = true;
                 }
