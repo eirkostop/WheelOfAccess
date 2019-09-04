@@ -1,156 +1,116 @@
-﻿@model WheelofAccess.Models.IndexViewModel
+﻿ @model WheelofAccess.Models.IndexViewModel
 @{
     ViewBag.Title = "Manage";
 }
-<div class="white-container">
 
-    <p class="text-success">@ViewBag.StatusMessage</p>
-    <div>
-        <div class="profile-jumb jumbotron">
-
-            <img class="rounded-circle" src="@Url.Action("Photo", "Account" )" id="profile-picture" />
-        </div>
-
-        <h2>@ViewBag.Title @User.Identity.Name</h2>
-        <hr />
-        <div class="d-flex justify-content-center h-100">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Change Details</h3>
-                    <div class="d-flex justify-content-end social_icon">
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">My Profile</h4>
+                        <p class="card-category">Manage my profile</p>
                     </div>
-                </div>
-                <div class="card-body" style="color:white">
-                    @using (Html.BeginForm("Profile", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <p>
-                            Email
-                        </p>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" title="change Email"><i class="fas fa-envelope"></i></span>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="btn btn-grey disabled">@User.Identity.Name</span>
-                            </div>
+                    <div class="card-body">
 
-                        </div>
-                        <p>
-                            Password
-                        </p>
-
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" title="change password"><i class="fas fa-key"></i></span>
-                            </div>
-                            <div class="input-group-append">
-                                @if (Model.HasPassword)
-                                {
-                                    @Html.ActionLink("Change your password", "ChangePassword", new { }, new { @class = "btn btn-grey" })
-                                }
-                                else
-                                {
-                                    @Html.ActionLink("Create", "SetPassword", new { }, new { @class = "btn btn-grey" })
-                                }
-                            </div>
-
-                        </div>
-
-                        <p>
-                            External logins @Model.Logins.Count
-                        </p>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" title="manage external logins"><i class="fas fa-external-link-alt"></i></span>
-                            </div>
-                            <div class="input-group-append">
-                                @Html.ActionLink("Manage", "ManageLogins", new { }, new { @class = "btn btn-grey" })
-                            </div>
-
-                        </div>
-
-
-
-                        <p>
-                            Photo
-                        </p>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" title="upload profile picture"><i class="fas fa-id-badge"></i></span>
-                            </div>
-                            <div class="custom-file">
-                                <label class="custom-file-label" for="fileUpload">Choose file</label>
-                                <input name="Profile" id="fileUpload" type="file" class="custom-file-input" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Update" class="btn float-right">
-                        </div>
-
-
-                    }
-                </div>
-                <div class="card-footer">
-                    Not @User.Identity.Name? <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                </div>
-            </div>
-
-        </div>
-        @*
-        Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-
-         See < a href = "https://go.microsoft.com/fwlink/?LinkId=403804" > this article </ a >
-            for details on setting up this ASP.NET application to support two - factor authentication using SMS.
-
-           Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*
-            < dt > Phone Number:</ dt >
-
-               < dd >
-                @(Model.PhoneNumber ?? "None")
-                @if(Model.PhoneNumber != null)
-                {
-                    < br />
-                    < text >[&nbsp; &nbsp; @Html.ActionLink("Change", "AddPhoneNumber") & nbsp; &nbsp;]</ text >
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        @using (Html.BeginForm("ProfilePic", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
-                            < text >[< input type = "submit" value = "Remove" class="btn-link" />]</text>
-                    }
-        }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
-            </dd>
-            <dt>Two-Factor Authentication:</dt>
-            <dd>*@
-        <p>
-            There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-            for details on setting up this ASP.NET application to support two-factor authentication.
-        </p>
-        @*@if (Model.TwoFactor)
-        {
-            using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <text>Enabled
-                <input type="submit" value="Disable" class="btn btn-link" />
-                </text>
-            }
-        }
-        else
-        {
-            using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <text>Disabled
-                <input type="submit" value="Enable" class="btn btn-link" />
-                </text>
-            }
-        }*@
+                            <p>
+                                Email
+                            </p>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" title="change Email"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <div class="input-group-append" style="width:calc(100% - 46px)">
+                                    <span class="btn btn-secondary w-100 disabled">@User.Identity.Name</span>
+                                </div>
 
+                            </div>
+
+                            <p>
+                                Password
+                            </p>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" title="change password"><i class="fas fa-key"></i></span>
+                                </div>
+                                <div class="input-group-append" style="width:calc(100% - 46px)">
+                                    @if (Model.HasPassword)
+                                    {
+                                        @Html.ActionLink("Change my password", "ChangePassword", new { }, new { @class = "btn btn-secondary w-100" })
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Create", "SetPassword", new { }, new { @class = "btn btn-secondary w-100" })
+                                    }
+                                </div>
+
+                            </div>
+                            <p>
+                                Personal Info
+                            </p>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" title="change personal info"><i class="fas fa-user"></i></span>
+                                </div>
+                                <div class="input-group-append" style="width:calc(100% - 46px)">
+                                    @Html.ActionLink("Change my personal info", "EditPersonalInfo", new { }, new { @class = "btn btn-secondary w-100" })
+                                </div>
+
+                            </div>
+                            <p>
+                                External logins @Model.Logins.Count
+                            </p>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" title="manage external logins"><i class="fas fa-external-link-alt"></i></span>
+                                </div>
+                                <div class="input-group-append " style="width:calc(100% - 46px)">
+                                    @Html.ActionLink("Manage Extrnal Logins", "ManageLogins", new { }, new { @class = "btn btn-secondary w-100" })
+                                </div>
+
+                            </div>
+
+                            <p>
+                                Photo
+                            </p>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" title="upload profile picture"><i class="fas fa-id-badge"></i></span>
+                                </div>
+                                <div class="custom-file">
+                                    <input name="Profile" id="fileUpload" type="file" class="custom-file-input" />
+                                    <label class="custom-file-label bg-secondary text-white text-center" for="fileUpload">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Update" class="btn btn-primary float-right">
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                            <img class="img" src="@Url.Action("Photo", "Account" )" style="width:100%" />
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-gray">@Html.DisplayFor(model=>model.FirstName)</h6>
+                        <h4 class="card-title">@User.Identity.Name</h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
+</div>

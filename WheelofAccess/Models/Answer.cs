@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,14 +10,14 @@ namespace WheelofAccess.Models
     public class Answer
     {
         public int Id { get; set; }
-        public int Givenanswer { get; set; }
-<<<<<<< Updated upstream
-        public virtual Question Question_Id { get; set; } 
-=======
-        [DisplayName("Question")]
-        public string Question_Title { get; set; }
-        public virtual Question Question { get; set; }
-        
->>>>>>> Stashed changes
+        //public int AnswerValue { get; set; }
+        [ForeignKey("Review")]
+        public int? Review_Id { get; set; }
+        public virtual Review Review { get; set; }
+
+        [ForeignKey("PossibleAnswer")]
+        public int Option_ID { get; set; }
+        public virtual PossibleAnswer PossibleAnswer { get; set; }
+
     }
 }

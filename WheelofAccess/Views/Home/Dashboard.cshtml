@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+@ViewBag.Title
+<div class="row">
+        <!-- Places  -->
+        <div class="col-4 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">I have reviewed</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.MyReviews Places</div>
+                            <a href="@Url.Action("Index","Reviews")" class="btn btn-info mt-4"><i class="fas fa-eye text-white-50"></i>&nbsp; See them</a>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-map-marker-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- All Places  -->
+        <div class="col-4 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Users have reviewed</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.Places Places</div>
+                            <a href="@Url.Action("Index","Places")" class="btn btn-primary mt-4"><i class="fas fa-eye text-white-50"></i>&nbsp; See them</a>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-map-marked-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Questions  -->
+        <div class="col-4 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">I have answered</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.MyAnswers Questions</div>
+                            <a href="@Url.Action("Index","Map")" class="btn btn-success mt-4"><i class="fas fa-star text-white-50"></i> Answer more</a>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check fa-2x text-gray-300"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <!-- Users  -->
+            <div class="col-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">The app has</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.Users Users</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-users fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                        <a href="@Url.Action("Index","Admin")" class="btn btn-primary mt-4"><i class="fas fa-eye text-white-50"></i>&nbsp; See them</a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Questions  -->
+            <div class="col-6 mb-4">
+                <div class="card border-left-info  shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">The app has</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.Questions Questions</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-question fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                        <a href="@Url.Action("Index","Questions")" class="btn btn-info mt-4"><i class="fas fa-eye text-white-50"></i>&nbsp; See them</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>

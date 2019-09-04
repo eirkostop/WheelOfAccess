@@ -4,13 +4,15 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using WheelofAccess.Managers;
 using WheelofAccess.Models;
 
 namespace WheelofAccess.Controllers
 {
-    [Authorize]
+    [Authorize] 
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -300,7 +302,6 @@ namespace WheelofAccess.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("Profile")]
         public ActionResult ProfilePic(HttpPostedFileBase Profile)
         {
             
@@ -320,7 +321,29 @@ namespace WheelofAccess.Controllers
             // save changes to database
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Manage");
+            return RedirectToAction("Index", "Home");
+        }
+        [HttpGet]
+        public ActionResult EditPersonalInfo(string id)
+        {
+            ApplicationUser user;
+            using(ApplicationDbContext vm = new ApplicationDbContext())
+            {
+                id = User.Identity.GetUserId();
+                user = vm.Users.Find(id);
+            }
+            return View(user);
+        }
+        [HttpPost]
+        public async Task<ActionResult> EditPersonalInfo(ApplicationUser objmodel)
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.FirstName = objmodel.FirstName;
+            user.LastName = objmodel.LastName;
+            user.UserName = objmodel.UserName;
+            user.Dateofbirth = objmodel.Dateofbirth;
+            var result = await UserManager.UpdateAsync(user);
+            return RedirectToAction("Index");
         }
 
         //
@@ -396,7 +419,7 @@ namespace WheelofAccess.Controllers
             }
             return false;
         }
-
+        
         public enum ManageMessageId
         {
             AddPhoneSuccess,

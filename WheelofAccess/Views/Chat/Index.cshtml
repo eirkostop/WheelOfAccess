@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Chat";
+}
+
+<div class="row h-100">
+    <div class="col-md-6 mx-auto mt-5">
+        <div class="card d-flex row mx-1">
+            <div class="card-header text-center bg-gradient-primary text-white-50">
+                CHAT
+            </div>
+            <div class="card-body col-10 mx-auto">
+                <label for="user">Chat With</label>
+                @Html.DropDownList("Users", (SelectList)ViewBag.Users, new { id = "user", @class = "form-control mb-4" })
+                <label for="message">Message</label>
+                <input id="message" type="text" class="form-control mb-4" />
+                <button id="send" class="btn btn-primary mb-4 float-right"><i class="fas fa-paper-plane text-white-50 "></i> Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mx-auto mt-5">
+        <div class="card d-flex row h-100 mx-1">
+            <div class="card-header text-center bg-gradient-primary text-white-50">
+                MESSAGES
+            </div>
+            <div class="card-body col-10 mx-auto " id="messages"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(document).ready(() => {
+            let chat = $.connection.chatHub;
+            let messageCounter = 0
+            // Get message from Hub
+            chat.client.gotMessage = (from, message,profilepic) => {
+                messageCounter++;
+                $(".badge").removeClass("d-none").html(messageCounter);
+                $('#messages').append(`<div class="bg-light rounded py-2 my-1 "><p class="text-right">&nbsp; 
+                                        ${from}: ${message}
+                                        <img style="width:3rem; height:3rem" class="img-thumbnail rounded-circle" src="data:image/jpg;base64,${profilepic}">
+                                        &nbsp; </p></div>`)
+                $("#newMessages").append(`<a class="dropdown-item d-flex align-items-center" href="/Chat">
+                                                        <div class="dropdown-list-image mr-3">
+                                                        <img class="rounded-circle" src="data:image/jpg;base64,${profilepic}" alt="">
+                                                            <div class="status-indicator bg-success"></div>
+                                                        </div>
+                                                        <div class="font-weight-bold">
+                                                            <div class="text-truncate">${message}</div>
+                                                            <div class="small text-gray-500">${from}</div>
+                                                        </div>
+                                                    </a>`)
+            }
+            // Get message from Hub (this was sent from HomeController)
+            chat.client.broadcast = (message) => {
+                $('#messages').append(`<p><strong>Announcement: ${message}</strong></p>`);
+            }
+            // Start the connection
+            $.connection.hub.start().done(() => {
+                // Only when connected call chat.server
+                $('#send').click(() => {
+                    //Send message to Hub by calling its Method
+                    chat.server.sendToUser($('#user').val(), $('#message').val());
+                    // Append my own message
+                    $('#messages').append(`<div class="bg-light rounded  py-2 my-1"><p>&nbsp; <img style="width:3rem; height:3rem" class="img-thumbnail rounded-circle" src="@Url.Action("Photo", "Account" )">&nbsp; Me: ${$('#message').val()}</p></div>`);
+                    // Reset message input
+                    $('#message').val('').focus();
+                });
+            });
+        });
+    </script>
+}

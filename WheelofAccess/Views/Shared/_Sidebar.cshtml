@@ -1,0 +1,140 @@
+﻿@using Microsoft.AspNet.Identity
+
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        @Html.ActionLink("Wheel of Access", "Index", "Home", new { area = "" }, new { @class = "sidebar-brand d-flex align-items-center justify-content-center" })
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+           <p class="nav-link" >
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </p>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Interface
+        </div>
+
+        <!-- Nav Item - Map -->
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index", "Map")">
+                <i class="fas fa-fw fa-map"></i>
+                <span>Map</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Places -->
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index", "Places")">
+                <i class="fas fa-fw fa-map-marker-alt"></i>
+                <span>Places</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Reviews Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapseReviews">
+                <i class="fas fa-fw fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <div id="collapseReviews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Manage:</h6>
+                    @Html.ActionLink("All", "Index", "Reviews", new { }, new { @class = "collapse-item" })
+                    @Html.ActionLink("Add New", "Create", "Reviews", new { }, new { @class = "collapse-item" })
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-file"></i>
+                <span>Pages</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">About this app</h6>
+                    @Html.ActionLink("Landing Page", "Unlogged", "Home", new { }, new { @class = "collapse-item" })
+                </div>
+            </div>
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        @if (User.IsInRole("Admin"))
+        {
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Admin Area
+            </div>
+
+            <!-- Nav Item - Users -->
+            <li class="nav-item">
+                <a class="nav-link" href=@Url.Action("Index", "Admin")>
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Questions Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQuestions" aria-expanded="true" aria-controls="collapseQuestions">
+                    <i class="fas fa-fw fa-question"></i>
+                    <span>Questions</span>
+                </a>
+                <div id="collapseQuestions" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage:</h6>
+                        @Html.ActionLink("All", "Index", "Questions", new { }, new { @class = "collapse-item" })
+                        @Html.ActionLink("Add New", "Create", "Questions", new { }, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+
+
+            <!-- Nav Item - Answers Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnswers" aria-expanded="true" aria-controls="collapseAnswers">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Possible Answers</span>
+                </a>
+                <div id="collapseAnswers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage:</h6>
+                        @Html.ActionLink("All", "Index", "PossibleAnswers", new { }, new { @class = "collapse-item" })
+                        @Html.ActionLink("Add New", "Create", "PossibleAnswers", new { }, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+        }
+
+        <!-- Nav Item - Donation -->
+        <li class="nav-item">
+            <a class="nav-link" href="/PayPal/PaymentWithPaypal/">
+                <i class="fas fa-fw fa-heart"></i>
+                <span>Donate</span>
+            </a>
+        </li>
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="text-center d-none d-md-inline rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+    </ul>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -12,8 +13,22 @@ namespace WheelofAccess.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
-    }
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
 
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+        [Display(Name = "Date of Birth")]
+        [ValidateDate(-90, -18)]
+
+        public DateTime DateofBirth { get; set; }
+    }
+    
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
@@ -83,4 +98,5 @@ namespace WheelofAccess.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+    
 }

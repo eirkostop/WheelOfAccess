@@ -15,55 +15,73 @@ namespace WheelofAccess.Controllers
         // GET: PossibleAnswers
         public ActionResult Index()
         {
-            var panswers = db.GetAnswerOptions();
-            return View(panswers);
+             var answers = db.GetAnswerOptions();
+            return View(answers);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
+            ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PossibleAnswer possible)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Create([Bind(Include = "Id,OptionName,AnswerValue,Question_Title")] PossibleAnswer possible)
         {
+
             if (!ModelState.IsValid)
             {
-                return View(possible);
+                ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+
+                return Json(possible);
             }
             db.CreateOption(possible);
-            return RedirectToAction("Create");
+            return RedirectToAction("Index");
         }
-        public ActionResult Edit(string id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            var opt = db.SearchOption(id);
+
+            if (opt == null)
             {
                 return HttpNotFound();
             }
-            var opt=db.SearchOption(id);
+            ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+
             return View(opt);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PossibleAnswer opt)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit([Bind(Include = "Id,OptionName,AnswerValue,Question_Title")]PossibleAnswer opt)
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title"); 
+
                 return View(opt);
             }
             db.EditOption(opt);
             return RedirectToAction("Index");
         }
-        public ActionResult Delete(string id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            var opt = db.SearchOption(id);
+
+            if (opt == null)
             {
                 return HttpNotFound();
             }
-            var opt = db.SearchOption(id);
+
             return View(opt);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(PossibleAnswer opt)
         {
             if (!ModelState.IsValid)

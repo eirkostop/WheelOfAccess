@@ -3,114 +3,108 @@
     ViewBag.Title = "Register";
 }
 
-<div class="transparent-container">
-    <div class="d-flex justify-content-center h-100">
-        <div class="card">
-            <div class="card-header">
-                <h3>@ViewBag.Title</h3>
-                <div class="d-flex justify-content-end social_icon">
-                    <span><i class="fab fa-facebook-square"></i></span>
-                    <span><i class="fab fa-google-plus-square"></i></span>
-                    <span><i class="fab fa-twitter-square"></i></span>
+
+<div class="card  card-account mt-5">
+    <div class="card-header">
+        <h3>@ViewBag.Title</h3>
+        <div class="d-flex justify-content-end social_icon">
+            <span title="Login with your Facebook Account"><i class="fab fa-facebook-square"></i></span>
+            <span title="Login with your Google Account" id="external-google" onclick="function(){ window.location.href = '/Account/Login'}"><i class="fab fa-google-plus-square"></i></span>
+            <span title="Login with your Twitter Account"><i class="fab fa-twitter-square"></i></span>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            @Html.LabelFor(m => m.Email, new { @class = "small" })
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" title="Email"><i class="fas fa-at"></i></span>
                 </div>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </div>
-            <div class="card-body">
-                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
-
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" title="Email"><i class="fas fa-envelope"></i></span>
-                        </div>
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" title="Password"><i class="fas fa-key"></i></span>
-                        </div>
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" title="Confirm Password"><i class="fas fa-key"></i></span>
-                        </div>
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
-                    </div>
-
-                    @*<div class="input-group form-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" title="upload profile picture"><i class="fas fa-id-badge"></i></span>
+            @Html.LabelFor(m => m.UserName, new { @class = "small" })
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" title="Username"><i class="fas fa-at"></i></span>
+                </div>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Username" })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
             </div>
-            <div class="custom-file">
-                <label class="custom-file-label" for="fileUpload">Choose file</label>
-                @Html.TextBoxFor(m => m.ProfilePic, new { type = "file", @class = "custom-file-input", id = "fileUpload" })                            <label class="custom-file-label" for="fileUpload"></label>
 
+            @Html.LabelFor(m => m.Password, new { @class = "small" })
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" title="Password"><i class="fas fa-key"></i></span>
+                </div>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
             </div>
-                </div>*@
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "small" })
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" title="Confirm Password"><i class="fas fa-key"></i></span>
+                </div>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.FirstName, new { @class = "small" })
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" title="First Name"><i class="fas fa-user"></i></span>
+                </div>
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.LastName, new { @class = "small" })
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" title="Last Name"><i class="fas fa-user"></i></span>
+                </div>
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.DateofBirth, new { @class = "small" })
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" title="Date of Birth"><i class="fas fa-calendar"></i></span>
+                </div>
+                @Html.EditorFor(model => model.DateofBirth, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                @Html.ValidationMessageFor(model => model.DateofBirth, "", new { @class = "text-danger" })
+            </div>
 
-                    <div class="form-group">
-                        <input type="submit" value="Register" class="btn float-right">
-                    </div>
-                }
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn float-right btn-primary">
+                <input type="button" value="Cancel" class="btn float-right btn-secondary btn-cancel" data-dismiss="modal">
             </div>
-           
+        }
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+            Already a member? @Html.ActionLink("Sign In", "Login")
+        </div>
+        <div class="d-flex justify-content-center">
+            @* Enable this once you have account confirmation enabled for password reset functionality
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>*@
         </div>
     </div>
 </div>
 
 
-
-@*<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ProfilePic, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-
-            <input type="file" name="ProfilePic" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
-
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}*@
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script>
-                $('#fileUpload').on('change',function(){
-                //get the file name
-                const fileName = this.files[0].name; 
-                //replace the "Choose a file" label
-                $(this).next('.custom-file-label').append(fileName);
-            })
+    <script>
+        //External login with google button
+        $("#external-google").on("click", function () { window.location.href = "/Account/Login";$("#Google").click() })
+        //Cancel button in login modal
+        $(".btn-cancel").on("click", function () { window.location.href="/" })
     </script>
 }

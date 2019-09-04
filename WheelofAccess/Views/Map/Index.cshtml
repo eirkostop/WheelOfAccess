@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Map";
+}
+<style>
+    /* Set the size of the div element that contains the map */
+    #map {
+        height: 500px;
+        width: 100%;
+        padding-bottom: 1rem;
+    }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU4GJSR-OtHsz8ifXlyTSquKz7iTY1XS4&callback=initMap&libraries=places">
+</script>
+<div id="map"></div>
+
+@section Scripts{
+    <script src="~/Scripts/WoaMap.js"></script>
+}

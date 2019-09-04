@@ -9,7 +9,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WheelofAccess.Models;
+using WheelofAccess.View_Models;
 using System.IO;
+using System.Collections.Generic;
+using WheelofAccess.Chat_Service;
 
 namespace WheelofAccess.Controllers
 {
@@ -23,7 +26,7 @@ namespace WheelofAccess.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +38,9 @@ namespace WheelofAccess.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -76,10 +79,11 @@ namespace WheelofAccess.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
+                    ApplicationUsers.LoggedInUsers.Add(new ChatUsersViewModel { Name = model.UserName });
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -121,7 +125,7 @@ namespace WheelofAccess.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -150,20 +154,22 @@ namespace WheelofAccess.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Dateofbirth = model.DateofBirth };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                UserManager.AddToRole(user.Id, "Regular User");
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -176,7 +182,7 @@ namespace WheelofAccess.Controllers
         [AllowAnonymous]
         public FileResult Photo()
         {
-            
+
 
             // get EF Database (maybe different way in your applicaiton)
             var db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
@@ -185,18 +191,18 @@ namespace WheelofAccess.Controllers
             var userId = User.Identity.GetUserId();
             if (userId == null)
             {
-                return new FilePathResult("/Content/noImg.png", "image/jpeg");
+                return new FilePathResult("~/img/avatar.png", "image/jpeg");
 
             }
             var user = db.Users.Where(x => x.Id == userId).FirstOrDefault();
-           
+
             if (user.ProfilePic != null)
             {
                 return new FileContentResult(user.ProfilePic, "image/jpeg");
             }
             else
             {
-                return new FilePathResult("/Content/noImg.png", "image/jpeg");
+                return new FilePathResult("~/img/avatar.png", "image/jpeg");
             }
         }
 
@@ -300,7 +306,7 @@ namespace WheelofAccess.Controllers
         }
 
         //
-        // POST: /Account/ExternalLogin
+        // POST: /Account/Externalre
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -361,6 +367,7 @@ namespace WheelofAccess.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    ApplicationUsers.LoggedInUsers.Add(new ChatUsersViewModel { Name = loginInfo.Email });
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -402,9 +409,11 @@ namespace WheelofAccess.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
+
                 }
                 AddErrors(result);
             }

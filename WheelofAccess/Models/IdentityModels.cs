@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Drawing;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -15,9 +17,12 @@ namespace WheelofAccess.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [DataType(DataType.Date)]
+        //[ValidateDate(-90,-18)]
         public DateTime? Dateofbirth { get; set; }
         public byte[] ProfilePic { get; set; } 
         public virtual ICollection<Review> GivenReviews { get; set; }
+        public virtual ICollection<Place> ReviewedPlaces { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -27,12 +32,19 @@ namespace WheelofAccess.Models
         }
     }
 
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+       
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        //}
 
         public static ApplicationDbContext Create()
         {
@@ -46,4 +58,5 @@ namespace WheelofAccess.Models
         public virtual DbSet<Answer> Answers { get; set; }
 
     }
+    
 }
