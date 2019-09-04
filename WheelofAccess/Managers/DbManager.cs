@@ -16,7 +16,7 @@ namespace WheelofAccess.Managers
             ICollection<Question> questions;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                questions = db.Questions.Include("AllOptions").ToList();
+                questions = db.Questions.Include("PossibleAnswers").ToList();
             }
             return questions;
         }
@@ -170,7 +170,7 @@ namespace WheelofAccess.Managers
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                foreach (var item in db.Answers.Where(x=>x.Review_Id == review.Id))
+                foreach (var item in db.Answers.Where(x=>x.ReviewId == review.Id))
                 {
                     
                         db.Answers.Remove(item);
@@ -188,7 +188,7 @@ namespace WheelofAccess.Managers
             ICollection<Place> places;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                places = db.Places.Include("CategoriesofPlace").Include("StoreReviews").ToList();
+                places = db.Places.Include("PlaceCategories").Include("PlaceReviews").ToList();
             }
             return places;
         }
@@ -204,7 +204,7 @@ namespace WheelofAccess.Managers
                     Category category = db.Categories.Find(id);
                     if (category != null)
                     {
-                        place.CategoriesofPlace.Add(category);
+                        place.PlaceCategories.Add(category);
 
                     }
                 }
@@ -226,8 +226,8 @@ namespace WheelofAccess.Managers
             Place result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                result = db.Places.Include("CategoriesofPlace")
-                                  .Include("StoreReviews")
+                result = db.Places.Include("PlaceCategories")
+                                  .Include("PlaceReviews")
                                   .Include("Users")                                  
                                   .Where(x => x.Id == id).FirstOrDefault();
 
@@ -240,8 +240,8 @@ namespace WheelofAccess.Managers
             {
                 db.Places.Attach(place);
 
-                db.Entry(place).Collection("CategoriesofPlace").Load();
-                place.CategoriesofPlace.Clear();
+                db.Entry(place).Collection("PlaceCategories").Load();
+                place.PlaceCategories.Clear();
                 db.SaveChanges();
                 foreach (var id in categoriesIds)
                 {
@@ -252,7 +252,7 @@ namespace WheelofAccess.Managers
                     {
 
 
-                        place.CategoriesofPlace.Add(category);
+                        place.PlaceCategories.Add(category);
 
                     }
                 }
@@ -271,7 +271,7 @@ namespace WheelofAccess.Managers
                 var reviews = db.Reviews.Where(x => x.PlaceId == place.Id);
                 db.Reviews.RemoveRange(reviews);
                 var answers = from a in db.Answers
-                              join r in db.Reviews on a.Review_Id equals r.Id
+                              join r in db.Reviews on a.ReviewId equals r.Id
                               join p in db.Places on r.PlaceId equals p.Id
                               where p.Id == place.Id
                               select a;

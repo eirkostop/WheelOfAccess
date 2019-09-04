@@ -29,9 +29,9 @@
                         @(item.Title)
                     </td>
                     <td>
-                        @foreach (var answer in item.AllOptions)
+                        @foreach (var answer in item.PossibleAnswers)
                         {
-                            <input type="radio" name="@item.Id" value="@answer.Id"> @answer.OptionName<br>
+                            <input type="radio" name="@item.Id" value="@answer.Id"> @answer.Answer<br>
                         }
                     </td>
                 </tr>
@@ -53,11 +53,11 @@
                     <div class="modal-body">
                         <h5 class="modal-title" id="exampleModalLongTitle">@(item.Title)</h5>
                         <p></p>
-                        @foreach (var answer in item.AllOptions)
+                        @foreach (var answer in item.PossibleAnswers)
                         {
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input" id="@answer.Id" name="@item.Id" value="@answer.Id">
-                                <label class="custom-control-label" for="@answer.Id">@answer.OptionName</label>
+                                <label class="custom-control-label" for="@answer.Id">@answer.Answer</label>
                             </div>
                         }
                         <div class="custom-control custom-radio">

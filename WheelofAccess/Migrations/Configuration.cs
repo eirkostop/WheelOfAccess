@@ -32,26 +32,26 @@ namespace WheelofAccess.Migrations
             //context.Questions.AddOrUpdate(x => x.Title, title_6);
             //context.Questions.AddOrUpdate(x => x.Title, title_7);
 
-            //PossibleAnswer option_1 = new PossibleAnswer() { OptionName = "Yes",AnswerValue = 5,Question_Title = 3 };
-            //PossibleAnswer option_2 = new PossibleAnswer() { OptionName = "No", AnswerValue = 0 ,Question_Title = 3 };
+            //PossibleAnswer option_1 = new PossibleAnswer() { Answer = "Yes", AnswerValue = 5, QuestionId = 1 };
+            //PossibleAnswer option_2 = new PossibleAnswer() { Answer = "No", AnswerValue = 0, QuestionId = 1 };
+            //PossibleAnswer option_3 = new PossibleAnswer() { Answer = "Yes", AnswerValue = 0, QuestionId = 2 };
+            //PossibleAnswer option_4 = new PossibleAnswer() { Answer = "No", AnswerValue = 5, QuestionId = 2 };
+            //PossibleAnswer option_5 = new PossibleAnswer() { Answer = "Yes", AnswerValue = 5, QuestionId = 3 };
+            //PossibleAnswer option_6 = new PossibleAnswer() { Answer = "No", AnswerValue = 0, QuestionId = 3 };
+            //PossibleAnswer option_7 = new PossibleAnswer() { Answer = "Easy", AnswerValue = 5, QuestionId = 4 };
+            //PossibleAnswer option_8 = new PossibleAnswer() { Answer = "Hard", AnswerValue = 0, QuestionId = 4 };
+            //PossibleAnswer option_9 = new PossibleAnswer() { Answer = "Somewhat easy", AnswerValue = 3, QuestionId = 4 };
+            //PossibleAnswer option_10 = new PossibleAnswer() { Answer = "Accessible", AnswerValue = 5, QuestionId = 5 };
+            //PossibleAnswer option_11 = new PossibleAnswer() { Answer = "Not accessible,on the same level and spacious", AnswerValue = 4, QuestionId = 5 };
+            //PossibleAnswer option_12 = new PossibleAnswer() { Answer = "Not accessible,on the same level with a spacious hall ", AnswerValue = 3, QuestionId = 5 };
+            //PossibleAnswer option_13 = new PossibleAnswer() { Answer = "Different level or really small", AnswerValue = 0, QuestionId = 5 };
+            //PossibleAnswer option_14 = new PossibleAnswer() { Answer = "Yes,free of charge", AnswerValue = 5, QuestionId = 6 };
+            //PossibleAnswer option_15 = new PossibleAnswer() { Answer = "Yes,payment required", AnswerValue = 3, QuestionId = 6 };
+            //PossibleAnswer option_16 = new PossibleAnswer() { Answer = "No", AnswerValue = 0, QuestionId = 6 };
+            //PossibleAnswer option_17 = new PossibleAnswer() { Answer = "Yes", AnswerValue = 5, QuestionId = 7 };
+            //PossibleAnswer option_18 = new PossibleAnswer() { Answer = "No", AnswerValue = 0, QuestionId = 7 };
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_1);
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_2);
-            //PossibleAnswer option_3 = new PossibleAnswer() { OptionName = "Yes", AnswerValue = 0, Question_Title = 4 };
-            //PossibleAnswer option_4 = new PossibleAnswer() { OptionName = "No", AnswerValue = 5, Question_Title = 4 };
-            //PossibleAnswer option_5 = new PossibleAnswer() { OptionName = "Yes", AnswerValue = 5, Question_Title = 5 };
-            //PossibleAnswer option_6 = new PossibleAnswer() { OptionName = "No", AnswerValue = 0, Question_Title = 5};
-            //PossibleAnswer option_7 = new PossibleAnswer() { OptionName = "Easy", AnswerValue = 5, Question_Title = 6};
-            //PossibleAnswer option_8 = new PossibleAnswer() { OptionName = "Hard", AnswerValue = 0, Question_Title = 6 };
-            //PossibleAnswer option_9 = new PossibleAnswer() { OptionName = "Somewhat easy", AnswerValue = 3, Question_Title = 6 };
-            //PossibleAnswer option_10 = new PossibleAnswer() { OptionName = "Accessible", AnswerValue = 5, Question_Title = 7 };
-            //PossibleAnswer option_11= new PossibleAnswer() { OptionName = "Not accessible,on the same level and spacious", AnswerValue = 4, Question_Title = 7 };
-            //PossibleAnswer option_12= new PossibleAnswer() { OptionName = "Not accessible,on the same level with a spacious hall ", AnswerValue = 3, Question_Title = 7 };
-            //PossibleAnswer option_13 = new PossibleAnswer() { OptionName = "Different level or really small", AnswerValue = 0, Question_Title = 7 };
-            //PossibleAnswer option_14 = new PossibleAnswer() { OptionName = "Yes,free of charge", AnswerValue =5 , Question_Title = 8 };
-            //PossibleAnswer option_15 = new PossibleAnswer() { OptionName = "Yes,payment required", AnswerValue = 3, Question_Title = 8 };
-            //PossibleAnswer option_16 = new PossibleAnswer() { OptionName = "No", AnswerValue = 0, Question_Title = 8};
-            //PossibleAnswer option_17 = new PossibleAnswer() { OptionName = "Yes", AnswerValue = 5, Question_Title = 9 };
-            //PossibleAnswer option_18 = new PossibleAnswer() { OptionName = "No", AnswerValue = 0, Question_Title = 9 };
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_3);
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_4);
             //context.PossibleAnswers.AddOrUpdate(x => x.Id, option_5);
@@ -75,7 +75,6 @@ namespace WheelofAccess.Migrations
             //    var rolestore = new RoleStore<IdentityRole>(context);
             //    RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(rolestore);
 
-
             //    string email = "admin@gmail.gr";
             //    string username = "admin";
             //    string password = "Admin1!";
@@ -88,7 +87,6 @@ namespace WheelofAccess.Migrations
             //        role = new IdentityRole(roleName);
             //        roleManager.Create(role);
             //    }
-
 
             //    IdentityRole role2 = roleManager.FindByName(roleName2);
             //    if (role2 == null)

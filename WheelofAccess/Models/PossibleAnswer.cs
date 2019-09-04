@@ -11,13 +11,12 @@ namespace WheelofAccess.Models
     public class PossibleAnswer
     {
         public int Id { get; set; }
-        [DisplayName("Option")]
-        public string OptionName { get; set; }
+        public string Answer { get; set; }
         [DisplayName("Answer Score")] 
         public int AnswerValue { get; set; }
 
         [ForeignKey("Question")]
-        public int Question_Title{ get; set; }
+        public int QuestionId{ get; set; }
         public virtual Question Question { get; set; }
     }
 }

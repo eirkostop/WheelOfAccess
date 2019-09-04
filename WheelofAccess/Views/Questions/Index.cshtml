@@ -50,9 +50,9 @@
                                 @Html.DisplayFor(modelItem => item.Title)
                             </td>
                             <td>
-                                @foreach (var option in item.AllOptions)
+                                @foreach (var option in item.PossibleAnswers)
                                 {
-                                @Html.DisplayFor(x => option.OptionName) 
+                                @Html.DisplayFor(x => option.Answer) 
                                 <span class="small text-grey">
                                     <text> | Value:</text>
 

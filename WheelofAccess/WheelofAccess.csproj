@@ -247,9 +247,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Migrations\201908021354543_Foteini.cs" />
-    <Compile Include="Migrations\201908021354543_Foteini.Designer.cs">
-      <DependentUpon>201908021354543_Foteini.cs</DependentUpon>
+    <Compile Include="Migrations\201909040709547_first.cs" />
+    <Compile Include="Migrations\201909040709547_first.Designer.cs">
+      <DependentUpon>201909040709547_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909040731014_updateQuestion.cs" />
+    <Compile Include="Migrations\201909040731014_updateQuestion.Designer.cs">
+      <DependentUpon>201909040731014_updateQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909040838353_updatemodels.cs" />
+    <Compile Include="Migrations\201909040838353_updatemodels.Designer.cs">
+      <DependentUpon>201909040838353_updatemodels.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ValidateDate.cs" />
     <Compile Include="Services\ChatHub.cs" />
@@ -464,8 +472,14 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908021354543_Foteini.resx">
-      <DependentUpon>201908021354543_Foteini.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909040709547_first.resx">
+      <DependentUpon>201909040709547_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909040731014_updateQuestion.resx">
+      <DependentUpon>201909040731014_updateQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909040838353_updatemodels.resx">
+      <DependentUpon>201909040838353_updatemodels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

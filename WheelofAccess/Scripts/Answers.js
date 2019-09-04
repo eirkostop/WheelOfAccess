@@ -25,9 +25,7 @@ $.ajax({
     success: (response) => {
         for (let a of response) {
             for (let r of radios) {
-                console.log(r)
-                if (a.Option_ID == r.id && a.Review_Id == document.getElementById('Id').value) {
-                    console.log("true")
+                if (a.PossibleAnswerId == r.id && a.ReviewId == document.getElementById('Id').value) {
                     r.checked = true;
                 }
             }
@@ -46,7 +44,6 @@ for (let r of radios) {
                         QuestionId: e.target.name
                     },
                     success: (response) => {
-                        console.log("success-deleted");
                     }
                 });
                 $.ajax({
@@ -54,11 +51,10 @@ for (let r of radios) {
                     async:false,
                     url: "/Rest/Answer",
                     data: {
-                        Review_Id: document.getElementById('Id').value,
-                        Option_ID: e.target.value
+                        ReviewId: document.getElementById('Id').value,
+                        PossibleAnswerId: e.target.value
                     },
                     success: function (response) {
-                        console.log("success");
                     }
                 })
                 $.ajax({
@@ -68,7 +64,6 @@ for (let r of radios) {
                         id: document.getElementById('Id').value,
                     },
                     success: function (response) {
-                    console.log("success")
                     }
                 })
             }

@@ -29,7 +29,7 @@ namespace WheelofAccess.Controllers
             //    ViewBag.Places = db.Places.Count();
             //    ViewBag.Reviews = db.Reviews.Count();
             //    ViewBag.Questions = db.Questions.Count();
-            //    ViewBag.MyAnswers = myreviews.Select(x => db.Answers.Where(a => a.Review_Id == x.Id).Count()).Sum();
+            //    ViewBag.MyAnswers = myreviews.Select(x => db.Answers.Where(a => a.ReviewId == x.Id).Count()).Sum();
             //    ViewBag.MyReviews = myreviews.Count();
             //    ViewBag.Users = db.Users.Count();
             //}
@@ -64,7 +64,7 @@ namespace WheelofAccess.Controllers
         //    ViewBag.MyReviews = myreviews.Count();
         //    ViewBag.Reviews = db.Reviews.Count();
         //    ViewBag.Questions = db.Questions.Count();
-        //    ViewBag.MyAnswers = myreviews.Select(x => db.Answers.Where(a => a.Review_Id == x.Id).Count()).Sum();
+        //    ViewBag.MyAnswers = myreviews.Select(x => db.Answers.Where(a => a.ReviewId == x.Id).Count()).Sum();
         //    ViewBag.Users = db.Users.Count();
         //    return View();
         //}

@@ -22,7 +22,7 @@ namespace WheelofAccess.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "Id","OptionName");
+            ViewBag.PossibleAnswers = new SelectList(db.GetAnswerOptions(), "Id","Answer");
             return View();
         }
 
@@ -33,8 +33,6 @@ namespace WheelofAccess.Controllers
         {
             if (!ModelState.IsValid)
             {
-                //ViewBag.AllOptions = new SelectList(db.GetAnswerOptions(), "Id","OptionName", "AnswerValue");
-
                 return View(question);
             }
             db.AddQuestion(question);

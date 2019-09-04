@@ -10,8 +10,8 @@ namespace WheelofAccess.Models
     {
         public Place()
         {
-            CategoriesofPlace = new HashSet<Category>();
-            StoreReviews = new HashSet<Review>();
+            PlaceCategories = new HashSet<Category>();
+            PlaceReviews = new HashSet<Review>();
         }
         public int Id { get; set; }
         public string GoogleId { get; set; }
@@ -19,8 +19,8 @@ namespace WheelofAccess.Models
         public string Name { get; set; }
         public string  Address {get;set;}
         [DisplayName("Category")]
-        public virtual ICollection<Category> CategoriesofPlace { get; set; }
-        public virtual ICollection<Review> StoreReviews { get; set; }
+        public virtual ICollection<Category> PlaceCategories { get; set; }
+        public virtual ICollection<Review> PlaceReviews { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }

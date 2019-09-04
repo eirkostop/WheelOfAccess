@@ -2,7 +2,7 @@
 var request;
 var service;
 const apikey = 'AIzaSyDDIANXZR7wMkoTZfgwe8bHqrUKbbrkdDg';
-const details = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=';
+//const details = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=';
 const styles = [{ "featureType": "landscape", "stylers": [{ "saturation": -100 }, { "lightness": 65 }, { "visibility": "on" }] }, { "featureType": "poi", "stylers": [{ "saturation": -100 }, { "lightness": 51 }, { "visibility": "simplified" }] }, { "featureType": "road.highway", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "road.arterial", "stylers": [{ "saturation": -100 }, { "lightness": 30 }, { "visibility": "on" }] }, { "featureType": "road.local", "stylers": [{ "saturation": -100 }, { "lightness": 40 }, { "visibility": "on" }] }, { "featureType": "transit", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "administrative.province", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels", "stylers": [{ "visibility": "on" }, { "lightness": -25 }, { "saturation": -100 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "hue": "#ffff00" }, { "lightness": -25 }, { "saturation": -97 }] }];
 let btn = document.createElement("BUTTON");
 btn.classList.add("btn")
@@ -18,11 +18,9 @@ function addReview(googleId) {
         url: "/Rest/Review",
         data: { googleId: googleId },
         success: function (response) {
-            window.location.assign("/Reviews/Edit/" + response);
-            console.log("success-review");
+            window.location.assign("/Reviews/Edit/" + response);           
         },
         error: function (response) {
-            console.log('error-adding-review')
         }
     })
 }
@@ -38,7 +36,6 @@ function addPlace(request) {
             GoogleId: request.place_id
         },
         success: function (response) {
-            console.log("success-place");
         }
     })
 }
@@ -60,7 +57,7 @@ function addReviewButton(e) {
             console.log('Geocoder failed due to: ' + status);
         }
 
-        if (!document.getElementsByClassName('poi-info-window gm-style')[0].contains(document.getElementById('review'))) {
+        if (document.getElementsByClassName('poi-info-window gm-style')[0]&&!document.getElementsByClassName('poi-info-window gm-style')[0].contains(document.getElementById('review'))) {
             document.getElementsByClassName('poi-info-window gm-style')[0].appendChild(btn);
             btn.onclick = function () {
                 addPlace(request);
@@ -74,11 +71,9 @@ function getRatings() {
         method: "GET",
         url: "Rest/Ratings",
         success: function (response) {
-            console.log("Success")
             loadMarkers(response)
         },
         error: function (response) {
-            console.log("error")
         }
     });
 }

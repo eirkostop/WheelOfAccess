@@ -21,19 +21,19 @@ namespace WheelofAccess.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+            ViewBag.QuestionId = new SelectList(db.GetQuestions(), "Id", "Title");
 
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "Id,OptionName,AnswerValue,Question_Title")] PossibleAnswer possible)
+        public ActionResult Create([Bind(Include = "Id,Answer,AnswerValue,QuestionId")] PossibleAnswer possible)
         {
 
             if (!ModelState.IsValid)
             {
-                ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+                ViewBag.QuestionId = new SelectList(db.GetQuestions(), "Id", "Title");
 
                 return Json(possible);
             }
@@ -49,18 +49,18 @@ namespace WheelofAccess.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title");
+            ViewBag.QuestionId = new SelectList(db.GetQuestions(), "Id", "Title");
 
             return View(opt);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "Id,OptionName,AnswerValue,Question_Title")]PossibleAnswer opt)
+        public ActionResult Edit([Bind(Include = "Id,Answer,AnswerValue,QuestionId")]PossibleAnswer opt)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Question_Title = new SelectList(db.GetQuestions(), "Id", "Title"); 
+                ViewBag.QuestionId = new SelectList(db.GetQuestions(), "Id", "Title"); 
 
                 return View(opt);
             }

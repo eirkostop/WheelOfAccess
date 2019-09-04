@@ -13,7 +13,7 @@ namespace WheelofAccess.Controllers
 {
     public class RestController : Controller
     {
-        private ApplicationDbContext vm = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
        
 
         [HttpGet]
@@ -21,7 +21,7 @@ namespace WheelofAccess.Controllers
         public JsonResult GetRatings()
         {
            
-            var ratings = vm.Places.Select(x => 
+            var ratings = db.Places.Select(x => 
              new {
                  Name=x.Name,
                 Id=x.Id,
@@ -37,7 +37,7 @@ namespace WheelofAccess.Controllers
         [ActionName("Answers")]
         public JsonResult GetAnswers()
         {
-            var answers = vm.Answers.Select(x => new { Option_ID = x.Option_ID, Review_Id=x.Review_Id }) ;
+            var answers = db.Answers.Select(x => new { PossibleAnswerId = x.PossibleAnswerId, ReviewId=x.ReviewId }) ;
 
             return Json(answers, JsonRequestBehavior.AllowGet);
 
@@ -47,28 +47,28 @@ namespace WheelofAccess.Controllers
         public JsonResult UpdateRating(int id)
         {
             //Update review rating
-            Review review= vm.Reviews.Find(id);
-            //review.Rating = vm.Answers.Include(x => x.PossibleAnswer).Where(x => x.Review_Id == id)
+            Review review= db.Reviews.Find(id);
+            //review.Rating = db.Answers.Include(x => x.PossibleAnswer).Where(x => x.ReviewId == id)
             //                          .Select(x => (float)x.PossibleAnswer.AnswerValue).Average();
-            var values = from pa in vm.PossibleAnswers
-                         join a in vm.Answers on pa.Id equals a.Option_ID
-                         join r in vm.Reviews on a.Review_Id equals id
+            var values = from pa in db.PossibleAnswers
+                         join a in db.Answers on pa.Id equals a.PossibleAnswerId
+                         join r in db.Reviews on a.ReviewId equals id
                          select ((float)pa.AnswerValue);
             review.Rating = (float)Math.Round(values.DefaultIfEmpty(0f).Average(),1);
-            vm.Entry(review).State = EntityState.Modified;
-            vm.SaveChanges();
+            db.Entry(review).State = EntityState.Modified;
+            db.SaveChanges();
 
             //Update place rating
-            Place place = vm.Places.Where(x => x.Id == review.PlaceId).FirstOrDefault();
-            var ratings = from pa in vm.PossibleAnswers
-                           join a in vm.Answers on pa.Id equals a.Option_ID
-                           join r in vm.Reviews on a.Review_Id equals r.Id
-                           join p in vm.Places on r.PlaceId equals p.Id
+            Place place = db.Places.Where(x => x.Id == review.PlaceId).FirstOrDefault();
+            var ratings = from pa in db.PossibleAnswers
+                           join a in db.Answers on pa.Id equals a.PossibleAnswerId
+                           join r in db.Reviews on a.ReviewId equals r.Id
+                           join p in db.Places on r.PlaceId equals p.Id
                            where p.Id == place.Id
                            select ((float)pa.AnswerValue);
             place.Rating = (float)Math.Round(ratings.DefaultIfEmpty(0f).Average(), 1);
-            vm.Entry(place).State = EntityState.Modified;
-            vm.SaveChanges();
+            db.Entry(place).State = EntityState.Modified;
+            db.SaveChanges();
             return Json(true);
         }
         [HttpPut]
@@ -79,8 +79,8 @@ namespace WheelofAccess.Controllers
             {
                 return Json(answer);
             }
-            vm.Answers.Add(answer);
-            await vm.SaveChangesAsync();
+            db.Answers.Add(answer);
+            await db.SaveChangesAsync();
             return Json(answer);
         }
 
@@ -88,12 +88,12 @@ namespace WheelofAccess.Controllers
         [ActionName("Answer")]
         public JsonResult DeleteUserAnswerBool(int ReviewId, int QuestionId)
         {
-            var ua = vm.Answers.Where(x => x.PossibleAnswer.Question_Title == QuestionId && x.Review_Id == ReviewId).FirstOrDefault();
+            var ua = db.Answers.Where(x => x.PossibleAnswer.QuestionId == QuestionId && x.ReviewId == ReviewId).FirstOrDefault();
             var result = false;
             if (ua != null)
             {
-                vm.Answers.Remove(ua);
-                vm.SaveChanges();
+                db.Answers.Remove(ua);
+                db.SaveChanges();
                 result = true;
             }
             return Json(result);
@@ -104,19 +104,19 @@ namespace WheelofAccess.Controllers
         public JsonResult addReview(string googleId)
         {
             var userId = User.Identity.GetUserId();
-            var place=vm.Places.Where(p=>p.GoogleId==googleId).FirstOrDefault();
-            if (!vm.Reviews.Any(x => x.PlaceId == place.Id && x.UserId == userId))
+            var place=db.Places.Where(p=>p.GoogleId==googleId).FirstOrDefault();
+            if (!db.Reviews.Any(x => x.PlaceId == place.Id && x.UserId == userId))
             {
                 Review newReview = new Review();
                 newReview.PlaceId = place.Id;
                 newReview.UserId = userId;
-                vm.Reviews.Add(newReview);
-                vm.SaveChanges();
+                db.Reviews.Add(newReview);
+                db.SaveChanges();
                 return Json(newReview.Id);
             }
             else
             {
-                var review = vm.Reviews.Where(x=>x.PlaceId==place.Id).FirstOrDefault();
+                var review = db.Reviews.Where(x=>x.PlaceId==place.Id && x.UserId == userId).FirstOrDefault();
                 return Json(review.Id);
             }            
         }
@@ -124,26 +124,21 @@ namespace WheelofAccess.Controllers
         [HttpPut]
         [ActionName("Place")]
         public JsonResult addPlace(Place place)
-        {
-            
-            Place p = vm.Places.Where(x => x.GoogleId == place.GoogleId).FirstOrDefault();
+        {           
+            Place p = db.Places.Where(x => x.GoogleId == place.GoogleId).FirstOrDefault();
             if (p == null)
             {
-                vm.Places.Add(place);
-                vm.SaveChanges();
-                return Json(place);
+                db.Places.Add(place);
+                db.SaveChanges();
             }
-            else
-            {
-                return Json("error");
-            }
+            return Json(place);
             
         }
         [HttpGet]
         [ActionName("Places")]
         public JsonResult GetPlaces()
         {
-            var places=vm.Places.Select(x => new
+            var places=db.Places.Select(x => new
             {
                 GoogleId = x.GoogleId,
                 Id=x.Id
@@ -151,13 +146,11 @@ namespace WheelofAccess.Controllers
             return Json(places, JsonRequestBehavior.AllowGet);
         }
 
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                vm.Dispose();
+                db.Dispose();
             }
             base.Dispose(disposing);
         }

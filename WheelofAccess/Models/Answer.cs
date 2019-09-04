@@ -10,14 +10,11 @@ namespace WheelofAccess.Models
     public class Answer
     {
         public int Id { get; set; }
-        //public int AnswerValue { get; set; }
         [ForeignKey("Review")]
-        public int? Review_Id { get; set; }
+        public int? ReviewId { get; set; }
         public virtual Review Review { get; set; }
-
         [ForeignKey("PossibleAnswer")]
-        public int Option_ID { get; set; }
+        public int PossibleAnswerId { get; set; }
         public virtual PossibleAnswer PossibleAnswer { get; set; }
-
     }
 }
