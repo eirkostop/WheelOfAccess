@@ -100,7 +100,7 @@ function loadMarkers(response) {
                     content: `<h3 id="title">${place.Name}</h3>
                                     <p class="small">${result.formatted_address}</p>
                                     <h6>${place.Rating} / 5</h6>
-                                    <div class="progress progress-sm">
+                                    <div class="progress progress-sm" style="width:80%">
                                         <div class="progress-bar progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(place.Rating / 5 * 100)}" style="width: ${(place.Rating / 5 * 100)}%"></div>
                                     </div>
                                     <button id="review_${place.GoogleId}" class="btn btn-primary mt-2" onclick="addReview('${place.GoogleId }')">Review</button>`
@@ -127,7 +127,7 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function (position) {
         var point = { lat: position.coords.latitude, lng: position.coords.longitude }
         currentPositionIW.setPosition(point)
-        currentPositionIW.setContent('<h6 class="p-2 m-2 bg-light rounded">You are here</h6>')
+        currentPositionIW.setContent('<h6 class="p-2 m-2 bg-light rounded">You are here</h6> Click on a place to rate it')
         currentPositionIW.open(map);
         map.setCenter(point)
     })
