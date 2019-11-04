@@ -21,7 +21,7 @@ namespace WheelofAccess.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            ViewBag.QuestionId = new SelectList(db.GetQuestions(), "Id", "Title");
+            ViewBag.QuestionText = new SelectList(db.GetQuestions(), "Id", "Text");
 
             return View();
         }
@@ -33,7 +33,7 @@ namespace WheelofAccess.Controllers
 
             if (!ModelState.IsValid)
             {
-                ViewBag.QuestionId = new SelectList(db.GetQuestions(), "Id", "Title");
+                ViewBag.QuestionText = new SelectList(db.GetQuestions(), "Id", "Text");
 
                 return Json(possible);
             }
@@ -49,7 +49,7 @@ namespace WheelofAccess.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.QuestionId = new SelectList(db.GetQuestions(), "Id", "Title");
+            ViewBag.QuestionText = new SelectList(db.GetQuestions(), "Id", "Text");
 
             return View(opt);
         }
@@ -60,7 +60,7 @@ namespace WheelofAccess.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.QuestionId = new SelectList(db.GetQuestions(), "Id", "Title"); 
+                ViewBag.QuestionText = new SelectList(db.GetQuestions(), "Id", "Text"); 
 
                 return View(opt);
             }

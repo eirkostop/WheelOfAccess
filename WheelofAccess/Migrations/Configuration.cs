@@ -17,20 +17,20 @@ namespace WheelofAccess.Migrations
 
         protected override void Seed(WheelofAccess.Models.ApplicationDbContext context)
         {
-            //Question title_1 = new Question() { Title = "Does the pavement has a ramp?" };
-            //Question title_2 = new Question() { Title = "Does the entrance has steps?" };
-            //Question title_3 = new Question() { Title = "Does the entrance has a ramp?" };
-            //Question title_4 = new Question() { Title = "Is it easy to move around?" };
-            //Question title_5 = new Question() { Title = "The toilet is: " };
-            //Question title_6 = new Question() { Title = "Does it have a parking space?" };
-            //Question title_7 = new Question() { Title = "Is it providing the menu in Braille?" };
-            //context.Questions.AddOrUpdate(x => x.Title, title_1);
-            //context.Questions.AddOrUpdate(x => x.Title, title_2);
-            //context.Questions.AddOrUpdate(x => x.Title, title_3);
-            //context.Questions.AddOrUpdate(x => x.Title, title_4);
-            //context.Questions.AddOrUpdate(x => x.Title, title_5);
-            //context.Questions.AddOrUpdate(x => x.Title, title_6);
-            //context.Questions.AddOrUpdate(x => x.Title, title_7);
+            //Question title_1 = new Question() { Text = "Does the pavement has a ramp?" };
+            //Question title_2 = new Question() { Text = "Does the entrance has steps?" };
+            //Question title_3 = new Question() { Text = "Does the entrance has a ramp?" };
+            //Question title_4 = new Question() { Text = "Is it easy to move around?" };
+            //Question title_5 = new Question() { Text = "The toilet is: " };
+            //Question title_6 = new Question() { Text = "Does it have a parking space?" };
+            //Question title_7 = new Question() { Text = "Is it providing the menu in Braille?" };
+            //context.Questions.AddOrUpdate(x => x.Text, title_1);
+            //context.Questions.AddOrUpdate(x => x.Text, title_2);
+            //context.Questions.AddOrUpdate(x => x.Text, title_3);
+            //context.Questions.AddOrUpdate(x => x.Text, title_4);
+            //context.Questions.AddOrUpdate(x => x.Text, title_5);
+            //context.Questions.AddOrUpdate(x => x.Text, title_6);
+            //context.Questions.AddOrUpdate(x => x.Text, title_7);
 
             //PossibleAnswer option_1 = new PossibleAnswer() { Answer = "Yes", AnswerValue = 5, QuestionId = 1 };
             //PossibleAnswer option_2 = new PossibleAnswer() { Answer = "No", AnswerValue = 0, QuestionId = 1 };

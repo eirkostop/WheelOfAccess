@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Title)
+                            @Html.DisplayNameFor(model => model.Text)
                         </th>
                         <th>
                             Answers
@@ -34,7 +34,7 @@
                 <tfoot>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Title)
+                            @Html.DisplayNameFor(model => model.Text)
                         </th>
                         <th>
                             Answers
@@ -47,7 +47,7 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Title)
+                                @Html.DisplayFor(modelItem => item.Text)
                             </td>
                             <td>
                                 @foreach (var option in item.PossibleAnswers)
