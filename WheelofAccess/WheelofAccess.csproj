@@ -263,6 +263,14 @@
     <Compile Include="Migrations\201911040956058_Title_Text.Designer.cs">
       <DependentUpon>201911040956058_Title_Text.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911041027139_Answer_Text.cs" />
+    <Compile Include="Migrations\201911041027139_Answer_Text.Designer.cs">
+      <DependentUpon>201911041027139_Answer_Text.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911041038209_removed_answer_property.cs" />
+    <Compile Include="Migrations\201911041038209_removed_answer_property.Designer.cs">
+      <DependentUpon>201911041038209_removed_answer_property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ValidateDate.cs" />
     <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -487,6 +495,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911040956058_Title_Text.resx">
       <DependentUpon>201911040956058_Title_Text.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911041027139_Answer_Text.resx">
+      <DependentUpon>201911041027139_Answer_Text.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911041038209_removed_answer_property.resx">
+      <DependentUpon>201911041038209_removed_answer_property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -28,7 +28,7 @@ namespace WheelofAccess.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "Id,Answer,AnswerValue,QuestionId")] PossibleAnswer possible)
+        public ActionResult Create([Bind(Include = "Id,Text,AnswerValue,QuestionId")] PossibleAnswer possible)
         {
 
             if (!ModelState.IsValid)
@@ -56,7 +56,7 @@ namespace WheelofAccess.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "Id,Answer,AnswerValue,QuestionId")]PossibleAnswer opt)
+        public ActionResult Edit([Bind(Include = "Id,Text,AnswerValue,QuestionId")]PossibleAnswer opt)
         {
             if (!ModelState.IsValid)
             {

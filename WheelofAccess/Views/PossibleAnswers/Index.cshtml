@@ -24,10 +24,10 @@
                 <thead>
                     <tr>
                         <th>
-                            Question @Html.DisplayNameFor(model => model.Question.Text)
+                            @Html.DisplayNameFor(model => model.Question.Text)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Answer)
+                            @Html.DisplayNameFor(model => model.Text)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.AnswerValue)
@@ -39,10 +39,10 @@
                 <tfoot>
                     <tr>
                         <th>
-                            Question @Html.DisplayNameFor(model => model.Question.Text)
+                            @Html.DisplayNameFor(model => model.Question)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Answer)
+                            @Html.DisplayNameFor(model => model.Text)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.AnswerValue)
@@ -59,7 +59,7 @@
                             @Html.DisplayFor(modelItem => item.Question.Text)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Answer)
+                            @Html.DisplayFor(modelItem => item.Text)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.AnswerValue)

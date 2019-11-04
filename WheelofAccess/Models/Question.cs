@@ -17,6 +17,7 @@ namespace WheelofAccess.Models
             PossibleAnswers=new HashSet<PossibleAnswer>();
         }                               
         public int Id { get; set; }
+        [DisplayName("Question")]
         public string Text { get; set; }
         public virtual ICollection<PossibleAnswer> PossibleAnswers { get; set; }
        
