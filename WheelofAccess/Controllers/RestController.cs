@@ -84,6 +84,7 @@ namespace WheelofAccess.Controllers
             return Json(answer);
         }
 
+
         [HttpDelete]
         [ActionName("Answer")]
         public JsonResult DeleteUserAnswerBool(int ReviewId, int QuestionId)
@@ -146,6 +147,27 @@ namespace WheelofAccess.Controllers
             return Json(places, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPut]
+        [ActionName("Categories")]
+        public JsonResult addCategories(string placeId, string placeCategories)
+        {
+            string[] categories = placeCategories.Split(",".ToCharArray());
+            Place p = db.Places.Where(x => x.GoogleId == placeId).FirstOrDefault();
+            foreach (var category in categories)
+            {
+                Category c=db.Categories.Where(x => x.Name == category).FirstOrDefault();
+                if (c==null)
+                {
+                    c = new Category() { Name = category };
+                    db.Categories.Add(c);
+                }
+
+                db.SaveChanges();
+                p.Categories.Add(c);
+            }
+            return Json(placeCategories);
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -39,6 +39,26 @@ function addPlace(request) {
         }
     })
 }
+function addCategories(request) {
+    var stringOfCategories = request.categories.join(',');
+    $.ajax({
+        method: "PUT",
+        async: false,
+        url: "/Rest/Categories",
+        data: {
+            placeId: request.place_id,
+            placeCategories: stringOfCategories,
+        },
+        success: function (response) {
+            console.log("success");
+            console.log(response);
+        },
+        error: function (response) {
+            console.log("error");
+            console.log(response)
+        }
+    })
+}
 
 function addReviewButton(e) {
     geocoder.geocode({ 'location': e.latLng }, function (results, status) {
@@ -48,8 +68,10 @@ function addReviewButton(e) {
                     //position: results[0].geometry.location,
                     location: e.latLng,
                     place_id: results[0].place_id,
-                    address: results[0].formatted_address
+                    address: results[0].formatted_address,
+                    categories:results[0].types,
                 };
+                console.log(results[0].types)
             } else {
                 console.log('No results found');
             }
@@ -57,10 +79,13 @@ function addReviewButton(e) {
             console.log('Geocoder failed due to: ' + status);
         }
 
+        
+
         if (document.getElementsByClassName('poi-info-window gm-style')[0]&&!document.getElementsByClassName('poi-info-window gm-style')[0].contains(document.getElementById('review'))) {
             document.getElementsByClassName('poi-info-window gm-style')[0].appendChild(btn);
             btn.onclick = function () {
                 addPlace(request);
+                addCategories(request);
                 addReview(request.place_id);
             }
         }

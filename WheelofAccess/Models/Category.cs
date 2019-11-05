@@ -15,6 +15,6 @@ namespace WheelofAccess.Models
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        ICollection<Place> Places { get; set; }
+        public virtual ICollection<Place> Places { get; set; }
     }
 }

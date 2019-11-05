@@ -23,10 +23,13 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Place.Name)
+                            @Html.DisplayNameFor(model => model.Place)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Rating)
+                            Total @Html.DisplayNameFor(model => model.Place.Rating)
+                        </th>
+                        <th>
+                            My @Html.DisplayNameFor(model => model.Rating)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Comment)
@@ -38,10 +41,13 @@
                 <tfoot>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Place.Name)
+                            @Html.DisplayNameFor(model => model.Place)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Rating)
+                            Total @Html.DisplayNameFor(model => model.Place.Rating)
+                        </th>
+                        <th>
+                            My @Html.DisplayNameFor(model => model.Rating)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Comment)
@@ -55,6 +61,14 @@
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Place.Name)
+                        </td>
+                        <td>
+                            <div class="small mb-1">
+                                @Html.DisplayFor(modelItem => item.Place.Rating) / 5
+                            </div>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="@(item.Place.Rating/5*100)" style="width: @(item.Place.Rating/5*100)%"></div>
+                            </div>
                         </td>
                         <td>
                             <div class="small mb-1">

@@ -19,7 +19,7 @@ namespace WheelofAccess.View_Models
             {
                 if (_selectedCategories == null)
                 {
-                    return Place.PlaceCategories.Select(x => x.Id).ToList();
+                    return Place.Categories.Select(x => x.Id).ToList();
 
                 }
                 return _selectedCategories;

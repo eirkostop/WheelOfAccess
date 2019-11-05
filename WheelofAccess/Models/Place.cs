@@ -10,7 +10,7 @@ namespace WheelofAccess.Models
     {
         public Place()
         {
-            PlaceCategories = new HashSet<Category>();
+            Categories = new HashSet<Category>();
             PlaceReviews = new HashSet<Review>();
         }
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace WheelofAccess.Models
         public string Name { get; set; }
         public string  Address {get;set;}
         [DisplayName("Category")]
-        public virtual ICollection<Category> PlaceCategories { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Review> PlaceReviews { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
     }

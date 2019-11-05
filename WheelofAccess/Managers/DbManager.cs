@@ -188,7 +188,7 @@ namespace WheelofAccess.Managers
             ICollection<Place> places;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                places = db.Places.Include("PlaceCategories").Include("PlaceReviews").ToList();
+                places = db.Places.Include("Categories").Include("PlaceReviews").ToList();
             }
             return places;
         }
@@ -204,7 +204,7 @@ namespace WheelofAccess.Managers
                     Category category = db.Categories.Find(id);
                     if (category != null)
                     {
-                        place.PlaceCategories.Add(category);
+                        place.Categories.Add(category);
 
                     }
                 }
@@ -226,7 +226,7 @@ namespace WheelofAccess.Managers
             Place result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                result = db.Places.Include("PlaceCategories")
+                result = db.Places.Include("Categories")
                                   .Include("PlaceReviews")
                                   .Include("Users")                                  
                                   .Where(x => x.Id == id).FirstOrDefault();
@@ -240,8 +240,8 @@ namespace WheelofAccess.Managers
             {
                 db.Places.Attach(place);
 
-                db.Entry(place).Collection("PlaceCategories").Load();
-                place.PlaceCategories.Clear();
+                db.Entry(place).Collection("Categories").Load();
+                place.Categories.Clear();
                 db.SaveChanges();
                 foreach (var id in categoriesIds)
                 {
@@ -252,7 +252,7 @@ namespace WheelofAccess.Managers
                     {
 
 
-                        place.PlaceCategories.Add(category);
+                        place.Categories.Add(category);
 
                     }
                 }
