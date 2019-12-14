@@ -55,9 +55,6 @@ namespace WheelofAccess.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.Questions = db.GetQuestions();
-            
-
-
             var review = db.FindReview(id);
             if (review == null)
             {

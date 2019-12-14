@@ -20,14 +20,22 @@ namespace WheelofAccess.Managers
             }
             return questions;
         }
+        public ICollection<Question> GetQuestions(int placeId)
+        { 
+            ICollection<Question> questions;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Place place = db.Places.Find(placeId);
+                questions = db.Questions.Where(question => question.Categories.Any(category => category.Places.Contains(place))).ToList();
+            }
+            return questions;
+        }
         public void AddQuestion(Question question)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Questions.Add(question);
                 db.SaveChanges();
-
-
             }
         }
         public Question FindQuestion(int id)
@@ -188,7 +196,7 @@ namespace WheelofAccess.Managers
             ICollection<Place> places;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                places = db.Places.Include("Categories").Include("PlaceReviews").ToList();
+                places = db.Places.Include("Categories").Include("Reviews").ToList();
             }
             return places;
         }
@@ -227,7 +235,7 @@ namespace WheelofAccess.Managers
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 result = db.Places.Include("Categories")
-                                  .Include("PlaceReviews")
+                                  .Include("Reviews")
                                   .Include("Users")                                  
                                   .Where(x => x.Id == id).FirstOrDefault();
 

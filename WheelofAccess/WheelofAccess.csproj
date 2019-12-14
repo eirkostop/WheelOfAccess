@@ -275,6 +275,10 @@
     <Compile Include="Migrations\201911042124070_places.Designer.cs">
       <DependentUpon>201911042124070_places.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911051959435_question_categories.cs" />
+    <Compile Include="Migrations\201911051959435_question_categories.Designer.cs">
+      <DependentUpon>201911051959435_question_categories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ValidateDate.cs" />
     <Compile Include="Services\ChatHub.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -508,6 +512,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911042124070_places.resx">
       <DependentUpon>201911042124070_places.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911051959435_question_categories.resx">
+      <DependentUpon>201911051959435_question_categories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

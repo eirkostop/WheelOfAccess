@@ -21,12 +21,10 @@ namespace WheelofAccess.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.Question_Name = new SelectList(db.GetQuestions(), "Id", "Title");
+            ViewBag.Question_Name = new SelectList(db.GetQuestions(), "Id", "Text");
 
             return View();
         }
        
-
-        
     }
 }
