@@ -17,7 +17,7 @@
     <AssemblyName>WheelofAccess</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44352</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
@@ -247,41 +247,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Migrations\201909040709547_first.cs" />
-    <Compile Include="Migrations\201909040709547_first.Designer.cs">
-      <DependentUpon>201909040709547_first.cs</DependentUpon>
+    <Compile Include="Migrations\201912141414167_reset.cs" />
+    <Compile Include="Migrations\201912141414167_reset.Designer.cs">
+      <DependentUpon>201912141414167_reset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909040731014_updateQuestion.cs" />
-    <Compile Include="Migrations\201909040731014_updateQuestion.Designer.cs">
-      <DependentUpon>201909040731014_updateQuestion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909040838353_updatemodels.cs" />
-    <Compile Include="Migrations\201909040838353_updatemodels.Designer.cs">
-      <DependentUpon>201909040838353_updatemodels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911040956058_Title_Text.cs" />
-    <Compile Include="Migrations\201911040956058_Title_Text.Designer.cs">
-      <DependentUpon>201911040956058_Title_Text.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911041027139_Answer_Text.cs" />
-    <Compile Include="Migrations\201911041027139_Answer_Text.Designer.cs">
-      <DependentUpon>201911041027139_Answer_Text.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911041038209_removed_answer_property.cs" />
-    <Compile Include="Migrations\201911041038209_removed_answer_property.Designer.cs">
-      <DependentUpon>201911041038209_removed_answer_property.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911042124070_places.cs" />
-    <Compile Include="Migrations\201911042124070_places.Designer.cs">
-      <DependentUpon>201911042124070_places.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911051959435_question_categories.cs" />
-    <Compile Include="Migrations\201911051959435_question_categories.Designer.cs">
-      <DependentUpon>201911051959435_question_categories.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ValidateDate.cs" />
     <Compile Include="Services\ChatHub.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\Payment\PaypalController.cs" />
     <Compile Include="Services\ChatController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -492,29 +464,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909040709547_first.resx">
-      <DependentUpon>201909040709547_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909040731014_updateQuestion.resx">
-      <DependentUpon>201909040731014_updateQuestion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909040838353_updatemodels.resx">
-      <DependentUpon>201909040838353_updatemodels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911040956058_Title_Text.resx">
-      <DependentUpon>201911040956058_Title_Text.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911041027139_Answer_Text.resx">
-      <DependentUpon>201911041027139_Answer_Text.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911041038209_removed_answer_property.resx">
-      <DependentUpon>201911041038209_removed_answer_property.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911042124070_places.resx">
-      <DependentUpon>201911042124070_places.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911051959435_question_categories.resx">
-      <DependentUpon>201911051959435_question_categories.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912141414167_reset.resx">
+      <DependentUpon>201912141414167_reset.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -536,7 +487,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58369</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44352/</IISUrl>
+          <IISUrl>http://localhost/WheelofAccess</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
