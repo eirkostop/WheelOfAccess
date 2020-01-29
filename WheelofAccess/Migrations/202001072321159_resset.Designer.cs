@@ -7,13 +7,13 @@ namespace WheelofAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class question_categories : IMigrationMetadata
+    public sealed partial class resset : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(question_categories));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(resset));
         
         string IMigrationMetadata.Id
         {
-            get { return "201911051959435_question_categories"; }
+            get { return "202001072321159_resset"; }
         }
         
         string IMigrationMetadata.Source

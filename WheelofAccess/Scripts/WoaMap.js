@@ -15,10 +15,10 @@ function addReview(googleId) {
     $.ajax({
         method: "PUT",
         async: false,
-        url: "/Rest/Review",
+        url: "Rest/Review",
         data: { googleId: googleId },
         success: function (response) {
-            window.location.assign("/Reviews/Edit/" + response);           
+            window.location.assign("Reviews/Edit/" + response);           
         },
         error: function (response) {
         }
@@ -29,7 +29,7 @@ function addPlace(request) {
     $.ajax({
         method: "PUT",
         async: false,
-        url: "/Rest/Place",        
+        url: "Rest/Place",        
         data: {
             Address: request.address,
             Name: name,
@@ -44,7 +44,7 @@ function addCategories(request) {
     $.ajax({
         method: "PUT",
         async: false,
-        url: "/Rest/Categories",
+        url: "Rest/Categories",
         data: {
             placeId: request.place_id,
             placeCategories: stringOfCategories,
